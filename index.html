@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>.Sketch Studios — Art Lessons for Kids, Teens & Adults</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ─────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:    #8B1F1F;
+    --deep:   #3D1206;
+    --black:  #1A0A0A;
+    --cream:  #FAF0EC;
+    --rose:   #E2AAAA;
+    --gold:   #C9A055;
+    --roselt: #F5E2E2;
+    --serif:  'Abril Fatface', serif;
+    --script: 'Dancing Script', cursive;
+    --sans:   'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* Paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* ── NAVIGATION ───────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(139,31,31,0.12);
+    z-index: 900;
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    background: var(--red);
+    color: white;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    padding: 8px 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-size: 12px !important;
+  }
+  .nav-cta:hover { background: var(--deep); color: white !important; }
+
+  /* ── PAGES ────────────────────────────────────── */
+  .page { display: none; padding-top: 68px; }
+  .page.active { display: block; }
+
+  /* ── WATERCOLOR BLOB HELPER ───────────────────── */
+  .wc-blob {
+    position: absolute;
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 55%;
+    background: radial-gradient(ellipse at 40% 40%, #E2AAAA 0%, #EEC8C8 40%, transparent 70%);
+    opacity: 0.45;
+    pointer-events: none;
+    filter: blur(2px);
+  }
+
+  /* ── GOLD SPARKLES ────────────────────────────── */
+  .sparkle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s infinite;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0; transform: scale(0.5); }
+    50%      { opacity: 0.8; transform: scale(1.2); }
+  }
+
+  /* ── SECTION BASE ─────────────────────────────── */
+  section { position: relative; overflow: hidden; }
+
+  /* ── BUTTONS ─────────────────────────────────── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: var(--deep); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--red);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: 2px solid var(--red);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-outline:hover { background: var(--red); color: white; }
+
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366;
+    color: white;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s;
+    max-width: 100%;
+  }
+  .btn-whatsapp:hover { background: #128C7E; }
+
+  /* ── LABEL CHIP ───────────────────────────────── */
+  .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* ════════════════════════════════════════════════
+     PAGE: HOME
+  ════════════════════════════════════════════════ */
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 68px);
+    display: flex; align-items: center;
+    padding: 80px 80px 60px;
+    position: relative;
+    background: var(--cream);
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 580px; }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+  }
+
+  .hero-headline {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+
+  .hero-script {
+    font-family: var(--script);
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-art {
+    font-family: var(--serif);
+    font-size: 96px;
+    color: var(--red);
+    line-height: 0.9;
+    display: block;
+    letter-spacing: -2px;
+  }
+
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: 34px;
+    color: var(--black);
+    margin: 16px 0 12px;
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: #4a2a20;
+    font-weight: 400;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .hero-tagline strong { font-weight: 700; }
+
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Hero visual — right side split */
+  .hero-visual {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 46%;
+    overflow: hidden;
+  }
+
+  .hero-split-left {
+    position: absolute;
+    left: 0; top: 0; width: 50%; height: 100%;
+    background: linear-gradient(135deg, #f0e8e0 0%, #ede0d8 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-split-right {
+    position: absolute;
+    right: 0; top: 0; width: 50%; height: 100%;
+    background: var(--roselt);
+    overflow: hidden;
+  }
+
+  .hero-split-right::before {
+    content: '';
+    position: absolute; inset: -20%;
+    background: radial-gradient(ellipse at 50% 50%, #E2AAAA 0%, #EDBEBD 35%, transparent 65%);
+    opacity: 0.7;
+  }
+
+  .split-label {
+    position: absolute;
+    bottom: 40px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    opacity: 0.6;
+  }
+  .split-label.left  { left: 24px; }
+  .split-label.right { right: 18px; }
+
+  /* Pencil sketch SVG area */
+  .sketch-area {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+  }
+
+  /* ── STATS BAR ──────────────────────────────── */
+  .stats-bar {
+    background: var(--red);
+    padding: 28px 80px;
+    display: flex; gap: 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    color: white;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 32px;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ── TWO TRACKS SECTION ──────────────────────── */
+  .tracks-intro {
+    padding: 100px 80px;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--deep);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-title .script {
+    font-family: var(--script);
+    color: var(--red);
+    font-size: 56px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    color: #5a3a2a;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .track-card {
+    border-radius: 20px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .track-card.technique {
+    background: var(--black);
+    color: white;
+  }
+
+  .track-card.flow {
+    background: var(--roselt);
+    color: var(--black);
+    border: 1px solid #ddbebe;
+  }
+
+  .track-card.flow::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 60%; height: 80%;
+    background: radial-gradient(ellipse, #E2AAAA 0%, transparent 65%);
+    opacity: 0.5;
+  }
+
+  .track-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .track-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.65;
+  }
+  .track-card.technique .track-name { color: #E2AAAA; }
+  .track-card.flow .track-name { color: var(--red); }
+
+  .track-headline {
+    font-family: var(--serif);
+    font-size: 36px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .track-card.technique .track-headline { color: white; }
+  .track-card.flow .track-headline { color: var(--deep); }
+
+  .track-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    opacity: 0.85;
+  }
+
+  .track-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .track-features li {
+    font-size: 13px;
+    font-weight: 500;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+
+  .track-features li::before {
+    content: '▶';
+    font-size: 8px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .track-card.technique .track-features li::before { color: var(--rose); }
+  .track-card.flow .track-features li::before { color: var(--red); }
+
+  /* ── FORMATS SECTION ───────────────────────── */
+  .formats {
+    padding: 100px 80px;
+    background: #F3E8E2;
+    position: relative;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .format-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: 0 2px 20px rgba(139,31,31,0.06);
+    transition: transform .2s;
+  }
+  .format-card:hover { transform: translateY(-4px); }
+
+  .format-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .format-title {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .format-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--deep);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .format-desc {
+    font-size: 13px;
+    color: #5a3a2a;
+    line-height: 1.6;
+  }
+
+  /* ── PHILOSOPHY SECTION ───────────────────── */
+  .philosophy {
+    padding: 100px 80px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .philosophy-headline {
+    font-family: var(--serif);
+    font-size: 44px;
+    color: var(--deep);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .philosophy-text {
+    font-size: 15px;
+    color: #5a3a2a;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .philosophy-pillars {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .philosophy-pillars li {
+    display: flex; align-items: flex-start; gap: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .pillar-dot {
+    width: 10px; height: 10px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .philosophy-visual {
+    position: relative;
+  }
+
+  .philo-card {
+    background: var(--cream);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(61,18,6,0.12);
+    padding: 0;
+    position: relative;
+  }
+
+  .philo-card-header {
+    background: var(--red);
+    padding: 32px 36px;
+    color: white;
+  }
+
+  .philo-card-header .track-script {
+    font-family: var(--script);
+    font-size: 42px;
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .philo-card-header p {
+    font-size: 13px;
+    opacity: 0.85;
+    font-weight: 500;
+  }
+
+  .philo-card-body {
+    padding: 28px 36px;
+  }
+
+  .philo-card-body ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  .philo-card-body li {
+    font-size: 13px;
+    color: var(--black);
+    font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .philo-card-body li::before {
+    content: '✓';
+    color: var(--red);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* ── CTA BANNER ───────────────────────────── */
+  .cta-banner {
+    background: var(--deep);
+    padding: 90px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute; top: -40%; left: 20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #8B1F1F 0%, transparent 65%);
+    opacity: 0.3;
+  }
+
+  .cta-banner::after {
+    content: '';
+    position: absolute; bottom: -30%; right: 15%;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, #E2AAAA 0%, transparent 65%);
+    opacity: 0.15;
+  }
+
+  .cta-banner-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 20px;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--serif);
+    font-size: 54px;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative; z-index: 2;
+  }
+
+  .cta-banner h2 .script {
+    font-family: var(--script);
+    color: var(--rose);
+    font-size: 62px;
+  }
+
+  .cta-banner p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    margin-bottom: 40px;
+    position: relative; z-index: 2;
+  }
+
+  .cta-banner-buttons {
+    display: flex; gap: 16px;
+    justify-content: center;
+    position: relative; z-index: 2;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: white;
+    color: var(--red);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-white:hover { background: var(--cream); }
+
+  /* ── FOOTER ───────────────────────────────── */
+  footer {
+    background: var(--black);
+    color: white;
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo { background: #5a1515; }
+
+  .footer-tagline {
+    font-size: 13px;
+    opacity: 0.5;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  .footer-contact {
+    text-align: right;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 1.8;
+  }
+
+  .footer-contact a {
+    color: var(--rose);
+    text-decoration: none;
+  }
+
+  /* ════════════════════════════════════════════════
+     PAGE: ABOUT
+  ════════════════════════════════════════════════ */
+
+  .about-hero {
+    padding: 90px 80px 60px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+
+  .about-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: radial-gradient(ellipse at 80% 50%, #E2AAAA 0%, transparent 65%);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .about-headline {
+    font-family: var(--serif);
+    font-size: 52px;
+    color: var(--deep);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .about-script {
+    font-family: var(--script);
+    font-size: 64px;
+    color: var(--red);
+    display: block;
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+
+  .about-body {
+    font-size: 16px;
+    color: #5a3a2a;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-photo-placeholder {
+    background: #e8d8d0;
+    border-radius: 20px;
+    aspect-ratio: 4/5;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #a08070;
+    font-size: 14px;
+    text-align: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, #E2AAAA 0%, transparent 60%);
+    opacity: 0.4;
+  }
+
+  .about-photo-placeholder .photo-icon {
+    font-size: 48px;
+    position: relative; z-index: 1;
+  }
+
+  .about-photo-placeholder p {
+    position: relative; z-index: 1;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7a5040;
+  }
+
+  .about-values {
+    padding: 80px 80px;
+    background: #F3E8E2;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 48px auto 0;
+  }
+
+  .value-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 32px 28px;
+    border-left: 4px solid var(--red);
+  }
+
+  .value-title {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--red);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .value-text {
+    font-size: 14px;
+    color: #5a3a2a;
+    line-height: 1.65;
+  }
+
+  /* ════════════════════════════════════════════════
+     PAGE: TRACKS
+  ════════════════════════════════════════════════ */
+
+  .tracks-hero {
+    padding: 80px 80px 60px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tracks-hero::before {
+    content: '';
+    position: absolute; top: -20%; left: -5%;
+    width: 50%; height: 140%;
+    background: radial-gradient(ellipse at 30% 50%, #e0d0c8 0%, transparent 60%);
+    opacity: 0.5;
+  }
+
+  .tracks-hero::after {
+    content: '';
+    position: absolute; top: -20%; right: -5%;
+    width: 50%; height: 140%;
+    background: radial-gradient(ellipse at 70% 50%, #E2AAAA 0%, transparent 60%);
+    opacity: 0.35;
+  }
+
+  .tracks-hero-content { position: relative; z-index: 2; }
+
+  .tracks-hero h1 {
+    font-family: var(--serif);
+    font-size: 56px;
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+
+  .tracks-hero p {
+    font-size: 17px;
+    color: #5a3a2a;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Split track section */
+  .track-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .track-panel {
+    padding: 80px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .track-panel.left { background: var(--black); color: white; }
+  .track-panel.right { background: var(--roselt); }
+
+  .track-panel.right::before {
+    content: '';
+    position: absolute; bottom: -10%; right: -10%;
+    width: 60%; height: 70%;
+    background: radial-gradient(ellipse, #E2AAAA 0%, transparent 65%);
+    opacity: 0.5;
+  }
+
+  .track-panel .track-number {
+    font-family: var(--serif);
+    font-size: 120px;
+    position: absolute;
+    top: 20px; right: 30px;
+    opacity: 0.06;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .track-panel.left .track-number { color: white; }
+  .track-panel.right .track-number { color: var(--red); }
+
+  /* ════════════════════════════════════════════════
+     MOBILE — Hamburger Nav
+  ════════════════════════════════════════════════ */
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--black);
+    border-radius: 2px;
+    transition: all .25s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(139,31,31,0.12);
+    z-index: 850;
+    padding: 16px 24px 24px;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 8px 24px rgba(61,18,6,0.08);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    display: block;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139,31,31,0.08);
+    cursor: pointer;
+  }
+  .mobile-menu a:last-child { border-bottom: none; margin-top: 12px; }
+  .mobile-menu .mobile-cta {
+    display: block;
+    background: var(--red);
+    color: white !important;
+    text-align: center;
+    padding: 14px;
+    border-radius: 40px;
+    border-bottom: none !important;
+  }
+
+  /* ════════════════════════════════════════════════
+     RESPONSIVE — Tablet (≤1024px)
+  ════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    nav { padding: 0 28px; }
+    .hero { padding: 60px 40px 60px; }
+    .hero-visual { width: 38%; }
+    .hero-art { font-size: 76px; }
+    .hero-script { font-size: 58px; }
+    .tracks-intro, .formats, .philosophy, .cta-banner,
+    .about-hero, .about-values, .tracks-hero, .track-compare,
+    .gallery-hero, .gallery-grid, .booking-hero, .booking-locations { padding-left: 40px; padding-right: 40px; }
+    .stats-bar { padding: 24px 40px; }
+    footer { padding: 36px 40px; }
+    .philosophy { max-width: 100%; gap: 48px; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ════════════════════════════════════════════════
+     RESPONSIVE — Mobile (≤768px)
+  ════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+
+    /* Nav */
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    /* Hero */
+    .hero {
+      padding: 48px 20px 56px;
+      min-height: auto;
+      flex-direction: column;
+    }
+    .hero-visual { display: none; }
+    .hero-content { max-width: 100%; }
+    .hero-eyebrow { font-size: 11px; }
+    .hero-headline { font-size: 15px; }
+    .hero-script { font-size: 52px; }
+    .hero-art { font-size: 68px; }
+    .hero-sub { font-size: 26px; margin-bottom: 10px; }
+    .hero-tagline { font-size: 14px; margin-bottom: 28px; }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-outline { text-align: center; }
+
+    /* Stats bar */
+    .stats-bar {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .stat-item {
+      padding: 14px 8px;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(3),
+    .stat-item:nth-child(4) { border-bottom: none; }
+    .stat-number { font-size: 26px; }
+
+    /* Shared section padding */
+    .tracks-intro, .formats, .cta-banner,
+    .about-values, .tracks-hero, .track-compare,
+    .gallery-hero, .gallery-grid, .booking-locations {
+      padding: 56px 20px;
+    }
+    .philosophy { padding: 56px 20px; }
+    .about-hero { padding: 48px 20px; }
+    /* booking-hero padding is set in its own block below */
+    stats-bar { padding: 20px; }
+
+    /* Section headers */
+    .section-title { font-size: 34px; }
+    .section-title .script { font-size: 40px; }
+    .section-body { font-size: 14px; }
+
+    /* Tracks grid → single column */
+    .tracks-grid { grid-template-columns: 1fr; gap: 20px; }
+    .track-card { padding: 36px 28px; }
+    .track-headline { font-size: 30px; }
+
+    /* Formats → single column */
+    .formats-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Philosophy → single column */
+    .philosophy {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 100%;
+    }
+    .philosophy-headline { font-size: 32px; }
+    .philosophy-text { font-size: 14px; }
+
+    /* CTA banner */
+    .cta-banner { padding: 64px 20px; }
+    .cta-banner h2 { font-size: 38px; }
+    .cta-banner h2 .script { font-size: 44px; }
+    .cta-banner p { font-size: 14px; }
+    .cta-banner-buttons { flex-direction: column; align-items: center; }
+    .cta-banner-buttons .btn-white,
+    .cta-banner-buttons .btn-outline { text-align: center; width: 100%; max-width: 300px; }
+
+    /* Footer */
+    footer {
+      padding: 36px 20px;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+    .footer-contact { text-align: center; }
+
+    /* About */
+    .about-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .about-headline { font-size: 38px; }
+    .about-script { font-size: 48px; }
+    .about-body { font-size: 14px; }
+    .about-photo-placeholder { aspect-ratio: 4/3; }
+    .values-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Tracks detail → stacked */
+    .track-detail {
+      display: flex;
+      flex-direction: column;
+    }
+    .track-panel { padding: 52px 24px; }
+    .track-panel-title { font-size: 34px; }
+    .track-panel-body { font-size: 14px; }
+    .track-bullet-list li { font-size: 13px; }
+    .track-number { font-size: 80px; }
+
+    /* Comparison table — scrollable */
+    .track-compare { overflow-x: auto; }
+    .compare-table { font-size: 12px; min-width: 480px; }
+    .compare-table th, .compare-table td { padding: 12px 14px; }
+
+    /* Gallery grid → 2 col */
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      padding: 0 20px 56px;
+    }
+    .gallery-item:nth-child(1) { grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-placeholder { min-height: 160px; }
+
+    /* Gallery hero */
+    .gallery-hero h1 { font-size: 36px; }
+    .gallery-hero h1 span { font-size: 44px; }
+
+    /* ── BOOKING PAGE ────────────────────────────────
+       Single authoritative block — no scattered rules.
+    ─────────────────────────────────────────────── */
+
+    /* 1. Booking hero — column layout is already the base default
+          (mobile-first). Only non-layout tweaks needed here.  */
+    .booking-hero::after { display: none; }
+
+    /* 2. Ensure children fill full width when stacked */
+    .booking-hero > div:first-child { flex: none; width: 100%; }
+    .booking-form { flex: none; width: 100%; }
+
+    /* 3. Headline + description                          */
+    .booking-headline { font-size: 30px; line-height: 1.15; margin-bottom: 12px; }
+    .booking-headline .script { font-size: 36px; line-height: 1; display: block; }
+    .booking-desc { font-size: 14px; line-height: 1.65; margin-bottom: 20px; }
+
+    /* 4. Contact option cards                            */
+    .contact-options { gap: 10px; margin-bottom: 20px; }
+    .contact-option { padding: 14px 16px; border-radius: 12px; }
+    .co-value { font-size: 14px; }
+
+    /* 5. WhatsApp button: genuinely full width           */
+    .btn-whatsapp {
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: center;
+    }
+
+    /* 6. Form card: full width, no overflow              */
+    .booking-form {
+      padding: 28px 20px;
+      border-radius: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-title { font-size: 24px; margin-bottom: 4px; }
+    .form-sub   { font-size: 12px; margin-bottom: 20px; }
+
+    /* 7. Form groups and rows
+          Switch form-row from grid to flex so the column
+          override is unambiguous — no residual grid axes. */
+    .form-group { margin-bottom: 16px; }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* 8. All inputs/selects/textareas
+          font-size:16px is MANDATORY on iOS — anything
+          smaller triggers an unwanted auto-zoom on focus. */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px;
+      padding: 13px 14px;
+      width: 100%;
+      box-sizing: border-box;
+      /* Remove iOS/Android default select chrome        */
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group textarea { min-height: 90px; }
+
+    /* 9. Submit button: full width tap target            */
+    .booking-form .btn-primary {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* 10. Booking locations section                      */
+    .booking-locations { padding: 48px 20px; }
+    .booking-locations .section-header { margin-bottom: 28px; }
+    .booking-locations .section-title  { font-size: 28px; }
+    .booking-locations .section-title .script { font-size: 34px; }
+
+    /* 11. Location pills: vertical list with icon + text */
+    .location-pills {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .location-pill {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      min-width: unset;
+      width: 100%;
+      padding: 18px 20px;
+      gap: 16px;
+    }
+    .location-pill .lp-icon {
+      font-size: 26px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+    /* lp-text groups title + name in the horizontal pill */
+    .lp-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .lp-text .lp-title { margin-bottom: 0; }
+    .lp-text .lp-name  { margin-bottom: 0; }
+
+    /* Tracks hero */
+    .tracks-hero h1 { font-size: 38px !important; }
+    .tracks-hero p { font-size: 14px; }
+  }
+
+  /* ════════════════════════════════════════════════
+     RESPONSIVE — Small Mobile (≤380px)
+  ════════════════════════════════════════════════ */
+  @media (max-width: 380px) {
+    .hero-script { font-size: 42px; }
+    .hero-art { font-size: 56px; }
+    .hero-sub { font-size: 22px; }
+    .section-title { font-size: 28px; }
+    .tracks-hero h1 { font-size: 32px !important; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:nth-child(5) { grid-column: span 1; }
+    .cta-banner h2 { font-size: 32px; }
+    .booking-headline { font-size: 28px; }
+    .booking-headline .script { font-size: 34px; }
+    .booking-form { padding: 24px 16px; }
+  }
+
+  .track-panel-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .track-panel.left .track-panel-label { color: var(--rose); }
+  .track-panel.right .track-panel-label { color: var(--red); }
+
+  .track-panel-title {
+    font-family: var(--serif);
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .track-panel.left .track-panel-title { color: white; }
+  .track-panel.right .track-panel-title { color: var(--deep); }
+
+  .track-panel-body {
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    opacity: 0.85;
+  }
+
+  .track-bullet-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .track-bullet-list li {
+    display: flex; gap: 12px;
+    font-size: 14px; line-height: 1.5;
+  }
+
+  .track-bullet-list li .bullet-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+  .track-panel.left .bullet-icon {
+    background: #3a2020;
+    color: var(--rose);
+  }
+  .track-panel.right .bullet-icon {
+    background: #ddbebe;
+    color: var(--red);
+  }
+
+  /* Track comparison table */
+  .track-compare {
+    padding: 80px 80px;
+    background: var(--cream);
+  }
+
+  .compare-table {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .compare-table th {
+    padding: 18px 24px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .compare-table th:first-child {
+    text-align: left;
+    color: #7a5040;
+    width: 30%;
+  }
+  .compare-table th:nth-child(2) {
+    background: var(--black);
+    color: white;
+    border-radius: 12px 12px 0 0;
+  }
+  .compare-table th:nth-child(3) {
+    background: var(--roselt);
+    color: var(--red);
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ddbebe;
+    border-bottom: none;
+  }
+
+  .compare-table td {
+    padding: 16px 24px;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .compare-table td:first-child {
+    color: #7a5040;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e8d8d0;
+  }
+
+  .compare-table td:nth-child(2) {
+    background: rgba(26,10,10,0.04);
+    color: var(--black);
+    border-bottom: 1px solid #e0d0c8;
+  }
+
+  .compare-table td:nth-child(3) {
+    background: var(--roselt);
+    color: var(--deep);
+    border-bottom: 1px solid #ddbebe;
+    border-left: 1px solid #ddbebe;
+    border-right: 1px solid #ddbebe;
+  }
+
+  .compare-table tr:last-child td:nth-child(2) { border-radius: 0 0 0 12px; }
+  .compare-table tr:last-child td:nth-child(3) {
+    border-radius: 0 0 12px 12px;
+    border-bottom: 1px solid #ddbebe;
+  }
+
+  /* ════════════════════════════════════════════════
+     PAGE: GALLERY
+  ════════════════════════════════════════════════ */
+
+  .gallery-hero {
+    padding: 80px 80px 50px;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0 80px 80px;
+    background: var(--cream);
+  }
+
+  .gallery-item {
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+
+  .gallery-item:nth-child(1) { grid-row: span 2; }
+  .gallery-item:nth-child(5) { grid-column: span 2; }
+
+  .gallery-placeholder {
+    background: #e4d4cc;
+    aspect-ratio: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    color: #8a6050;
+    position: relative;
+    overflow: hidden;
+    width: 100%; height: 100%; min-height: 200px;
+  }
+
+  .gallery-item:nth-child(1) .gallery-placeholder { min-height: 100%; aspect-ratio: auto; }
+  .gallery-item:nth-child(5) .gallery-placeholder { aspect-ratio: 2/1; }
+
+  .gal-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+  }
+
+  .gallery-placeholder .gal-icon {
+    font-size: 32px;
+    position: relative; z-index: 1;
+  }
+
+  .gallery-placeholder span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,0.7);
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: var(--deep);
+  }
+
+  .gal-1 { background: linear-gradient(135deg, #d4b8b0 0%, #c4a098 100%); }
+  .gal-2 { background: linear-gradient(135deg, #c8d4b8 0%, #b8c4a0 100%); }
+  .gal-3 { background: linear-gradient(135deg, #c8b8d4 0%, #b8a0c4 100%); }
+  .gal-4 { background: linear-gradient(135deg, #d4c8b0 0%, #c4b890 100%); }
+  .gal-5 { background: linear-gradient(135deg, #d4b8c8 0%, #E2AAAA 100%); }
+  .gal-6 { background: linear-gradient(135deg, #b8c8d4 0%, #a0b8c4 100%); }
+
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(26,10,10,0.5);
+    opacity: 0;
+    transition: opacity .2s;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  /* ════════════════════════════════════════════════
+     PAGE: BOOKING
+  ════════════════════════════════════════════════ */
+
+  /* ── Mobile-first: single column is the DEFAULT ────────────
+     Desktop (≥769px) overrides to a two-column row below.
+     This way mobile NEVER needs to fight a flex-direction:row.
+  ─────────────────────────────────────────────────────────── */
+  .booking-hero {
+    padding: 40px 20px 48px;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+    position: relative;
+  }
+
+  /* ── Desktop two-column layout ── */
+  @media (min-width: 769px) {
+    .booking-hero {
+      padding: 80px 80px 60px;
+      flex-direction: row;
+      gap: 80px;
+      align-items: start;
+    }
+    .booking-hero > div:first-child { flex: 1; min-width: 0; }
+    .booking-form { flex: 1; min-width: 0; }
+  }
+
+  .booking-hero::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 45%; height: 100%;
+    background: radial-gradient(ellipse at 80% 60%, #E2AAAA 0%, transparent 60%);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .booking-headline {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--deep);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .booking-headline .script {
+    font-family: var(--script);
+    color: var(--red);
+    font-size: 56px;
+    display: block;
+    line-height: 1;
+  }
+
+  .booking-desc {
+    font-size: 15px;
+    color: #5a3a2a;
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .contact-options {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .contact-option {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--cream);
+    border: 1.5px solid #ddc8c0;
+    border-radius: 14px;
+    padding: 18px 22px;
+    transition: border-color .2s;
+  }
+  .contact-option:hover { border-color: var(--red); }
+
+  .co-icon { font-size: 24px; }
+
+  .co-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2px;
+  }
+
+  .co-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--deep);
+  }
+
+  /* Form */
+  .booking-form {
+    background: white;
+    border-radius: 24px;
+    padding: 48px 44px;
+    box-shadow: 0 8px 48px rgba(61,18,6,0.1);
+    position: relative; z-index: 2;
+  }
+
+  .form-title {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .form-sub {
+    font-size: 13px;
+    color: #7a5040;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a5040;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #e0ccc8;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--black);
+    background: var(--cream);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--red); background: white; }
+
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Booking location pills */
+  .booking-locations {
+    padding: 60px 80px;
+    background: #F3E8E2;
+  }
+
+  .location-pills {
+    display: flex; gap: 16px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .location-pill {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 32px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(139,31,31,0.07);
+    min-width: 200px;
+  }
+
+  .location-pill .lp-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+  .location-pill .lp-title {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 6px;
+  }
+  .location-pill .lp-name {
+    font-family: var(--serif);
+    font-size: 22px; color: var(--deep);
+  }
+
+  /* ── PAGE DIVIDER ─────────────────────────── */
+  .page-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #ddc0b8 30%, #ddc0b8 70%, transparent 100%);
+    margin: 0 80px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════════════ -->
+<nav>
+  <a class="logo" onclick="showPage('home')">· Sketch Studios</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')"       class="active" id="nav-home">Home</a></li>
+    <li><a onclick="showPage('about')"      id="nav-about">About</a></li>
+    <li><a onclick="showPage('tracks')"     id="nav-tracks">The Tracks</a></li>
+    <li><a onclick="showPage('gallery')"    id="nav-gallery">Gallery</a></li>
+    <li><a onclick="showPage('booking')" class="nav-cta" id="nav-booking">Book a Lesson</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile slide-down menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');  toggleMenu()">Home</a>
+  <a onclick="showPage('about'); toggleMenu()">About</a>
+  <a onclick="showPage('tracks');toggleMenu()">The Tracks</a>
+  <a onclick="showPage('gallery');toggleMenu()">Gallery</a>
+  <a class="mobile-cta" onclick="showPage('booking');toggleMenu()">Book a Lesson</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Watercolor blobs -->
+    <div class="wc-blob" style="width:500px;height:400px;top:10%;right:38%;opacity:.18;"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Brooklyn · Worldwide on Zoom</div>
+      <p class="hero-headline">Two ways to</p>
+      <span class="hero-script">create</span>
+      <span class="hero-art">ART</span>
+      <h2 class="hero-sub">One place to start.</h2>
+      <p class="hero-tagline">
+        Customized art lessons — <strong>private or group</strong>, <strong>in person or via Zoom</strong>.<br>
+        Kids · Teens · Adults · All levels welcome.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="showPage('booking')">Book a Trial Lesson</button>
+        <button class="btn-outline" onclick="showPage('tracks')">Explore the Tracks</button>
+      </div>
+    </div>
+
+    <!-- Right side split panel -->
+    <div class="hero-visual">
+      <div class="hero-split-left">
+        <div class="sketch-area">
+          <!-- Pencil sketch side -->
+          <svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.5">
+            <!-- Simple sketch of pencil/hand drawing -->
+            <ellipse cx="100" cy="110" rx="70" ry="80" stroke="#5a3a2a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+            <line x1="60" y1="80" x2="140" y2="80" stroke="#5a3a2a" stroke-width="1" opacity="0.4"/>
+            <line x1="55" y1="95" x2="145" y2="95" stroke="#5a3a2a" stroke-width="1" opacity="0.3"/>
+            <line x1="58" y1="110" x2="142" y2="110" stroke="#5a3a2a" stroke-width="1" opacity="0.4"/>
+            <line x1="60" y1="125" x2="140" y2="125" stroke="#5a3a2a" stroke-width="1" opacity="0.3"/>
+            <circle cx="100" cy="60" r="22" stroke="#5a3a2a" stroke-width="1.5" fill="none"/>
+            <path d="M85 55 Q100 45 115 55" stroke="#5a3a2a" stroke-width="1" fill="none"/>
+            <path d="M90 65 Q100 70 110 65" stroke="#5a3a2a" stroke-width="1.2" fill="none"/>
+            <circle cx="93" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
+            <circle cx="107" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
+            <!-- Pencil -->
+            <rect x="150" y="30" width="12" height="60" rx="2" fill="#5a3a2a" opacity="0.3" transform="rotate(20 156 60)"/>
+            <polygon points="150,86 162,86 156,100" fill="#5a3a2a" opacity="0.4" transform="rotate(20 156 86)"/>
+          </svg>
+        </div>
+        <span class="split-label left">Core Technique</span>
+      </div>
+      <div class="hero-split-right">
+        <!-- Watercolor side decorative circles -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 300 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="wc1" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#E2AAAA" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#E2AAAA" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="wc2" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#C9A055" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#C9A055" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="120" cy="200" rx="130" ry="120" fill="url(#wc1)"/>
+          <ellipse cx="200" cy="320" rx="80" ry="90" fill="url(#wc1)" opacity="0.6"/>
+          <circle cx="180" cy="120" r="40" fill="url(#wc2)"/>
+          <circle cx="60" cy="380" r="60" fill="url(#wc1)" opacity="0.4"/>
+          <!-- Gold sparkle dots -->
+          <circle cx="80" cy="150" r="2.5" fill="#C9A055" opacity="0.7"/>
+          <circle cx="200" cy="180" r="1.8" fill="#C9A055" opacity="0.5"/>
+          <circle cx="140" cy="350" r="2" fill="#C9A055" opacity="0.6"/>
+          <circle cx="230" cy="260" r="1.5" fill="#C9A055" opacity="0.4"/>
+          <circle cx="50" cy="280" r="2.2" fill="#C9A055" opacity="0.5"/>
+        </svg>
+        <span class="split-label right">Intuitive Flow</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number">3</span>
+      <span class="stat-label">Ways to Learn</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Learning Tracks</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">All</span>
+      <span class="stat-label">Ages & Levels</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">1</span>
+      <span class="stat-label">Teacher. Milky.</span>
+    </div>
+  </div>
+
+  <!-- TWO TRACKS INTRO -->
+  <section class="tracks-intro">
+    <div class="wc-blob" style="width:600px;height:500px;top:-15%;right:-10%;opacity:.12;"></div>
+    <div class="section-header">
+      <div class="label">Choose Your Path</div>
+      <h2 class="section-title">
+        Two tracks.<br>
+        <span class="script">One teacher.</span>
+      </h2>
+      <p class="section-body">
+        Whether you want to build real, measurable skills or use art as a mindful creative practice — there's a track for you. And you don't have to choose forever.
+      </p>
+    </div>
+    <div class="tracks-grid">
+      <!-- Core Technique -->
+      <div class="track-card technique">
+        <span class="track-icon">✏️</span>
+        <div class="track-name">Track One</div>
+        <h3 class="track-headline">Core Technique Track</h3>
+        <p class="track-desc">Real skills, real progress. You'll build strong fundamentals and actually see yourself improving — week by week.</p>
+        <ul class="track-features">
+          <li><span>Real skills &amp; measurable progress</span></li>
+          <li><span>Strong fundamentals that level up your art</span></li>
+          <li><span>Personalized to your skill level</span></li>
+          <li><span>Homework to keep the momentum going</span></li>
+        </ul>
+        <button class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;" onclick="showPage('tracks')">Learn more →</button>
+      </div>
+
+      <!-- Intuitive Flow -->
+      <div class="track-card flow">
+        <span class="track-icon">🎨</span>
+        <div class="track-name">Track Two</div>
+        <h3 class="track-headline">Intuitive Flow Track</h3>
+        <p class="track-desc">Express creativity through mixed media. Explore your emotions. Engage in art as a mindful practice — not a chore.</p>
+        <ul class="track-features">
+          <li><span>Express creativity through mixed media</span></li>
+          <li><span>Explore your emotions through art</span></li>
+          <li><span>Art as a mindful practice</span></li>
+          <li><span>No rigid rules — just flow</span></li>
+        </ul>
+        <button class="btn-primary" onclick="showPage('tracks')">Learn more →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="formats">
+    <div class="section-header">
+      <div class="label">Three Ways to Learn</div>
+      <h2 class="section-title">Your schedule.<br>Your space.</h2>
+      <p class="section-body">No commute required — unless you want one. Private or group sessions, however works for you.</p>
+    </div>
+    <div class="formats-grid">
+      <div class="format-card">
+        <span class="format-icon">🏠</span>
+        <div class="format-title">Milky Comes to You</div>
+        <div class="format-name">In-Home Lessons</div>
+        <p class="format-desc">Milky comes to your home — no setup, no travel. Available in the Brooklyn area for private and small group sessions.</p>
+      </div>
+      <div class="format-card">
+        <span class="format-icon">🎨</span>
+        <div class="format-title">Come to Milky</div>
+        <div class="format-name">At the Studio</div>
+        <p class="format-desc">Join Milky at her Brooklyn studio space. Great for students who want that classic art lesson atmosphere.</p>
+      </div>
+      <div class="format-card">
+        <span class="format-icon">💻</span>
+        <div class="format-title">Anywhere in the World</div>
+        <div class="format-name">Live on Zoom</div>
+        <p class="format-desc">Same quality, same personalization — fully live and interactive. All you need is a camera and your art supplies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY HIGHLIGHT -->
+  <section style="padding:0;background:var(--cream);">
+    <div class="philosophy">
+      <div>
+        <div class="label">How Milky Teaches</div>
+        <h2 class="philosophy-headline">Structured enough to grow.<br>Fun enough to stick with it.</h2>
+        <p class="philosophy-text">
+          Every student starts at their own level — no judgment, no generic curriculum. Milky builds a personalized plan, gives homework to keep you progressing, and adapts as you grow. Drawing comes first. Painting comes when you're ready.
+        </p>
+        <ul class="philosophy-pillars">
+          <li><div class="pillar-dot"></div><span>Fully personalized from day one</span></li>
+          <li><div class="pillar-dot"></div><span>Homework keeps progress going between sessions</span></li>
+          <li><div class="pillar-dot"></div><span>Drawing → painting progression built in</span></li>
+          <li><div class="pillar-dot"></div><span>Private or small group sessions</span></li>
+          <li><div class="pillar-dot"></div><span>Fun is non-negotiable</span></li>
+        </ul>
+      </div>
+      <div class="philosophy-visual">
+        <div class="philo-card">
+          <div class="philo-card-header">
+            <span class="track-script">Ready to level up?</span>
+            <p>Master real drawing skills in weeks with a personalized curriculum.</p>
+          </div>
+          <div class="philo-card-body">
+            <ul>
+              <li>From fundamentals to advanced techniques</li>
+              <li>In-home, at Milky's, or on Zoom</li>
+              <li>Kids, Teens &amp; Adults</li>
+              <li>Private / Small Groups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-banner-eyebrow">Get Started</div>
+    <h2>Your first lesson is<br><span class="script">just one message away.</span></h2>
+    <p>Brooklyn area for in-home or in-person · Worldwide on Zoom · 929.884.9382</p>
+    <div class="cta-banner-buttons">
+      <button class="btn-white" onclick="showPage('booking')">Book a Lesson</button>
+      <a href="https://wa.me/19298849382" class="btn-whatsapp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Milky
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="about-hero">
+    <div style="position:relative;z-index:2">
+      <div class="label">Meet the Teacher</div>
+      <h1 class="about-headline">Hi, I'm</h1>
+      <span class="about-script">Milky.</span>
+      <p class="about-body">
+        I'm a Brooklyn-based art teacher and the founder of .Sketch Studios. I've been teaching drawing and painting to kids, teens, and adults for years — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.
+      </p>
+      <p class="about-body">
+        My approach is simple: every student is different, so every lesson should be too. I build personalized curricula, I give homework (yes, homework — because that's how you actually improve), and I make sure every session is something you actually look forward to.
+      </p>
+      <p class="about-body">
+        I teach in your home, at my studio, or on Zoom — wherever works best for you.
+      </p>
+      <button class="btn-primary" onclick="showPage('booking')">Book a Lesson with Milky</button>
+    </div>
+    <div>
+      <div class="about-photo-placeholder">
+        <div class="gal-bg gal-1"></div>
+        <span class="photo-icon">📸</span>
+        <p>Photo of Milky</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-values">
+    <div class="section-header">
+      <div class="label">Teaching Philosophy</div>
+      <h2 class="section-title">What makes a <span class="script">great lesson?</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-title">Personalized, Always</div>
+        <p class="value-text">No generic curriculum. Every student gets a lesson plan built around their level, goals, and learning style — and it evolves as they grow.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Real Progress</div>
+        <p class="value-text">Students leave with something tangible — a skill they didn't have before, a drawing that surprised them. And homework to keep that momentum going.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Fun is the Point</div>
+        <p class="value-text">If you dread your lesson, something's wrong. Art should feel like something you get to do — not something you have to. Milky keeps it fun, always.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Drawing First</div>
+        <p class="value-text">The foundation of all visual art is drawing. Students build strong fundamentals before moving to painting — so when they pick up a brush, they're ready.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">For Everyone</div>
+        <p class="value-text">Kids picking up a pencil for the first time. Adults who always wanted to learn. Teens who want to get serious. All welcome. No judgment about where you start.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Adaptable</div>
+        <p class="value-text">Lessons evolve with the student. As skills develop, the curriculum shifts — so there's always a new challenge, always a next level.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="cta-banner-eyebrow">Ready?</div>
+    <h2>Let's find your <span class="script">track.</span></h2>
+    <p>Start with a trial lesson — in-home, at Milky's studio, or on Zoom.</p>
+    <div class="cta-banner-buttons">
+      <button class="btn-white" onclick="showPage('booking')">Book a Trial Lesson</button>
+      <button class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;" onclick="showPage('tracks')">See the Tracks</button>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: TRACKS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-tracks">
+  <section class="tracks-hero">
+    <div class="tracks-hero-content">
+      <div class="label">Two Ways to Create Art</div>
+      <h1 class="tracks-hero h1" style="font-family:var(--serif);font-size:56px;color:var(--deep);">Choose your path.</h1>
+      <p>Not sure which track is right for you? You can always start with one and switch — or try a bit of both. Milky will help you figure it out.</p>
+    </div>
+  </section>
+
+  <!-- Split track panels -->
+  <div class="track-detail">
+    <div class="track-panel left">
+      <div class="track-number">1</div>
+      <div class="track-panel-label">Track One</div>
+      <h2 class="track-panel-title">Core Technique Track</h2>
+      <p class="track-panel-body">
+        For students who want to actually learn to draw and paint — not just dabble. This track builds real, measurable skills through structured, personalized instruction.
+      </p>
+      <ul class="track-bullet-list">
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Real skills, real progress</strong><br><span style="opacity:.7;font-size:13px">You'll see yourself improve, week by week.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Strong fundamentals</strong><br><span style="opacity:.7;font-size:13px">Drawing first, then painting when you're ready.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Personalized curriculum</strong><br><span style="opacity:.7;font-size:13px">Built around your skill level, not a generic syllabus.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Homework between sessions</strong><br><span style="opacity:.7;font-size:13px">Keeps momentum building and skills sharp.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Results in weeks, not years</strong><br><span style="opacity:.7;font-size:13px">A focused curriculum that moves at your pace.</span></div>
+        </li>
+      </ul>
+      <button class="btn-outline" style="border-color:rgba(255,255,255,0.35);color:white;" onclick="showPage('booking')">Start the Core Track →</button>
+    </div>
+
+    <div class="track-panel right">
+      <div class="track-number">2</div>
+      <div class="track-panel-label">Track Two</div>
+      <h2 class="track-panel-title">Intuitive Flow Track</h2>
+      <p class="track-panel-body">
+        For students who want art as a creative outlet, a mindful practice, or a way to express what words can't. No pressure. No grades. Just you and what comes out.
+      </p>
+      <ul class="track-bullet-list">
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Mixed media exploration</strong><br><span style="color:#5a3a2a;font-size:13px">Paint, collage, texture — whatever feels right.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Express your emotions</strong><br><span style="color:#5a3a2a;font-size:13px">Art as a way to process and connect with yourself.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Mindful, pressure-free</strong><br><span style="color:#5a3a2a;font-size:13px">No rigid rules. No right answers.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Art as practice, not performance</strong><br><span style="color:#5a3a2a;font-size:13px">It's about the process, not just the output.</span></div>
+        </li>
+        <li>
+          <div class="bullet-icon">▶</div>
+          <div><strong>Exploration and joy</strong><br><span style="color:#5a3a2a;font-size:13px">Something you genuinely look forward to.</span></div>
+        </li>
+      </ul>
+      <button class="btn-primary" onclick="showPage('booking')">Start the Flow Track →</button>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <section class="track-compare">
+    <div class="section-header">
+      <div class="label">Side by Side</div>
+      <h2 class="section-title">Which track is <span class="script">right for you?</span></h2>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>✏️ Core Technique</th>
+          <th>🎨 Intuitive Flow</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Best for</td>
+          <td>Students who want to build real drawing & painting skills</td>
+          <td>Students who want art as expression, mindfulness, or a creative outlet</td>
+        </tr>
+        <tr>
+          <td>Structure</td>
+          <td>Structured, progressive curriculum with clear milestones</td>
+          <td>Open and exploratory — follows the student's intuition</td>
+        </tr>
+        <tr>
+          <td>Materials</td>
+          <td>Pencil, charcoal, paint — mastering each medium deliberately</td>
+          <td>Mixed media — paint, collage, texture, whatever resonates</td>
+        </tr>
+        <tr>
+          <td>Homework</td>
+          <td>Yes — practice assignments to keep skills building</td>
+          <td>Optional — encouragement to explore between sessions</td>
+        </tr>
+        <tr>
+          <td>Ages</td>
+          <td colspan="2" style="text-align:center;background:rgba(139,31,31,0.05);font-weight:600;">Kids · Teens · Adults — all ages, all levels</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cta-banner">
+    <div class="cta-banner-eyebrow">Not Sure Which Track?</div>
+    <h2>Book a trial lesson<br>and <span class="script">Milky will help you decide.</span></h2>
+    <p>One lesson is all it takes to figure out where you want to go.</p>
+    <div class="cta-banner-buttons">
+      <button class="btn-white" onclick="showPage('booking')">Book a Trial Lesson</button>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: GALLERY
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-gallery">
+  <section class="gallery-hero">
+    <div class="label">Student Work</div>
+    <h1 style="font-family:var(--serif);font-size:52px;color:var(--deep);margin-bottom:12px;">
+      What students <span style="font-family:var(--script);color:var(--red);font-size:60px;">create.</span>
+    </h1>
+    <p style="font-size:16px;color:#5a3a2a;max-width:480px;margin:0 auto 40px;line-height:1.65;">
+      From first pencil strokes to finished paintings — real work by real students at all levels.
+    </p>
+  </section>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder" style="min-height:420px;">
+        <div class="gal-bg gal-1"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Core Technique · Portrait</span>
+      </div>
+      <div class="gallery-overlay">Core Technique · Portrait Study</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg gal-2"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Intuitive Flow · Mixed Media</span>
+      </div>
+      <div class="gallery-overlay">Intuitive Flow · Mixed Media</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg gal-3"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Core Technique · Still Life</span>
+      </div>
+      <div class="gallery-overlay">Core Technique · Still Life</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg gal-4"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Intuitive Flow · Abstract</span>
+      </div>
+      <div class="gallery-overlay">Intuitive Flow · Abstract</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder" style="aspect-ratio:2/1;">
+        <div class="gal-bg gal-5"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Student Showcase · Mixed Levels</span>
+      </div>
+      <div class="gallery-overlay">Student Showcase</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg gal-6"></div>
+        <span class="gal-icon">🖼️</span>
+        <span>Core Technique · Drawing</span>
+      </div>
+      <div class="gallery-overlay">Core Technique · Drawing</div>
+    </div>
+  </div>
+
+  <section class="cta-banner">
+    <div class="cta-banner-eyebrow">Your Work Could Be Here</div>
+    <h2>Everyone starts <span class="script">somewhere.</span></h2>
+    <p>Book a trial lesson and start creating.</p>
+    <div class="cta-banner-buttons">
+      <button class="btn-white" onclick="showPage('booking')">Book a Lesson</button>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: BOOKING
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-booking">
+  <section class="booking-hero">
+    <div style="position:relative;z-index:2;">
+      <div class="label">Get Started</div>
+      <h1 class="booking-headline">
+        <span class="script">Let's make art.</span>
+        Book your first lesson.
+      </h1>
+      <p class="booking-desc">
+        Fill out the form and Milky will be in touch to set up your first session. Or reach out directly — she's just a text or WhatsApp away.
+      </p>
+
+      <div class="contact-options">
+        <div class="contact-option">
+          <span class="co-icon">📱</span>
+          <div>
+            <div class="co-label">WhatsApp or Call</div>
+            <div class="co-value">929.884.9382</div>
+          </div>
+        </div>
+        <div class="contact-option">
+          <span class="co-icon">📍</span>
+          <div>
+            <div class="co-label">Location</div>
+            <div class="co-value">Brooklyn, NY · Worldwide on Zoom</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/19298849382" class="btn-whatsapp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message Milky on WhatsApp
+      </a>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="booking-form">
+      <h2 class="form-title">Book a Lesson</h2>
+      <p class="form-sub">Milky will get back to you within 24 hours to confirm your session.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="(555) 000-0000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Who is the lesson for?</label>
+          <select>
+            <option>Myself (adult)</option>
+            <option>My child (kid)</option>
+            <option>My teen</option>
+            <option>A group</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Format</label>
+          <select>
+            <option>In-home (Milky comes to me)</option>
+            <option>At Milky's studio</option>
+            <option>Live on Zoom</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Which track interests you?</label>
+        <select>
+          <option>Core Technique Track (real skills)</option>
+          <option>Intuitive Flow Track (expression & mindfulness)</option>
+          <option>Not sure — help me decide</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Anything else Milky should know?</label>
+        <textarea placeholder="Skill level, goals, availability, questions..."></textarea>
+      </div>
+
+      <button class="btn-primary" style="width:100%;justify-content:center;text-align:center;">
+        Send My Request →
+      </button>
+    </div>
+  </section>
+
+  <!-- Location pills -->
+  <section class="booking-locations">
+    <div class="section-header">
+      <div class="label">Where We Meet</div>
+      <h2 class="section-title">Three formats.<br><span class="script">Zero excuses.</span></h2>
+    </div>
+    <div class="location-pills">
+      <div class="location-pill">
+        <span class="lp-icon">🏠</span>
+        <div class="lp-text">
+          <div class="lp-title">In-Home</div>
+          <div class="lp-name">Milky comes to you</div>
+        </div>
+      </div>
+      <div class="location-pill">
+        <span class="lp-icon">🎨</span>
+        <div class="lp-text">
+          <div class="lp-title">At the Studio</div>
+          <div class="lp-name">Come to Milky</div>
+        </div>
+      </div>
+      <div class="location-pill">
+        <span class="lp-icon">💻</span>
+        <div class="lp-text">
+          <div class="lp-title">Zoom</div>
+          <div class="lp-name">Anywhere in the world</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+
+// Close mobile menu on resize to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>

@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>.Sketch Studios — Art Lessons for Kids, Teens & Adults</title>
+<meta name="description" content="Customized art lessons for kids, teens, and adults — private or group, in-home, at the studio, or on Zoom. Two learning tracks: Core Technique for real skills, Intuitive Flow for creative expression. Brooklyn & worldwide.">
+<meta property="og:title" content=".Sketch Studios — Art Lessons for Kids, Teens & Adults">
+<meta property="og:description" content="Two ways to create art. One place to start. Private and group drawing & painting lessons with Milky — in Brooklyn or on Zoom.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yumisebb.github.io/sketch-studios-website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   /* ── RESET & BASE ─────────────────────────────── */
@@ -1096,6 +1102,29 @@
     .philosophy-headline { font-size: 32px; }
     .philosophy-text { font-size: 14px; }
 
+    /* Testimonials */
+    .testimonials { padding: 56px 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+    .testimonial-card { padding: 28px 24px; }
+
+    /* FAQ */
+    .booking-faq { padding: 56px 20px; }
+    .faq-question { font-size: 15px; padding: 20px 0; }
+
+    /* Sketch Pad */
+    .sketch-hero { padding: 48px 20px 24px; }
+    .sketch-canvas-section { padding: 0 20px 40px; }
+    .sketch-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+    }
+    .tool-actions { margin-left: 0; width: 100%; justify-content: space-between; }
+    .color-swatches { flex-wrap: wrap; }
+    .community-gallery { padding: 56px 20px; }
+    .sketch-gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
     /* CTA banner */
     .cta-banner { padding: 64px 20px; }
     .cta-banner h2 { font-size: 38px; }
@@ -1289,6 +1318,7 @@
     .booking-headline { font-size: 28px; }
     .booking-headline .script { font-size: 34px; }
     .booking-form { padding: 24px 16px; }
+    .sketch-gallery-grid { grid-template-columns: 1fr; }
   }
 
   .track-panel-label {
@@ -1696,6 +1726,342 @@
     font-size: 22px; color: var(--deep);
   }
 
+  /* ── Testimonials ── */
+  .testimonials {
+    padding: 80px 80px;
+    background: var(--cream);
+    position: relative;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 24px rgba(61,18,6,0.06);
+    border-left: 4px solid var(--red);
+    position: relative;
+  }
+  .testimonial-quote {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--black);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .testimonial-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--red);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── FAQ ── */
+  .booking-faq {
+    padding: 80px 80px;
+    background: var(--cream);
+  }
+  .faq-list {
+    max-width: 760px;
+    margin: 48px auto 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid #e0ccc8;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--deep);
+    text-align: left;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--red); }
+  .faq-arrow {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--red);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item.open .faq-arrow {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s ease;
+    padding: 0 0;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 0 24px;
+  }
+  .faq-answer p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5a3a2a;
+  }
+
+  /* ════════════════════════════════════════════════
+     PAGE: SKETCH PAD
+  ════════════════════════════════════════════════ */
+  .sketch-hero {
+    padding: 60px 80px 40px;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .sketch-canvas-section {
+    padding: 0 80px 60px;
+    background: var(--cream);
+  }
+
+  .sketch-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 24px;
+    background: white;
+    border-radius: 16px 16px 0 0;
+    border: 1.5px solid #e0ccc8;
+    border-bottom: none;
+    flex-wrap: wrap;
+  }
+
+  .tool-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tool-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .brush-slider {
+    width: 100px;
+    accent-color: var(--red);
+  }
+  .brush-display {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--deep);
+    min-width: 30px;
+  }
+
+  .color-swatches {
+    display: flex;
+    gap: 6px;
+  }
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .swatch:hover { transform: scale(1.15); }
+  .swatch.active { border-color: var(--deep); transform: scale(1.15); }
+
+  .tool-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+  .tool-btn {
+    padding: 8px 16px;
+    border: 1.5px solid #e0ccc8;
+    border-radius: 8px;
+    background: white;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--deep);
+    transition: all 0.2s;
+  }
+  .tool-btn:hover { border-color: var(--red); color: var(--red); }
+  .tool-btn-primary {
+    background: var(--red);
+    color: white;
+    border-color: var(--red);
+  }
+  .tool-btn-primary:hover {
+    background: var(--deep);
+    border-color: var(--deep);
+    color: white;
+  }
+
+  .canvas-wrapper {
+    position: relative;
+    border: 1.5px solid #e0ccc8;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    background: white;
+  }
+  #sketch-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .canvas-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .canvas-placeholder.hidden { opacity: 0; }
+
+  /* Community gallery */
+  .community-gallery {
+    padding: 80px 80px;
+    background: #F3E8E2;
+  }
+  .sketch-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .sketch-gallery-item {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(61,18,6,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .sketch-gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(61,18,6,0.1);
+  }
+  .sketch-gallery-item img {
+    width: 100%;
+    display: block;
+  }
+  .sketch-gallery-meta {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sketch-gallery-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--deep);
+  }
+  .sketch-gallery-date {
+    font-size: 11px;
+    color: #a08070;
+  }
+  .gallery-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #7a5040;
+    font-size: 15px;
+  }
+  .gallery-empty.hidden { display: none; }
+
+  /* Save modal */
+  .save-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,10,10,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .save-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .save-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.3s;
+  }
+  .save-modal-overlay.open .save-modal {
+    transform: scale(1);
+  }
+  .save-modal h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--deep);
+    margin-bottom: 8px;
+  }
+  .save-modal p {
+    font-size: 13px;
+    color: #7a5040;
+    margin-bottom: 24px;
+  }
+  .save-modal input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #e0ccc8;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    margin-bottom: 16px;
+    outline: none;
+  }
+  .save-modal input:focus { border-color: var(--red); }
+  .save-modal-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  .save-modal-buttons button {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .save-modal-cancel {
+    background: var(--cream);
+    border: 1.5px solid #e0ccc8;
+    color: var(--deep);
+  }
+  .save-modal-confirm {
+    background: var(--red);
+    border: none;
+    color: white;
+  }
+  .save-modal-confirm:hover { background: var(--deep); }
+
   /* ── PAGE DIVIDER ─────────────────────────── */
   .page-divider {
     height: 1px;
@@ -1894,6 +2260,7 @@
     <li><a onclick="showPage('about')"      id="nav-about">About</a></li>
     <li><a onclick="showPage('tracks')"     id="nav-tracks">The Tracks</a></li>
     <li><a onclick="showPage('gallery')"    id="nav-gallery">Gallery</a></li>
+    <li><a onclick="showPage('sketch')"     id="nav-sketch">Sketch Pad</a></li>
     <li><a onclick="showPage('booking')" class="nav-cta" id="nav-booking">Book a Lesson</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -1907,6 +2274,7 @@
   <a onclick="showPage('about'); toggleMenu()">About</a>
   <a onclick="showPage('tracks');toggleMenu()">The Tracks</a>
   <a onclick="showPage('gallery');toggleMenu()">Gallery</a>
+  <a onclick="showPage('sketch');toggleMenu()">Sketch Pad</a>
   <a class="mobile-cta" onclick="showPage('booking');toggleMenu()">Book a Lesson</a>
 </div>
 
@@ -2005,7 +2373,7 @@
     </div>
     <div class="stat-item">
       <span class="stat-number">1</span>
-      <span class="stat-label">Teacher. Milky.</span>
+      <span class="stat-label">Teacher: Milky</span>
     </div>
   </div>
 
@@ -2120,6 +2488,28 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header">
+      <div class="label">What Students Say</div>
+      <h2 class="section-title">Real words from <span class="script">real students.</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"My daughter went from stick figures to actual portraits in two months. She literally runs to the door when Milky arrives."</p>
+        <div class="testimonial-author">— Sarah M., parent of a 9-year-old</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait."</p>
+        <div class="testimonial-author">— David R., adult student</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"The Intuitive Flow track is my therapy. No pressure, no grades — just paint and whatever comes out. I look forward to it all week."</p>
+        <div class="testimonial-author">— Ava T., teen student</div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA BANNER -->
   <section class="cta-banner">
     <div class="cta-banner-eyebrow">Get Started</div>
@@ -2142,7 +2532,7 @@
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Worldwide on Zoom</div>
-      <div>Kids · Teens · Adults</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
 </div>
@@ -2157,7 +2547,7 @@
       <h1 class="about-headline">Hi, I'm</h1>
       <span class="about-script">Milky.</span>
       <p class="about-body">
-        I'm a Brooklyn-based art teacher and the founder of .Sketch Studios. I've been teaching drawing and painting to kids, teens, and adults for years — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.
+        I'm a Brooklyn-based art teacher and the founder of .Sketch Studios. I teach drawing and painting to kids, teens, and adults — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.
       </p>
       <p class="about-body">
         My approach is simple: every student is different, so every lesson should be too. I build personalized curricula, I give homework (yes, homework — because that's how you actually improve), and I make sure every session is something you actually look forward to.
@@ -2183,27 +2573,27 @@
     </div>
     <div class="values-grid">
       <div class="value-card">
-        <div class="value-title">Personalized, Always</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🎯</span>Personalized, Always</div>
         <p class="value-text">No generic curriculum. Every student gets a lesson plan built around their level, goals, and learning style — and it evolves as they grow.</p>
       </div>
       <div class="value-card">
-        <div class="value-title">Real Progress</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">📈</span>Real Progress</div>
         <p class="value-text">Students leave with something tangible — a skill they didn't have before, a drawing that surprised them. And homework to keep that momentum going.</p>
       </div>
       <div class="value-card">
-        <div class="value-title">Fun is the Point</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🎉</span>Fun is the Point</div>
         <p class="value-text">If you dread your lesson, something's wrong. Art should feel like something you get to do — not something you have to. Milky keeps it fun, always.</p>
       </div>
       <div class="value-card">
-        <div class="value-title">Drawing First</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">✏️</span>Drawing First</div>
         <p class="value-text">The foundation of all visual art is drawing. Students build strong fundamentals before moving to painting — so when they pick up a brush, they're ready.</p>
       </div>
       <div class="value-card">
-        <div class="value-title">For Everyone</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🤝</span>For Everyone</div>
         <p class="value-text">Kids picking up a pencil for the first time. Adults who always wanted to learn. Teens who want to get serious. All welcome. No judgment about where you start.</p>
       </div>
       <div class="value-card">
-        <div class="value-title">Adaptable</div>
+        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🔄</span>Adaptable</div>
         <p class="value-text">Lessons evolve with the student. As skills develop, the curriculum shifts — so there's always a new challenge, always a next level.</p>
       </div>
     </div>
@@ -2227,6 +2617,7 @@
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
 </div>
@@ -2370,6 +2761,7 @@
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
 </div>
@@ -2456,6 +2848,7 @@
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
 </div>
@@ -2555,7 +2948,7 @@
       </div>
 
       <button class="btn-primary" style="width:100%;justify-content:center;text-align:center;">
-        Send My Request →
+        Book My Lesson →
       </button>
     </div>
   </section>
@@ -2591,6 +2984,61 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="booking-faq">
+    <div class="section-header">
+      <div class="label">Common Questions</div>
+      <h2 class="section-title">Before you <span class="script">book.</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How much do lessons cost?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Pricing depends on format (in-home, studio, or Zoom), session length, and whether it's private or a small group. Milky will discuss options during your first conversation — just fill out the form or send a WhatsApp message to get started.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What materials do I need?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>For your first lesson, just bring yourself. Milky provides materials for trial sessions. After that, she'll recommend a simple supply list based on your track and level — nothing expensive or hard to find.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I switch tracks later?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. Many students start with one track and try the other, or mix both. There's no lock-in — Milky will help you figure out what feels right.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do you teach complete beginners?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — most students start with zero experience. That's the whole point of personalized lessons. Milky meets you exactly where you are.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How does the Zoom format work?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You set up a camera so Milky can see your work in real time. She guides you through each step, gives feedback, and demonstrates techniques — all live. Students say they forget it's virtual within five minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div>
       <div class="logo">· Sketch Studios</div>
@@ -2599,8 +3047,104 @@
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE: COMMUNITY SKETCH PAD
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-sketch">
+  <section class="sketch-hero">
+    <div class="section-header">
+      <div class="label">Community Canvas</div>
+      <h2 class="section-title">The <span class="script">Sketch Pad.</span></h2>
+      <p class="section-body">Draw something. Save it. See what everyone else is making this week.</p>
+    </div>
+  </section>
+
+  <!-- Drawing Canvas -->
+  <section class="sketch-canvas-section">
+    <div class="sketch-toolbar">
+      <div class="tool-group">
+        <label class="tool-label">Brush</label>
+        <input type="range" id="brush-size" min="1" max="30" value="4" class="brush-slider">
+        <span id="brush-size-display" class="brush-display">4px</span>
+      </div>
+      <div class="tool-group">
+        <label class="tool-label">Color</label>
+        <div class="color-swatches" id="color-swatches">
+          <button class="swatch active" data-color="#1A0A0A" style="background:#1A0A0A" title="Black"></button>
+          <button class="swatch" data-color="#8B1F1F" style="background:#8B1F1F" title="Studio Red"></button>
+          <button class="swatch" data-color="#3D1206" style="background:#3D1206" title="Deep Studio"></button>
+          <button class="swatch" data-color="#E2AAAA" style="background:#E2AAAA" title="Blush Rose"></button>
+          <button class="swatch" data-color="#C9A055" style="background:#C9A055" title="Gold"></button>
+          <button class="swatch" data-color="#5a3a2a" style="background:#5a3a2a" title="Brown"></button>
+          <button class="swatch" data-color="#2d5a3a" style="background:#2d5a3a" title="Forest"></button>
+          <button class="swatch" data-color="#3a4a7a" style="background:#3a4a7a" title="Navy"></button>
+          <button class="swatch" data-color="#FAF0EC" style="background:#FAF0EC;border:1.5px solid #ddc8c0" title="Eraser"></button>
+        </div>
+      </div>
+      <div class="tool-group tool-actions">
+        <button class="tool-btn" id="btn-undo" title="Undo">↩ Undo</button>
+        <button class="tool-btn" id="btn-clear" title="Clear Canvas">✕ Clear</button>
+        <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery">✓ Save to Gallery</button>
+      </div>
+    </div>
+
+    <div class="canvas-wrapper">
+      <canvas id="sketch-canvas" width="1200" height="600"></canvas>
+      <div class="canvas-placeholder" id="canvas-placeholder">
+        <span style="font-size:48px;margin-bottom:12px;">✏️</span>
+        <span style="font-size:16px;color:#7a5040;font-weight:500;">Start drawing here</span>
+        <span style="font-size:13px;color:#a08070;">Use your mouse, trackpad, or finger on mobile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Gallery -->
+  <section class="community-gallery">
+    <div class="section-header">
+      <div class="label">This Week's Creations</div>
+      <h2 class="section-title">What everyone's <span class="script">making.</span></h2>
+      <p class="section-body">Every sketch saved to the gallery lives here. New week, new canvas, new art.</p>
+    </div>
+
+    <div class="sketch-gallery-grid" id="sketch-gallery">
+      <!-- Drawings are inserted here by JS -->
+      <div class="gallery-empty" id="gallery-empty">
+        <span style="font-size:36px;margin-bottom:8px;">🖼️</span>
+        <p>No sketches saved yet this week.</p>
+        <p style="font-size:13px;color:#a08070;">Be the first to draw something!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
+    </div>
+  </footer>
+</div>
+
+<!-- Save Sketch Modal -->
+<div class="save-modal-overlay" id="save-modal">
+  <div class="save-modal">
+    <h3>Save Your Sketch</h3>
+    <p>Add your name and it'll appear in the community gallery.</p>
+    <input type="text" id="artist-name" placeholder="Your name (or stay anonymous)">
+    <div class="save-modal-buttons">
+      <button class="save-modal-cancel" onclick="closeSaveModal()">Cancel</button>
+      <button class="save-modal-confirm" onclick="confirmSave()">Save to Gallery</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -2618,6 +3162,254 @@ function toggleMenu() {
   btn.classList.toggle('open');
   menu.classList.toggle('open');
 }
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  // Toggle clicked one
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── Community Sketch Pad ─────────────────────────────
+(function() {
+  let canvas, ctx, isDrawing = false;
+  let currentColor = '#1A0A0A';
+  let brushSize = 4;
+  let history = [];
+  let hasDrawn = false;
+
+  function initSketchPad() {
+    canvas = document.getElementById('sketch-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+
+    // Set canvas resolution properly
+    function resizeCanvas() {
+      const wrapper = canvas.parentElement;
+      const rect = wrapper.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = Math.max(400, rect.width * 0.5) * dpr;
+      canvas.style.height = Math.max(400, rect.width * 0.5) + 'px';
+      ctx.scale(dpr, dpr);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      // Redraw from history
+      redrawHistory();
+    }
+
+    function redrawHistory() {
+      history.forEach(stroke => {
+        ctx.beginPath();
+        ctx.strokeStyle = stroke.color;
+        ctx.lineWidth = stroke.size;
+        stroke.points.forEach((pt, i) => {
+          if (i === 0) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        });
+        ctx.stroke();
+      });
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let currentStroke = null;
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / (window.devicePixelRatio || 1) / rect.width;
+      const scaleY = canvas.height / (window.devicePixelRatio || 1) / rect.height;
+      let x, y;
+      if (e.touches) {
+        x = (e.touches[0].clientX - rect.left) * scaleX;
+        y = (e.touches[0].clientY - rect.top) * scaleY;
+      } else {
+        x = (e.clientX - rect.left) * scaleX;
+        y = (e.clientY - rect.top) * scaleY;
+      }
+      return { x, y };
+    }
+
+    function startDraw(e) {
+      e.preventDefault();
+      isDrawing = true;
+      if (!hasDrawn) {
+        document.getElementById('canvas-placeholder').classList.add('hidden');
+        hasDrawn = true;
+      }
+      const pos = getPos(e);
+      currentStroke = { color: currentColor, size: brushSize, points: [pos] };
+      ctx.beginPath();
+      ctx.strokeStyle = currentColor;
+      ctx.lineWidth = brushSize;
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getPos(e);
+      currentStroke.points.push(pos);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function endDraw(e) {
+      if (!isDrawing) return;
+      isDrawing = false;
+      if (currentStroke && currentStroke.points.length > 0) {
+        history.push(currentStroke);
+        currentStroke = null;
+      }
+    }
+
+    // Mouse events
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', endDraw);
+    canvas.addEventListener('mouseleave', endDraw);
+
+    // Touch events
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', endDraw);
+
+    // Color swatches
+    document.querySelectorAll('.swatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        currentColor = sw.dataset.color;
+      });
+    });
+
+    // Brush size slider
+    const slider = document.getElementById('brush-size');
+    const display = document.getElementById('brush-size-display');
+    if (slider) {
+      slider.addEventListener('input', () => {
+        brushSize = parseInt(slider.value);
+        display.textContent = brushSize + 'px';
+      });
+    }
+
+    // Undo
+    document.getElementById('btn-undo').addEventListener('click', () => {
+      if (history.length === 0) return;
+      history.pop();
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+      redrawHistory();
+      if (history.length === 0) {
+        hasDrawn = false;
+        document.getElementById('canvas-placeholder').classList.remove('hidden');
+      }
+    });
+
+    // Clear
+    document.getElementById('btn-clear').addEventListener('click', () => {
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+      history = [];
+      hasDrawn = false;
+      document.getElementById('canvas-placeholder').classList.remove('hidden');
+    });
+
+    // Save
+    document.getElementById('btn-save').addEventListener('click', () => {
+      if (!hasDrawn) return;
+      const overlay = document.getElementById('save-modal');
+      overlay.classList.add('open');
+      document.getElementById('artist-name').focus();
+    });
+
+    // Load gallery
+    loadGallery();
+  }
+
+  // Save modal functions (global)
+  window.closeSaveModal = function() {
+    document.getElementById('save-modal').classList.remove('open');
+  };
+
+  window.confirmSave = function() {
+    const name = document.getElementById('artist-name').value.trim() || 'Anonymous Artist';
+    const canvas = document.getElementById('sketch-canvas');
+    const imageData = canvas.toDataURL('image/png');
+
+    // Save to localStorage
+    const gallery = JSON.parse(localStorage.getItem('sketchGallery') || '[]');
+    const now = new Date();
+    gallery.unshift({
+      image: imageData,
+      name: name,
+      date: now.toISOString(),
+      dateDisplay: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    });
+
+    // Keep only last 50 sketches
+    if (gallery.length > 50) gallery.length = 50;
+
+    // Weekly cleanup — remove sketches older than 7 days
+    const weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
+    const filtered = gallery.filter(g => new Date(g.date) > weekAgo);
+    localStorage.setItem('sketchGallery', JSON.stringify(filtered));
+
+    closeSaveModal();
+    loadGallery();
+
+    // Clear canvas after saving
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+    history = [];
+    hasDrawn = false;
+    document.getElementById('canvas-placeholder').classList.remove('hidden');
+    document.getElementById('artist-name').value = '';
+  };
+
+  function loadGallery() {
+    const container = document.getElementById('sketch-gallery');
+    const empty = document.getElementById('gallery-empty');
+    if (!container) return;
+
+    const gallery = JSON.parse(localStorage.getItem('sketchGallery') || '[]');
+
+    // Weekly cleanup on load
+    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const filtered = gallery.filter(g => new Date(g.date) > weekAgo);
+    if (filtered.length !== gallery.length) {
+      localStorage.setItem('sketchGallery', JSON.stringify(filtered));
+    }
+
+    // Clear existing items (except empty state)
+    container.querySelectorAll('.sketch-gallery-item').forEach(el => el.remove());
+
+    if (filtered.length === 0) {
+      empty.classList.remove('hidden');
+    } else {
+      empty.classList.add('hidden');
+      filtered.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'sketch-gallery-item';
+        el.innerHTML = '<img src="' + item.image + '" alt="Community sketch by ' + item.name + '">' +
+          '<div class="sketch-gallery-meta">' +
+          '<span class="sketch-gallery-name">' + item.name + '</span>' +
+          '<span class="sketch-gallery-date">' + item.dateDisplay + '</span>' +
+          '</div>';
+        container.insertBefore(el, empty);
+      });
+    }
+  }
+
+  // Init when DOM ready
+  document.addEventListener('DOMContentLoaded', initSketchPad);
+})();
 
 // Close mobile menu on resize to desktop
 window.addEventListener('resize', () => {
@@ -2639,6 +3431,7 @@ function initAnimations() {
     { sel: '.track-card',           cls: '' },
     { sel: '.format-card',          cls: '' },
     { sel: '.philosophy',           cls: '' },
+    { sel: '.testimonial-card',     cls: '' },
     { sel: '.cta-banner',           cls: '' },
     // About page
     { sel: '.about-hero > div:first-child', cls: 'from-left' },
@@ -2656,6 +3449,12 @@ function initAnimations() {
     { sel: '.booking-form',         cls: 'from-right' },
     { sel: '.booking-locations .section-header', cls: '' },
     { sel: '.location-pill',        cls: '' },
+    { sel: '.booking-faq .section-header', cls: '' },
+    { sel: '.faq-item',             cls: '' },
+    // Sketch Pad page
+    { sel: '.sketch-hero',          cls: '' },
+    { sel: '.canvas-wrapper',       cls: 'from-scale' },
+    { sel: '.sketch-gallery-item',  cls: '' },
     // Shared
     { sel: '.contact-option',       cls: '' },
   ];
@@ -2670,7 +3469,7 @@ function initAnimations() {
   });
 
   // Add stagger class to grid parents
-  document.querySelectorAll('.tracks-grid, .formats-grid, .values-grid, .gallery-grid, .location-pills, .contact-options').forEach(parent => {
+  document.querySelectorAll('.tracks-grid, .formats-grid, .values-grid, .gallery-grid, .location-pills, .contact-options, .testimonials-grid, .faq-list, .sketch-gallery-grid').forEach(parent => {
     parent.classList.add('anim-stagger');
   });
 

@@ -202,7 +202,7 @@
 
   /* HERO */
   .hero {
-    min-height: calc(100vh - 68px);
+    min-height: calc(100dvh - 68px);
     display: flex; align-items: center;
     padding: 80px 80px 60px;
     position: relative;
@@ -1111,24 +1111,13 @@
     .booking-faq { padding: 56px 20px; }
     .faq-question { font-size: 15px; padding: 20px 0; }
 
-    /* Sketch Pad */
-    .sketch-hero { padding: 48px 20px 24px; }
-    .sketch-canvas-section { padding: 0 20px 40px; }
-    .sketch-toolbar {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 16px;
-    }
-    .tool-actions { margin-left: 0; width: 100%; justify-content: space-between; }
-    .color-swatches { flex-wrap: wrap; }
+    /* Sketch Pad — handled by REDESIGN UPGRADES block below */
     .community-gallery { padding: 56px 20px; }
-    .sketch-gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
 
     /* CTA banner */
-    .cta-banner { padding: 64px 20px; }
-    .cta-banner h2 { font-size: 38px; }
-    .cta-banner h2 .script { font-size: 44px; }
+    .cta-banner { padding: 52px 20px; }
+    .cta-banner h2 { font-size: 28px; line-height: 1.15; }
+    .cta-banner h2 .script { font-size: 34px; }
     .cta-banner p { font-size: 14px; }
     .cta-banner-buttons { flex-direction: column; align-items: center; }
     .cta-banner-buttons .btn-white,
@@ -2248,9 +2237,426 @@
     }
   }
 
+  /* ════════════════════════════════════════════════
+     REDESIGN UPGRADES
+  ════════════════════════════════════════════════ */
+
+  /* ── Skip link ── */
+  .skip-link {
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    background: var(--red);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 0 0 10px 10px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* ── Focus rings ── */
+  :focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── Button active / pressed feedback ── */
+  .btn-primary:active  { transform: translateY(1px) scale(0.98) !important; box-shadow: none !important; }
+  .btn-outline:active  { transform: translateY(1px) scale(0.98) !important; box-shadow: none !important; }
+  .btn-white:active    { transform: translateY(1px) scale(0.98) !important; box-shadow: none !important; }
+  .btn-whatsapp:active { transform: translateY(1px) scale(0.98) !important; box-shadow: none !important; }
+
+  /* ── text-wrap: balance on all display text ── */
+  h1, h2, h3,
+  .hero-script, .hero-art, .hero-sub,
+  .section-title, .track-headline,
+  .philosophy-headline, .cta-banner h2,
+  .booking-headline, .about-headline,
+  .tracks-hero h1, .track-panel-title {
+    text-wrap: balance;
+  }
+
+  /* ── Formats: first card featured, rest 2-col ── */
+  .formats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* All cards get horizontal icon-left layout */
+  .format-card {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 24px;
+    align-items: start;
+    text-align: left;
+  }
+
+  .format-card .format-icon {
+    width: 72px;
+    height: 72px;
+    font-size: 34px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139,31,31,0.07);
+    border-radius: 16px;
+  }
+
+  .format-card .format-title,
+  .format-card .format-name,
+  .format-card .format-desc {
+    text-align: left;
+  }
+
+  /* First card: full width, larger icon */
+  .format-card:first-child {
+    grid-column: 1 / -1;
+    padding: 44px 40px;
+    grid-template-columns: 96px 1fr;
+    gap: 0 36px;
+    align-items: center;
+  }
+
+  .format-card:first-child .format-icon {
+    width: 96px;
+    height: 96px;
+    font-size: 44px;
+    border-radius: 24px;
+  }
+
+  .format-card:first-child .format-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .format-card:first-child .format-desc {
+    font-size: 14px;
+    max-width: 520px;
+  }
+
+  /* ── Testimonials: staggered heights ── */
+  .testimonials-grid { align-items: start; }
+  .testimonial-card:nth-child(2) { margin-top: 48px; }
+
+  /* ── FAQ: 2-column grid replaces accordion ── */
+  .faq-grid {
+    max-width: 900px;
+    margin: 48px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 56px;
+  }
+
+  .faq-cell {
+    border-top: 2px solid var(--red);
+    padding-top: 20px;
+  }
+
+  .faq-cell-q {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .faq-cell-a {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5a3a2a;
+  }
+
+  /* ── Values grid: 2-column ── */
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Gallery: real photos via picsum ── */
+  .gal-1 { background: url('https://picsum.photos/seed/artportrait/800/800') center/cover; }
+  .gal-2 { background: url('https://picsum.photos/seed/artmixed/600/600') center/cover; }
+  .gal-3 { background: url('https://picsum.photos/seed/artstilllife/600/600') center/cover; }
+  .gal-4 { background: url('https://picsum.photos/seed/artabstract/600/600') center/cover; }
+  .gal-5 { background: url('https://picsum.photos/seed/artshowcase/1200/600') center/cover; }
+  .gal-6 { background: url('https://picsum.photos/seed/artdrawing/600/600') center/cover; }
+
+  .gallery-placeholder .gal-icon { opacity: 0.7; mix-blend-mode: multiply; }
+  .gallery-placeholder > span:not(.gal-icon) {
+    background: rgba(255,255,255,0.88);
+    font-weight: 700;
+  }
+
+  /* ── About photo ── */
+  .about-photo-real {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+    box-shadow: 0 12px 56px rgba(61,18,6,0.18);
+  }
+  .about-photo-real img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Footer legal ── */
+  .footer-legal {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 10px;
+  }
+  .footer-legal a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-legal a:hover { color: var(--rose); }
+
+  /* ── Tinted colored shadows ── */
+  .track-card:hover     { box-shadow: 0 12px 40px rgba(61,18,6,0.18); }
+  .format-card:hover    { box-shadow: 0 8px 32px rgba(139,31,31,0.14); }
+  .testimonial-card     { box-shadow: 0 4px 24px rgba(139,31,31,0.07); }
+  .testimonial-card:hover { box-shadow: 0 8px 36px rgba(139,31,31,0.13); transform: translateY(-4px); transition: all 0.3s ease; }
+  .booking-form         { box-shadow: 0 8px 48px rgba(139,31,31,0.12); }
+
+  /* ── Footer legal bar ── */
+  .footer-legal-bar {
+    background: var(--black);
+    padding: 12px 80px 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── Mobile overrides ── */
+  @media (max-width: 768px) {
+    .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+    .formats-grid { grid-template-columns: 1fr; }
+    .format-card:first-child {
+      grid-column: 1;
+      grid-template-columns: 64px 1fr;
+      gap: 0 20px;
+      padding: 32px 24px;
+    }
+    .format-card:first-child .format-icon { width: 64px; height: 64px; font-size: 30px; }
+    .format-card:first-child .format-name { font-size: 24px; }
+    .format-card { padding: 28px 24px; }
+    .format-card .format-icon { width: 56px; height: 56px; font-size: 28px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .testimonial-card:nth-child(2) { margin-top: 0; }
+
+    /* ── Footer legal bar ── */
+    .footer-legal-bar { padding: 12px 20px 16px; }
+
+    /* ════════════════════════════════════
+       SKETCH PAD — MOBILE COMPLETE REDO
+    ════════════════════════════════════ */
+
+    /* Compact hero: just a title bar, not a full section */
+    .sketch-hero {
+      padding: 16px 20px 10px;
+      text-align: left;
+    }
+    .sketch-hero .section-header {
+      text-align: left;
+      margin-bottom: 0;
+    }
+    .sketch-hero .label { margin-bottom: 4px; }
+    .sketch-hero .section-title { font-size: 26px; line-height: 1.1; }
+    .sketch-hero .section-title .script { font-size: 30px; }
+    .sketch-hero .section-body { font-size: 13px; margin-top: 4px; }
+
+    /* Canvas section: zero padding so canvas goes edge-to-edge */
+    .sketch-canvas-section { padding: 0 0 20px; }
+
+    /* Toolbar: stacked compact rows */
+    .sketch-toolbar {
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+
+    /* Brush row */
+    .sketch-toolbar .tool-group:first-child {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    .brush-slider {
+      flex: 1;
+      width: auto;
+      min-width: 0;
+    }
+
+    /* Color row: horizontally scrollable */
+    .sketch-toolbar .tool-group:nth-child(2) {
+      width: 100%;
+      overflow: hidden;
+    }
+    .color-swatches {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .color-swatches::-webkit-scrollbar { display: none; }
+    .swatch {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+
+    /* Action buttons: full-width row with equal sizing */
+    .tool-actions {
+      display: flex !important;
+      flex-direction: row !important;
+      width: 100%;
+      gap: 8px;
+      margin-left: 0;
+    }
+    .tool-btn {
+      flex: 1;
+      padding: 12px 6px;
+      font-size: 13px;
+      min-height: 44px;
+      text-align: center;
+    }
+
+    /* Canvas: no rounded top corners, no side border */
+    .canvas-wrapper {
+      border-radius: 0 0 12px 12px;
+      border-left: none;
+      border-right: none;
+    }
+    #sketch-canvas {
+      touch-action: none;
+      -webkit-touch-callout: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Community gallery: 2 col on mobile */
+    .sketch-gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+
+  /* ── Small mobile (≤380px) Sketch Pad ── */
+  @media (max-width: 380px) {
+    .swatch { width: 32px; height: 32px; }
+    .tool-btn { font-size: 12px; padding: 11px 4px; }
+  }
+
+  /* ════════════════════════════════════════════════
+     NEW ANIMATIONS
+  ════════════════════════════════════════════════ */
+
+  /* ── Hero text stagger ── */
+  .hero-content .anim:nth-child(1) { transition-delay: 0s; }
+  .hero-content .anim:nth-child(2) { transition-delay: 0.10s; }
+  .hero-content .anim:nth-child(3) { transition-delay: 0.20s; }
+  .hero-content .anim:nth-child(4) { transition-delay: 0.32s; }
+  .hero-content .anim:nth-child(5) { transition-delay: 0.44s; }
+  .hero-content .anim:nth-child(6) { transition-delay: 0.58s; }
+  .hero-content .anim:nth-child(7) { transition-delay: 0.72s; }
+
+  /* ── Marquee ticker ── */
+  .marquee-strip {
+    overflow: hidden;
+    background: var(--deep);
+    padding: 12px 0;
+  }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: marqueeScroll 32s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream);
+    white-space: nowrap;
+    padding: 0 26px;
+  }
+  .marquee-track .dot-sep {
+    color: var(--gold);
+    padding: 0;
+    font-size: 12px;
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-strip:hover .marquee-track { animation-play-state: paused; }
+
+  /* ── Logo shimmer ── */
+  .logo { position: relative; overflow: hidden; }
+  .logo::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+  }
+  .logo:hover::after { left: 170%; }
+
+  /* ── Hero SVG draw animation ── */
+  @keyframes svgDraw {
+    from { stroke-dashoffset: 1; }
+    to   { stroke-dashoffset: 0; }
+  }
+  .draw-anim {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: svgDraw 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* ── Track card glow on hover ── */
+  .track-card.technique:hover {
+    box-shadow: 0 20px 60px rgba(139,31,31,0.35), 0 0 0 1px rgba(226,170,170,0.2);
+  }
+  .track-card.flow:hover {
+    box-shadow: 0 20px 60px rgba(226,170,170,0.45), 0 0 0 1px #ddbebe;
+  }
+
+  /* ── Extended anim-stagger (support up to 8 children) ── */
+  .anim-stagger > .anim:nth-child(7) { transition-delay: 0.6s; }
+  .anim-stagger > .anim:nth-child(8) { transition-delay: 0.7s; }
+
+  /* ── Reduced motion: disable new animations ── */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .logo::after { display: none; }
+    .draw-anim { animation: none; stroke-dashoffset: 0; }
+  }
+
 </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ═══ NAVIGATION ═══════════════════════════════════ -->
 <nav>
@@ -2284,12 +2690,12 @@
 <div class="page active" id="page-home">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="main-content">
     <!-- Watercolor blobs -->
     <div class="wc-blob" style="width:500px;height:400px;top:10%;right:38%;opacity:.18;"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">Brooklyn · Worldwide on Zoom</div>
+      <div class="hero-eyebrow">Brooklyn · on Zoom</div>
       <p class="hero-headline">Two ways to</p>
       <span class="hero-script">create</span>
       <span class="hero-art">ART</span>
@@ -2312,13 +2718,13 @@
           <svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.5">
             <!-- Simple sketch of pencil/hand drawing -->
             <ellipse cx="100" cy="110" rx="70" ry="80" stroke="#5a3a2a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
-            <line x1="60" y1="80" x2="140" y2="80" stroke="#5a3a2a" stroke-width="1" opacity="0.4"/>
-            <line x1="55" y1="95" x2="145" y2="95" stroke="#5a3a2a" stroke-width="1" opacity="0.3"/>
-            <line x1="58" y1="110" x2="142" y2="110" stroke="#5a3a2a" stroke-width="1" opacity="0.4"/>
-            <line x1="60" y1="125" x2="140" y2="125" stroke="#5a3a2a" stroke-width="1" opacity="0.3"/>
-            <circle cx="100" cy="60" r="22" stroke="#5a3a2a" stroke-width="1.5" fill="none"/>
-            <path d="M85 55 Q100 45 115 55" stroke="#5a3a2a" stroke-width="1" fill="none"/>
-            <path d="M90 65 Q100 70 110 65" stroke="#5a3a2a" stroke-width="1.2" fill="none"/>
+            <line pathLength="1" class="draw-anim" x1="60" y1="80" x2="140" y2="80" stroke="#5a3a2a" stroke-width="1" opacity="0.4" style="animation-delay:0.9s"/>
+            <line pathLength="1" class="draw-anim" x1="55" y1="95" x2="145" y2="95" stroke="#5a3a2a" stroke-width="1" opacity="0.3" style="animation-delay:1.05s"/>
+            <line pathLength="1" class="draw-anim" x1="58" y1="110" x2="142" y2="110" stroke="#5a3a2a" stroke-width="1" opacity="0.4" style="animation-delay:1.2s"/>
+            <line pathLength="1" class="draw-anim" x1="60" y1="125" x2="140" y2="125" stroke="#5a3a2a" stroke-width="1" opacity="0.3" style="animation-delay:1.35s"/>
+            <circle pathLength="1" class="draw-anim" cx="100" cy="60" r="22" stroke="#5a3a2a" stroke-width="1.5" fill="none" style="animation-delay:0.75s"/>
+            <path pathLength="1" class="draw-anim" d="M85 55 Q100 45 115 55" stroke="#5a3a2a" stroke-width="1" fill="none" style="animation-delay:1.5s"/>
+            <path pathLength="1" class="draw-anim" d="M90 65 Q100 70 110 65" stroke="#5a3a2a" stroke-width="1.2" fill="none" style="animation-delay:1.6s"/>
             <circle cx="93" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
             <circle cx="107" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
             <!-- Pencil -->
@@ -2356,6 +2762,31 @@
       </div>
     </div>
   </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Drawing</span><span class="dot-sep">·</span>
+      <span>Painting</span><span class="dot-sep">·</span>
+      <span>Mixed Media</span><span class="dot-sep">·</span>
+      <span>Core Technique</span><span class="dot-sep">·</span>
+      <span>Intuitive Flow</span><span class="dot-sep">·</span>
+      <span>Brooklyn Based</span><span class="dot-sep">·</span>
+      <span>Live on Zoom</span><span class="dot-sep">·</span>
+      <span>All Ages Welcome</span><span class="dot-sep">·</span>
+      <span>Private &amp; Group</span><span class="dot-sep">·</span>
+      <!-- duplicate for seamless loop -->
+      <span>Drawing</span><span class="dot-sep">·</span>
+      <span>Painting</span><span class="dot-sep">·</span>
+      <span>Mixed Media</span><span class="dot-sep">·</span>
+      <span>Core Technique</span><span class="dot-sep">·</span>
+      <span>Intuitive Flow</span><span class="dot-sep">·</span>
+      <span>Brooklyn Based</span><span class="dot-sep">·</span>
+      <span>Live on Zoom</span><span class="dot-sep">·</span>
+      <span>All Ages Welcome</span><span class="dot-sep">·</span>
+      <span>Private &amp; Group</span><span class="dot-sep">·</span>
+    </div>
+  </div>
 
   <!-- STATS BAR -->
   <div class="stats-bar">
@@ -2433,21 +2864,27 @@
     <div class="formats-grid">
       <div class="format-card">
         <span class="format-icon">🏠</span>
-        <div class="format-title">Milky Comes to You</div>
-        <div class="format-name">In-Home Lessons</div>
-        <p class="format-desc">Milky comes to your home, no setup, no travel. Available in the Brooklyn area for private and small group sessions.</p>
+        <div class="format-body">
+          <div class="format-title">Milky Comes to You</div>
+          <div class="format-name">In-Home Lessons</div>
+          <p class="format-desc">Milky comes to your home — no setup, no travel. Available in the Brooklyn area for private and small group sessions.</p>
+        </div>
       </div>
       <div class="format-card">
         <span class="format-icon">🎨</span>
-        <div class="format-title">Come to Milky</div>
-        <div class="format-name">At the Studio</div>
-        <p class="format-desc">Join Milky at her Brooklyn studio space. Great for students who want that classic art lesson atmosphere.</p>
+        <div class="format-body">
+          <div class="format-title">Come to Milky</div>
+          <div class="format-name">At the Studio</div>
+          <p class="format-desc">Join Milky at her Brooklyn studio. Great for students who want that classic art lesson atmosphere.</p>
+        </div>
       </div>
       <div class="format-card">
         <span class="format-icon">💻</span>
-        <div class="format-title">Anywhere in the World</div>
-        <div class="format-name">Live on Zoom</div>
-        <p class="format-desc">Same quality, same personalization, fully live and interactive. All you need is a camera and your art supplies.</p>
+        <div class="format-body">
+          <div class="format-title">Live on Zoom</div>
+          <div class="format-name">Anywhere in the World</div>
+          <p class="format-desc">Same quality, same personalization, fully live and interactive. All you need is a camera and your supplies.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2514,7 +2951,7 @@
   <section class="cta-banner">
     <div class="cta-banner-eyebrow">Get Started</div>
     <h2>Your first lesson is<br><span class="script">just one message away.</span></h2>
-    <p>Brooklyn area for in-home or in-person · Worldwide on Zoom · 929.884.9382</p>
+    <p>Brooklyn area for in-home or in-person · Live on Zoom · 929.884.9382</p>
     <div class="cta-banner-buttons">
       <button class="btn-white" onclick="showPage('booking')">Book a Lesson</button>
       <a href="https://wa.me/19298849382" class="btn-whatsapp" target="_blank">
@@ -2531,10 +2968,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -2558,10 +2998,8 @@
       <button class="btn-primary" onclick="showPage('booking')">Book a Lesson with Milky</button>
     </div>
     <div>
-      <div class="about-photo-placeholder">
-        <div class="gal-bg gal-1"></div>
-        <span class="photo-icon">📸</span>
-        <p>Photo of Milky</p>
+      <div class="about-photo-real">
+        <img src="https://picsum.photos/seed/milkyart/600/750" alt="Milky, founder of .Sketch Studios">
       </div>
     </div>
   </section>
@@ -2616,10 +3054,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -2760,10 +3201,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -2847,10 +3291,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -2880,7 +3327,7 @@
           <span class="co-icon">📍</span>
           <div>
             <div class="co-label">Location</div>
-            <div class="co-value">Brooklyn, NY · Worldwide on Zoom</div>
+            <div class="co-value">Brooklyn, NY · Live on Zoom</div>
           </div>
         </div>
       </div>
@@ -2990,51 +3437,30 @@
       <div class="label">Common Questions</div>
       <h2 class="section-title">Before you <span class="script">book.</span></h2>
     </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>How much do lessons cost?</span>
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Pricing depends on format (in-home, studio, or Zoom), session length, and whether it's private or a small group. Milky will discuss options during your first conversation, just fill out the form or send a WhatsApp message to get started.</p>
-        </div>
+    <div class="faq-grid">
+      <div class="faq-cell">
+        <div class="faq-cell-q">How much do lessons cost?</div>
+        <div class="faq-cell-a">Pricing depends on format (in-home, studio, or Zoom), session length, and whether it's private or a small group. Fill out the booking form or send a WhatsApp message — Milky will talk through options with you directly.</div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>What materials do I need?</span>
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>For your first lesson, just bring yourself. Milky provides materials for trial sessions. After that, she'll recommend a simple supply list based on your track and level, nothing expensive or hard to find.</p>
-        </div>
+      <div class="faq-cell">
+        <div class="faq-cell-q">What materials do I need?</div>
+        <div class="faq-cell-a">Just yourself for the first lesson — Milky provides materials for trial sessions. After that she'll give you a simple, affordable supply list based on your track and level.</div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Can I switch tracks later?</span>
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Absolutely. Many students start with one track and try the other, or mix both. There's no lock-in, Milky will help you figure out what feels right.</p>
-        </div>
+      <div class="faq-cell">
+        <div class="faq-cell-q">Can I switch tracks later?</div>
+        <div class="faq-cell-a">Absolutely. Many students start with one track and try the other, or mix both. There's no lock-in. Milky will help you figure out what feels right.</div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Do you teach complete beginners?</span>
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Yes, most students start with zero experience. That's the whole point of personalized lessons. Milky meets you exactly where you are.</p>
-        </div>
+      <div class="faq-cell">
+        <div class="faq-cell-q">Do you teach complete beginners?</div>
+        <div class="faq-cell-a">Yes — most students start with zero experience. That's the whole point of personalized lessons. Milky meets you exactly where you are.</div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>How does the Zoom format work?</span>
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>You set up a camera so Milky can see your work in real time. She guides you through each step, gives feedback, and demonstrates techniques, all live. Students say they forget it's virtual within five minutes.</p>
-        </div>
+      <div class="faq-cell">
+        <div class="faq-cell-q">How does the Zoom format work?</div>
+        <div class="faq-cell-a">Set up a camera so Milky can see your work in real time. She guides you step by step, gives feedback, and demonstrates techniques — all live. Students say they forget it's virtual within five minutes.</div>
+      </div>
+      <div class="faq-cell">
+        <div class="faq-cell-q">How long are sessions?</div>
+        <div class="faq-cell-a">Sessions are typically 60 minutes, with 90-minute options available. Milky can discuss what works best for your schedule and goals when you book.</div>
       </div>
     </div>
   </section>
@@ -3046,10 +3472,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -3128,10 +3557,13 @@
     </div>
     <div class="footer-contact">
       <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
-      <div>Brooklyn, New York · Worldwide on Zoom</div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
   </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2025 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
 </div>
 
 <!-- Save Sketch Modal -->
@@ -3423,8 +3855,14 @@ window.addEventListener('resize', () => {
 function initAnimations() {
   // Elements to animate on scroll
   const animTargets = [
-    // Home page
-    { sel: '.hero-content',         cls: 'from-left' },
+    // Home page — hero children stagger individually
+    { sel: '.hero-eyebrow',  cls: '' },
+    { sel: '.hero-headline', cls: '' },
+    { sel: '.hero-script',   cls: '' },
+    { sel: '.hero-art',      cls: '' },
+    { sel: '.hero-sub',      cls: '' },
+    { sel: '.hero-tagline',  cls: '' },
+    { sel: '.hero-buttons',  cls: '' },
     { sel: '.hero-visual',          cls: 'from-right' },
     { sel: '.stats-bar',            cls: '' },
     { sel: '.section-header',       cls: '' },
@@ -3469,7 +3907,7 @@ function initAnimations() {
   });
 
   // Add stagger class to grid parents
-  document.querySelectorAll('.tracks-grid, .formats-grid, .values-grid, .gallery-grid, .location-pills, .contact-options, .testimonials-grid, .faq-list, .sketch-gallery-grid').forEach(parent => {
+  document.querySelectorAll('.hero-content, .tracks-grid, .formats-grid, .values-grid, .gallery-grid, .location-pills, .contact-options, .testimonials-grid, .faq-list, .sketch-gallery-grid').forEach(parent => {
     parent.classList.add('anim-stagger');
   });
 
@@ -3516,6 +3954,107 @@ showPage = function(name) {
 
 // Init on DOM ready
 document.addEventListener('DOMContentLoaded', initAnimations);
+
+// ── Stats counter ─────────────────────────────────────
+function initStatCounters() {
+  const statsBar = document.querySelector('.stats-bar');
+  if (!statsBar) return;
+
+  // Only animate numeric stat numbers
+  const numEls = Array.from(statsBar.querySelectorAll('.stat-number'))
+    .filter(el => /^\d+$/.test(el.textContent.trim()));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      numEls.forEach(el => {
+        const target = parseInt(el.textContent, 10);
+        const start = performance.now();
+        const duration = 900;
+        const tick = (now) => {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(eased * target);
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.6 });
+
+  observer.observe(statsBar);
+}
+document.addEventListener('DOMContentLoaded', initStatCounters);
+
+// ── Paint cursor trail (desktop only) ────────────────
+(function initCursorTrail() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const NUM = 6;
+  const dots = [];
+  const pos = [];
+  let mx = -300, my = -300;
+
+  for (let i = 0; i < NUM; i++) {
+    const d = document.createElement('div');
+    const size = Math.round(10 - i * 1.3);
+    const opacity = (0.85 - i * 0.12).toFixed(2);
+    d.style.cssText = [
+      'position:fixed',
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'border-radius:50%',
+      'background:var(--red)',
+      'pointer-events:none',
+      'z-index:9998',
+      'transform:translate(-50%,-50%)',
+      'opacity:' + opacity,
+      'mix-blend-mode:multiply',
+      'will-change:left,top',
+      'left:-300px',
+      'top:-300px',
+    ].join(';');
+    document.body.appendChild(d);
+    dots.push(d);
+    pos.push({ x: -300, y: -300 });
+  }
+
+  // Scale lead dot on interactive elements
+  dots[0].style.transition = 'width 0.2s, height 0.2s, opacity 0.2s';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('a, button, [onclick], .track-card, .format-card, .gallery-item')) {
+      dots[0].style.width = '20px';
+      dots[0].style.height = '20px';
+      dots[0].style.opacity = '0.35';
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('a, button, [onclick], .track-card, .format-card, .gallery-item')) {
+      dots[0].style.width = '10px';
+      dots[0].style.height = '10px';
+      dots[0].style.opacity = '0.85';
+    }
+  });
+
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+  function frame() {
+    pos[0].x = lerp(pos[0].x, mx, 0.42);
+    pos[0].y = lerp(pos[0].y, my, 0.42);
+    for (let i = 1; i < NUM; i++) {
+      pos[i].x = lerp(pos[i].x, pos[i - 1].x, 0.36);
+      pos[i].y = lerp(pos[i].y, pos[i - 1].y, 0.36);
+    }
+    dots.forEach((d, i) => {
+      d.style.left = pos[i].x + 'px';
+      d.style.top  = pos[i].y + 'px';
+    });
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
 </script>
 </body>
 </html>

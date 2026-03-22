@@ -1,0 +1,18 @@
+{
+  "students": [
+    { "src": "https://picsum.photos/seed/studentportrait/600/600", "title": "Portrait Study", "track": "Core Technique" },
+    { "src": "https://picsum.photos/seed/studentcharcoal/600/600", "title": "Charcoal Still Life", "track": "Core Technique" },
+    { "src": "https://picsum.photos/seed/studentwatercolor/600/600", "title": "Watercolor Landscape", "track": "Advanced Mastery" },
+    { "src": "https://picsum.photos/seed/studentabstract/600/600", "title": "Abstract Expression", "track": "Intuitive Flow" },
+    { "src": "https://picsum.photos/seed/studentpencil/600/600", "title": "Pencil Drawing", "track": "Core Technique" },
+    { "src": "https://picsum.photos/seed/studentmixed/600/600", "title": "Mixed Media Collage", "track": "Intuitive Flow" }
+  ],
+  "teacher": [
+    { "src": "https://picsum.photos/seed/milkyoil/600/600", "title": "Evening Light", "medium": "Oil on canvas" },
+    { "src": "https://picsum.photos/seed/milkywatercolor/600/600", "title": "Brooklyn Botanicals", "medium": "Watercolor" },
+    { "src": "https://picsum.photos/seed/milkyportrait/600/600", "title": "Portrait Commission", "medium": "Charcoal on paper" },
+    { "src": "https://picsum.photos/seed/milkyabstract/600/600", "title": "Flow Series No. 3", "medium": "Acrylic & ink" },
+    { "src": "https://picsum.photos/seed/milkypencil/600/600", "title": "Gesture Studies", "medium": "Graphite" },
+    { "src": "https://picsum.photos/seed/milkylandscape/600/600", "title": "Prospect Park", "medium": "Oil on canvas" }
+  ]
+}

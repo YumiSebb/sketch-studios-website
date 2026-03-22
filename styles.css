@@ -16,6 +16,9 @@
 
   html { scroll-behavior: smooth; }
 
+  /* Lucide icon defaults */
+  [data-lucide] { display: inline-block; vertical-align: middle; }
+
   body {
     font-family: var(--sans);
     background: var(--cream);
@@ -451,10 +454,14 @@
   }
 
   .track-features li::before {
-    content: '▶';
-    font-size: 8px;
-    margin-top: 4px;
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-top: 3px;
     flex-shrink: 0;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center/contain no-repeat;
   }
   .track-card.technique .track-features li::before { color: var(--rose); }
   .track-card.flow .track-features li::before { color: var(--red); }
@@ -610,10 +617,13 @@
   }
 
   .philo-card-body li::before {
-    content: '✓';
-    color: var(--red);
-    font-weight: 700;
-    font-size: 14px;
+    content: '';
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background: var(--red);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
   }
 
   /* ── CTA BANNER ───────────────────────────── */
@@ -838,6 +848,8 @@
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
   }
 
   .value-text {
@@ -1088,10 +1100,40 @@
     .philosophy-headline { font-size: 32px; }
     .philosophy-text { font-size: 14px; }
 
-    /* Testimonials */
-    .testimonials { padding: 56px 20px; }
-    .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
-    .testimonial-card { padding: 28px 24px; }
+    /* Testimonials — horizontal swipe carousel */
+    .testimonials { padding: 56px 0; }
+    .testimonials .section-header { padding: 0 20px; }
+    .testimonials-grid {
+      display: flex !important;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 0;
+      padding: 0 20px 16px;
+      margin-top: 32px;
+    }
+    .testimonials-grid::-webkit-scrollbar { display: none; }
+    .testimonial-card {
+      flex: 0 0 88vw;
+      scroll-snap-align: center;
+      margin-right: 16px;
+      padding: 28px 24px;
+    }
+    .testimonial-card:last-child { margin-right: 0; }
+    .testimonials-dots {
+      display: flex !important;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .testimonials-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--blush);
+    }
+    .testimonials-dots span:first-child { background: var(--red); }
 
     /* FAQ */
     .booking-faq { padding: 56px 20px; }
@@ -1146,18 +1188,44 @@
     .compare-table { font-size: 12px; min-width: 480px; }
     .compare-table th, .compare-table td { padding: 12px 14px; }
 
-    /* Gallery grid → 2 col */
+    /* Gallery grid — social feed */
     .gallery-grid {
-      grid-template-columns: 1fr 1fr;
-      padding: 0 20px 56px;
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+      padding: 0 !important;
+      background: transparent !important;
     }
-    .gallery-item:nth-child(1) { grid-row: span 1; }
-    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-item:nth-child(1) { grid-row: span 1 !important; }
+    .gallery-item:nth-child(5) { grid-column: span 1 !important; }
+    .gallery-item {
+      background: white !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+      padding-bottom: 16px !important;
+      box-shadow: none !important;
+      border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+    }
+    .gallery-card-header { display: flex !important; }
+    .gallery-card-caption { display: block !important; }
+    .gallery-card-img {
+      padding: 0 16px;
+    }
+    .gallery-card-img img {
+      border-radius: 12px !important;
+      aspect-ratio: 1;
+    }
+    .gallery-item img { aspect-ratio: 1; }
+    .gallery-overlay { display: none !important; }
     .gallery-placeholder { min-height: 160px; }
 
     /* Gallery hero */
+    .gallery-hero { padding: 48px 20px 24px; }
     .gallery-hero h1 { font-size: 36px; }
     .gallery-hero h1 span { font-size: 44px; }
+
+    /* Gallery teaser */
+    .gallery-teaser { padding: 56px 20px; }
+    .gallery-teaser-grid { grid-template-columns: 1fr 1fr; }
 
     /* ── BOOKING PAGE ────────────────────────────────
        Single authoritative block, no scattered rules.
@@ -1508,13 +1576,136 @@
     background: rgba(26,10,10,0.5);
     opacity: 0;
     transition: opacity .2s;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px;
     color: white;
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.06em;
   }
   .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .gallery-meta {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Gallery item images */
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 1;
+  }
+
+  /* Gallery card components — hidden on desktop, shown on mobile */
+  .gallery-card-header { display: none; }
+  .gallery-card-caption { display: none; }
+  .gallery-card-img { display: contents; }
+
+  .gallery-card-header {
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .gallery-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--script);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .gallery-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .gallery-card-name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--black);
+  }
+  .gallery-card-label {
+    font-size: 12px;
+    color: #8a6050;
+  }
+  .gallery-card-caption {
+    padding: 0 16px 12px;
+  }
+  .gallery-card-caption .gallery-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.5;
+  }
+  .gallery-card-img { display: block; }
+  .gallery-card-img img { width: 100%; display: block; }
+
+  /* Gallery tabs */
+  .gallery-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .gallery-tab {
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 2px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .gallery-tab.active {
+    background: var(--red);
+    color: white;
+  }
+  .gallery-tab:hover:not(.active) {
+    background: rgba(139,31,31,0.08);
+  }
+
+  /* Gallery teaser (homepage) */
+  .gallery-teaser {
+    padding: 80px 80px;
+    background: var(--cream);
+  }
+  .gallery-teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .gallery-teaser-item {
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .gallery-teaser-item:hover { transform: scale(1.03); }
+  .gallery-teaser-item img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
 
   /* ════════════════════════════════════════════════
      PAGE: BOOKING
@@ -1733,6 +1924,17 @@
     font-weight: 600;
     color: var(--red);
     letter-spacing: 0.02em;
+  }
+  .testimonials-dots { display: none; }
+
+  /* ── Section Divider ── */
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--red);
+    opacity: 0.25;
+    margin: 0 auto;
   }
 
   /* ── FAQ ── */

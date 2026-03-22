@@ -9,9 +9,10 @@
 <meta property="og:description" content="Two ways to create art. One place to start. Private and group drawing & painting lessons with Milky, in Brooklyn or on Zoom.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://yumisebb.github.io/sketch-studios-website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>.</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
 
@@ -122,48 +123,24 @@
     </div>
   </section>
 
-  <!-- MARQUEE TICKER -->
-  <div class="marquee-strip" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Drawing</span><span class="dot-sep">·</span>
-      <span>Painting</span><span class="dot-sep">·</span>
-      <span>Mixed Media</span><span class="dot-sep">·</span>
-      <span>Core Technique</span><span class="dot-sep">·</span>
-      <span>Intuitive Flow</span><span class="dot-sep">·</span>
-      <span>Brooklyn Based</span><span class="dot-sep">·</span>
-      <span>Live on Zoom</span><span class="dot-sep">·</span>
-      <span>All Ages Welcome</span><span class="dot-sep">·</span>
-      <span>Private &amp; Group</span><span class="dot-sep">·</span>
-      <!-- duplicate for seamless loop -->
-      <span>Drawing</span><span class="dot-sep">·</span>
-      <span>Painting</span><span class="dot-sep">·</span>
-      <span>Mixed Media</span><span class="dot-sep">·</span>
-      <span>Core Technique</span><span class="dot-sep">·</span>
-      <span>Intuitive Flow</span><span class="dot-sep">·</span>
-      <span>Brooklyn Based</span><span class="dot-sep">·</span>
-      <span>Live on Zoom</span><span class="dot-sep">·</span>
-      <span>All Ages Welcome</span><span class="dot-sep">·</span>
-      <span>Private &amp; Group</span><span class="dot-sep">·</span>
-    </div>
-  </div>
 
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-number">3</span>
-      <span class="stat-label">Ways to Learn</span>
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Customized</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">2</span>
-      <span class="stat-label">Learning Tracks</span>
+      <span class="stat-number">Brooklyn</span>
+      <span class="stat-label">& Zoom</span>
     </div>
     <div class="stat-item">
       <span class="stat-number">All</span>
       <span class="stat-label">Ages & Levels</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">1</span>
-      <span class="stat-label">Teacher: Milky</span>
+      <span class="stat-number">Private</span>
+      <span class="stat-label">& Group</span>
     </div>
   </div>
 
@@ -171,10 +148,9 @@
   <section class="tracks-intro">
     <div class="wc-blob" style="width:600px;height:500px;top:-15%;right:-10%;opacity:.12;"></div>
     <div class="section-header">
-      <div class="label">Choose Your Path</div>
       <h2 class="section-title">
-        Two tracks.<br>
-        <span class="script">One teacher.</span>
+        Three tracks.<br>
+        <span class="script" style="font-size:1.15em;">Choose your path.</span>
       </h2>
       <p class="section-body">
         Whether you want to build real, measurable skills or use art as a mindful creative practice, there's a track for you. And you don't have to choose forever.
@@ -183,7 +159,7 @@
     <div class="tracks-grid">
       <!-- Core Technique -->
       <div class="track-card technique">
-        <span class="track-icon">✏️</span>
+        <span class="track-icon"><i data-lucide="pencil" style="width:24px;height:24px;stroke-width:2;"></i></span>
         <div class="track-name">Track One</div>
         <h3 class="track-headline">Core Technique Track</h3>
         <p class="track-desc">Real skills, real progress. You'll build strong fundamentals and actually see yourself improving, week by week.</p>
@@ -198,7 +174,7 @@
 
       <!-- Intuitive Flow -->
       <div class="track-card flow">
-        <span class="track-icon">🎨</span>
+        <span class="track-icon"><i data-lucide="palette" style="width:24px;height:24px;stroke-width:2;"></i></span>
         <div class="track-name">Track Two</div>
         <h3 class="track-headline">Intuitive Flow Track</h3>
         <p class="track-desc">Express creativity through mixed media. Explore your emotions. Engage in art as a mindful practice, not a chore.</p>
@@ -210,6 +186,21 @@
         </ul>
         <button class="btn-primary" onclick="showPage('tracks')">Learn more →</button>
       </div>
+
+      <!-- Advanced Mastery -->
+      <div class="track-card technique">
+        <span class="track-icon"><i data-lucide="brush" style="width:24px;height:24px;stroke-width:2;"></i></span>
+        <div class="track-name">Track Three</div>
+        <h3 class="track-headline">Advanced Mastery Track</h3>
+        <p class="track-desc">For students who already have some experience and are ready to go deeper — oil painting, watercolor, and hyper-realistic portrait drawing.</p>
+        <ul class="track-features">
+          <li><span>Oil &amp; watercolor painting techniques</span></li>
+          <li><span>Advanced realistic portrait drawing</span></li>
+          <li><span>Refining your existing skills to the next level</span></li>
+          <li><span>Tailored for intermediate to advanced artists</span></li>
+        </ul>
+        <button class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;" onclick="showPage('tracks')">Learn more →</button>
+      </div>
     </div>
   </section>
 
@@ -218,19 +209,11 @@
     <div class="section-header">
       <div class="label">Three Ways to Learn</div>
       <h2 class="section-title">Your schedule.<br>Your space.</h2>
-      <p class="section-body">No commute required, unless you want one. Private or group sessions, however works for you.</p>
+      <p class="section-body">Private or group sessions, however works for you.</p>
     </div>
     <div class="formats-grid">
       <div class="format-card">
-        <span class="format-icon">🏠</span>
-        <div class="format-body">
-          <div class="format-title">Milky Comes to You</div>
-          <div class="format-name">In-Home Lessons</div>
-          <p class="format-desc">Milky comes to your home — no setup, no travel. Available in the Brooklyn area for private and small group sessions.</p>
-        </div>
-      </div>
-      <div class="format-card">
-        <span class="format-icon">🎨</span>
+        <span class="format-icon"><i data-lucide="palette" style="width:24px;height:24px;stroke-width:2;"></i></span>
         <div class="format-body">
           <div class="format-title">Come to Milky</div>
           <div class="format-name">At the Studio</div>
@@ -238,7 +221,7 @@
         </div>
       </div>
       <div class="format-card">
-        <span class="format-icon">💻</span>
+        <span class="format-icon"><i data-lucide="monitor" style="width:24px;height:24px;stroke-width:2;"></i></span>
         <div class="format-body">
           <div class="format-title">Live on Zoom</div>
           <div class="format-name">Anywhere in the World</div>
@@ -266,23 +249,27 @@
         </ul>
       </div>
       <div class="philosophy-visual">
-        <div class="philo-card">
-          <div class="philo-card-header">
-            <span class="track-script">Ready to level up?</span>
-            <p>Master real drawing skills in weeks with a personalized curriculum.</p>
-          </div>
-          <div class="philo-card-body">
-            <ul>
-              <li>From fundamentals to advanced techniques</li>
-              <li>In-home, at Milky's, or on Zoom</li>
-              <li>Kids, Teens &amp; Adults</li>
-              <li>Private / Small Groups</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
+
+  <!-- GALLERY TEASER -->
+  <section class="gallery-teaser">
+    <div class="section-header">
+      <div class="label">See the Work</div>
+      <h2 class="section-title">From first sketch to <span class="script">finished piece.</span></h2>
+    </div>
+    <div class="gallery-teaser-grid" id="gallery-teaser-grid">
+      <!-- 4 thumbnails loaded from gallery-data.json -->
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn-primary" onclick="showPage('gallery')">View Gallery →</button>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
 
   <!-- TESTIMONIALS -->
   <section class="testimonials">
@@ -303,6 +290,9 @@
         <p class="testimonial-quote">"The Intuitive Flow track is my therapy. No pressure, no grades, just paint and whatever comes out. I look forward to it all week."</p>
         <div class="testimonial-author">- Ava T., teen student</div>
       </div>
+    </div>
+    <div class="testimonials-dots">
+      <span></span><span></span><span></span>
     </div>
   </section>
 
@@ -326,7 +316,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
@@ -370,27 +360,27 @@
     </div>
     <div class="values-grid">
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🎯</span>Personalized, Always</div>
+        <div class="value-title"><i data-lucide="crosshair" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>Personalized, Always</div>
         <p class="value-text">No generic curriculum. Every student gets a lesson plan built around their level, goals, and learning style, and it evolves as they grow.</p>
       </div>
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">📈</span>Real Progress</div>
+        <div class="value-title"><i data-lucide="trending-up" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>Real Progress</div>
         <p class="value-text">Students leave with something tangible, a skill they didn't have before, a drawing that surprised them. And homework to keep that momentum going.</p>
       </div>
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🎉</span>Fun is the Point</div>
+        <div class="value-title"><i data-lucide="sparkles" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>Fun is the Point</div>
         <p class="value-text">If you dread your lesson, something's wrong. Art should feel like something you get to do, not something you have to. Milky keeps it fun, always.</p>
       </div>
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">✏️</span>Drawing First</div>
+        <div class="value-title"><i data-lucide="pencil" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>Drawing First</div>
         <p class="value-text">The foundation of all visual art is drawing. Students build strong fundamentals before moving to painting, so when they pick up a brush, they're ready.</p>
       </div>
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🤝</span>For Everyone</div>
+        <div class="value-title"><i data-lucide="users" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>For Everyone</div>
         <p class="value-text">Kids picking up a pencil for the first time. Adults who always wanted to learn. Teens who want to get serious. All welcome. No judgment about where you start.</p>
       </div>
       <div class="value-card">
-        <div class="value-title"><span style="font-size:20px;margin-right:8px;">🔄</span>Adaptable</div>
+        <div class="value-title"><i data-lucide="refresh-cw" style="width:20px;height:20px;stroke-width:2;margin-right:8px;flex-shrink:0;"></i>Adaptable</div>
         <p class="value-text">Lessons evolve with the student. As skills develop, the curriculum shifts, so there's always a new challenge, always a next level.</p>
       </div>
     </div>
@@ -412,7 +402,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
@@ -445,23 +435,23 @@
       </p>
       <ul class="track-bullet-list">
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Real skills, real progress</strong><br><span style="opacity:.7;font-size:13px">You'll see yourself improve, week by week.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Strong fundamentals</strong><br><span style="opacity:.7;font-size:13px">Drawing first, then painting when you're ready.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Personalized curriculum</strong><br><span style="opacity:.7;font-size:13px">Built around your skill level, not a generic syllabus.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Homework between sessions</strong><br><span style="opacity:.7;font-size:13px">Keeps momentum building and skills sharp.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Results in weeks, not years</strong><br><span style="opacity:.7;font-size:13px">A focused curriculum that moves at your pace.</span></div>
         </li>
       </ul>
@@ -477,23 +467,23 @@
       </p>
       <ul class="track-bullet-list">
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Mixed media exploration</strong><br><span style="color:#5a3a2a;font-size:13px">Paint, collage, texture, whatever feels right.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Express your emotions</strong><br><span style="color:#5a3a2a;font-size:13px">Art as a way to process and connect with yourself.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Mindful, pressure-free</strong><br><span style="color:#5a3a2a;font-size:13px">No rigid rules. No right answers.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Art as practice, not performance</strong><br><span style="color:#5a3a2a;font-size:13px">It's about the process, not just the output.</span></div>
         </li>
         <li>
-          <div class="bullet-icon">▶</div>
+          <div class="bullet-icon"><i data-lucide="chevron-right" style="width:14px;height:14px;stroke-width:2.5;"></i></div>
           <div><strong>Exploration and joy</strong><br><span style="color:#5a3a2a;font-size:13px">Something you genuinely look forward to.</span></div>
         </li>
       </ul>
@@ -511,8 +501,8 @@
       <thead>
         <tr>
           <th></th>
-          <th>✏️ Core Technique</th>
-          <th>🎨 Intuitive Flow</th>
+          <th><i data-lucide="pencil" style="width:16px;height:16px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> Core Technique</th>
+          <th><i data-lucide="palette" style="width:16px;height:16px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> Intuitive Flow</th>
         </tr>
       </thead>
       <tbody>
@@ -559,7 +549,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
@@ -574,64 +564,20 @@
 ═══════════════════════════════════════════════════ -->
 <div class="page" id="page-gallery">
   <section class="gallery-hero">
-    <div class="label">Student Work</div>
     <h1 style="font-family:var(--serif);font-size:52px;color:var(--deep);margin-bottom:12px;">
-      What students <span style="font-family:var(--script);color:var(--red);font-size:60px;">create.</span>
+      The <span style="font-family:var(--script);color:var(--red);font-size:60px;">Gallery.</span>
     </h1>
-    <p style="font-size:16px;color:#5a3a2a;max-width:480px;margin:0 auto 40px;line-height:1.65;">
-      From first pencil strokes to finished paintings, real work by real students at all levels.
+    <p style="font-size:16px;color:#5a3a2a;max-width:480px;margin:0 auto 32px;line-height:1.65;">
+      Real work by real students and their teacher.
     </p>
+    <div class="gallery-tabs">
+      <button class="gallery-tab active" data-tab="students" onclick="renderGallery('students')">Student Work</button>
+      <button class="gallery-tab" data-tab="teacher" onclick="renderGallery('teacher')">Milky's Work</button>
+    </div>
   </section>
 
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gallery-placeholder" style="min-height:420px;">
-        <div class="gal-bg gal-1"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Core Technique · Portrait</span>
-      </div>
-      <div class="gallery-overlay">Core Technique · Portrait Study</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <div class="gal-bg gal-2"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Intuitive Flow · Mixed Media</span>
-      </div>
-      <div class="gallery-overlay">Intuitive Flow · Mixed Media</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <div class="gal-bg gal-3"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Core Technique · Still Life</span>
-      </div>
-      <div class="gallery-overlay">Core Technique · Still Life</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <div class="gal-bg gal-4"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Intuitive Flow · Abstract</span>
-      </div>
-      <div class="gallery-overlay">Intuitive Flow · Abstract</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder" style="aspect-ratio:2/1;">
-        <div class="gal-bg gal-5"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Student Showcase · Mixed Levels</span>
-      </div>
-      <div class="gallery-overlay">Student Showcase</div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <div class="gal-bg gal-6"></div>
-        <span class="gal-icon">🖼️</span>
-        <span>Core Technique · Drawing</span>
-      </div>
-      <div class="gallery-overlay">Core Technique · Drawing</div>
-    </div>
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Populated dynamically by JS from gallery-data.json -->
   </div>
 
   <section class="cta-banner">
@@ -649,7 +595,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
@@ -663,99 +609,38 @@
      PAGE: BOOKING
 ═══════════════════════════════════════════════════ -->
 <div class="page" id="page-booking">
-  <section class="booking-hero">
-    <div style="position:relative;z-index:2;">
+  <section class="booking-hero" style="text-align:center;align-items:center;">
+    <div style="position:relative;z-index:2;max-width:520px;">
       <div class="label">Get Started</div>
       <h1 class="booking-headline">
         <span class="script">Let's make art.</span>
-        Book your first lesson.
+        Reach out to Milky.
       </h1>
       <p class="booking-desc">
-        Fill out the form and Milky will be in touch to set up your first session. Or reach out directly, she's just a text or WhatsApp away.
+        Ready to start? Send Milky a message on WhatsApp or give her a call. She'll chat with you about what you're looking for and set up your first session.
       </p>
 
-      <div class="contact-options">
+      <a href="https://wa.me/19298849382" class="btn-whatsapp" target="_blank" style="margin:0 auto 28px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message Milky on WhatsApp
+      </a>
+
+      <div class="contact-options" style="max-width:400px;margin:0 auto;">
         <div class="contact-option">
-          <span class="co-icon">📱</span>
+          <span class="co-icon"><i data-lucide="phone" style="width:20px;height:20px;stroke-width:2;"></i></span>
           <div>
-            <div class="co-label">WhatsApp or Call</div>
-            <div class="co-value">929.884.9382</div>
+            <div class="co-label">Call or Text</div>
+            <div class="co-value"><a href="tel:9298849382" style="color:var(--deep);text-decoration:none;">929.884.9382</a></div>
           </div>
         </div>
         <div class="contact-option">
-          <span class="co-icon">📍</span>
+          <span class="co-icon"><i data-lucide="map-pin" style="width:20px;height:20px;stroke-width:2;"></i></span>
           <div>
             <div class="co-label">Location</div>
             <div class="co-value">Brooklyn, NY · Live on Zoom</div>
           </div>
         </div>
       </div>
-
-      <a href="https://wa.me/19298849382" class="btn-whatsapp" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Message Milky on WhatsApp
-      </a>
-    </div>
-
-    <!-- Booking Form -->
-    <div class="booking-form">
-      <h2 class="form-title">Book a Lesson</h2>
-      <p class="form-sub">Milky will get back to you within 24 hours to confirm your session.</p>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Jane Smith">
-        </div>
-        <div class="form-group">
-          <label>Phone / WhatsApp</label>
-          <input type="tel" placeholder="(555) 000-0000">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="you@email.com">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Who is the lesson for?</label>
-          <select>
-            <option>Myself (adult)</option>
-            <option>My child (kid)</option>
-            <option>My teen</option>
-            <option>A group</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Preferred Format</label>
-          <select>
-            <option>In-home (Milky comes to me)</option>
-            <option>At Milky's studio</option>
-            <option>Live on Zoom</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Which track interests you?</label>
-        <select>
-          <option>Core Technique Track (real skills)</option>
-          <option>Intuitive Flow Track (expression & mindfulness)</option>
-          <option>Not sure, help me decide</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Anything else Milky should know?</label>
-        <textarea placeholder="Skill level, goals, availability, questions..."></textarea>
-      </div>
-
-      <button class="btn-primary" style="width:100%;justify-content:center;text-align:center;">
-        Book My Lesson →
-      </button>
     </div>
   </section>
 
@@ -767,21 +652,21 @@
     </div>
     <div class="location-pills">
       <div class="location-pill">
-        <span class="lp-icon">🏠</span>
+        <span class="lp-icon"><i data-lucide="home" style="width:20px;height:20px;stroke-width:2;"></i></span>
         <div class="lp-text">
           <div class="lp-title">In-Home</div>
           <div class="lp-name">Milky comes to you</div>
         </div>
       </div>
       <div class="location-pill">
-        <span class="lp-icon">🎨</span>
+        <span class="lp-icon"><i data-lucide="palette" style="width:20px;height:20px;stroke-width:2;"></i></span>
         <div class="lp-text">
           <div class="lp-title">At the Studio</div>
           <div class="lp-name">Come to Milky</div>
         </div>
       </div>
       <div class="location-pill">
-        <span class="lp-icon">💻</span>
+        <span class="lp-icon"><i data-lucide="monitor" style="width:20px;height:20px;stroke-width:2;"></i></span>
         <div class="lp-text">
           <div class="lp-title">Zoom</div>
           <div class="lp-name">Anywhere in the world</div>
@@ -799,7 +684,7 @@
     <div class="faq-grid">
       <div class="faq-cell">
         <div class="faq-cell-q">How much do lessons cost?</div>
-        <div class="faq-cell-a">Pricing depends on format (in-home, studio, or Zoom), session length, and whether it's private or a small group. Fill out the booking form or send a WhatsApp message — Milky will talk through options with you directly.</div>
+        <div class="faq-cell-a">Pricing depends on format (in-home, studio, or Zoom), session length, and whether it's private or a small group. Send Milky a WhatsApp message or give her a call — she'll talk through options with you directly.</div>
       </div>
       <div class="faq-cell">
         <div class="faq-cell-q">What materials do I need?</div>
@@ -830,7 +715,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>
@@ -875,16 +760,16 @@
         </div>
       </div>
       <div class="tool-group tool-actions">
-        <button class="tool-btn" id="btn-undo" title="Undo">↩ Undo</button>
-        <button class="tool-btn" id="btn-clear" title="Clear Canvas">✕ Clear</button>
-        <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery">✓ Save to Gallery</button>
+        <button class="tool-btn" id="btn-undo" title="Undo"><i data-lucide="undo-2" style="width:16px;height:16px;stroke-width:2;"></i> Undo</button>
+        <button class="tool-btn" id="btn-clear" title="Clear Canvas"><i data-lucide="x" style="width:16px;height:16px;stroke-width:2;"></i> Clear</button>
+        <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery"><i data-lucide="check" style="width:16px;height:16px;stroke-width:2;"></i> Save to Gallery</button>
       </div>
     </div>
 
     <div class="canvas-wrapper">
       <canvas id="sketch-canvas" width="1200" height="600"></canvas>
       <div class="canvas-placeholder" id="canvas-placeholder">
-        <span style="font-size:48px;margin-bottom:12px;">✏️</span>
+        <i data-lucide="pencil-line" style="width:48px;height:48px;stroke-width:1.75;margin-bottom:12px;color:var(--red);"></i>
         <span style="font-size:16px;color:#7a5040;font-weight:500;">Start drawing here</span>
         <span style="font-size:13px;color:#a08070;">Use your mouse, trackpad, or finger on mobile</span>
       </div>
@@ -902,7 +787,7 @@
     <div class="sketch-gallery-grid" id="sketch-gallery">
       <!-- Drawings are inserted here by JS -->
       <div class="gallery-empty" id="gallery-empty">
-        <span style="font-size:36px;margin-bottom:8px;">🖼️</span>
+        <i data-lucide="image" style="width:36px;height:36px;stroke-width:1.75;margin-bottom:8px;color:var(--red);"></i>
         <p>No sketches saved yet this week.</p>
         <p style="font-size:13px;color:#a08070;">Be the first to draw something!</p>
       </div>
@@ -915,7 +800,7 @@
       <div class="footer-tagline">Two ways to create art. One place to start.</div>
     </div>
     <div class="footer-contact">
-      <div>📞 <a href="tel:9298849382">929.884.9382</a></div>
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
       <div>Brooklyn, New York · Zoom Lessons</div>
       <div>Kids · Teens · Adults · All levels welcome</div>
     </div>

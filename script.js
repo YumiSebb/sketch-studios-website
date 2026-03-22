@@ -4,6 +4,7 @@ function showPage(name) {
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'gallery') loadGallery();
 }
 
 function toggleMenu() {
@@ -405,71 +406,78 @@ function initStatCounters() {
 }
 document.addEventListener('DOMContentLoaded', initStatCounters);
 
-// ── Paint cursor trail (desktop only) ────────────────
-(function initCursorTrail() {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-  const NUM = 6;
-  const dots = [];
-  const pos = [];
-  let mx = -300, my = -300;
+/* ══════════════════════════════════════
+   GALLERY — JSON-driven with tabs
+══════════════════════════════════════ */
+let galleryData = null;
+let activeGalleryTab = 'students';
 
-  for (let i = 0; i < NUM; i++) {
-    const d = document.createElement('div');
-    const size = Math.round(10 - i * 1.3);
-    const opacity = (0.85 - i * 0.12).toFixed(2);
-    d.style.cssText = [
-      'position:fixed',
-      'width:' + size + 'px',
-      'height:' + size + 'px',
-      'border-radius:50%',
-      'background:var(--red)',
-      'pointer-events:none',
-      'z-index:9998',
-      'transform:translate(-50%,-50%)',
-      'opacity:' + opacity,
-      'mix-blend-mode:multiply',
-      'will-change:left,top',
-      'left:-300px',
-      'top:-300px',
-    ].join(';');
-    document.body.appendChild(d);
-    dots.push(d);
-    pos.push({ x: -300, y: -300 });
+async function fetchGalleryData() {
+  if (!galleryData) {
+    const res = await fetch('gallery-data.json');
+    galleryData = await res.json();
   }
+  return galleryData;
+}
 
-  // Scale lead dot on interactive elements
-  dots[0].style.transition = 'width 0.2s, height 0.2s, opacity 0.2s';
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest('a, button, [onclick], .track-card, .format-card, .gallery-item')) {
-      dots[0].style.width = '20px';
-      dots[0].style.height = '20px';
-      dots[0].style.opacity = '0.35';
-    }
+async function loadGallery() {
+  await fetchGalleryData();
+  renderGallery(activeGalleryTab);
+}
+
+function renderGallery(tab) {
+  activeGalleryTab = tab;
+  const grid = document.getElementById('gallery-grid');
+  if (!grid || !galleryData) return;
+  const items = galleryData[tab] || [];
+  const artistName = tab === 'teacher' ? 'Milky' : 'Student Work';
+  grid.innerHTML = items.map(item => `
+    <div class="gallery-item">
+      <div class="gallery-card-header">
+        <span class="gallery-avatar">·S</span>
+        <div class="gallery-card-info">
+          <span class="gallery-card-name">${artistName}</span>
+          <span class="gallery-card-label">${item.track || item.medium || ''}</span>
+        </div>
+      </div>
+      <div class="gallery-card-caption">
+        <span class="gallery-title">${item.title}</span>
+      </div>
+      <div class="gallery-card-img">
+        <img src="${item.src}" alt="${item.title}" loading="lazy">
+      </div>
+      <div class="gallery-overlay">
+        <span class="gallery-title">${item.title}</span>
+        <span class="gallery-meta">${item.track || item.medium || ''}</span>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.gallery-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
   });
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest('a, button, [onclick], .track-card, .format-card, .gallery-item')) {
-      dots[0].style.width = '10px';
-      dots[0].style.height = '10px';
-      dots[0].style.opacity = '0.85';
-    }
-  });
+}
 
-  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+/* Gallery teaser on homepage */
+async function loadGalleryTeaser() {
+  const data = await fetchGalleryData();
+  const grid = document.getElementById('gallery-teaser-grid');
+  if (!grid) return;
+  const picks = [
+    ...(data.students || []).slice(0, 2),
+    ...(data.teacher || []).slice(0, 2)
+  ];
+  grid.innerHTML = picks.map(item => `
+    <div class="gallery-teaser-item" onclick="showPage('gallery')">
+      <img src="${item.src}" alt="${item.title}" loading="lazy">
+    </div>
+  `).join('');
+}
 
-  const lerp = (a, b, t) => a + (b - a) * t;
-  function frame() {
-    pos[0].x = lerp(pos[0].x, mx, 0.42);
-    pos[0].y = lerp(pos[0].y, my, 0.42);
-    for (let i = 1; i < NUM; i++) {
-      pos[i].x = lerp(pos[i].x, pos[i - 1].x, 0.36);
-      pos[i].y = lerp(pos[i].y, pos[i - 1].y, 0.36);
-    }
-    dots.forEach((d, i) => {
-      d.style.left = pos[i].x + 'px';
-      d.style.top  = pos[i].y + 'px';
-    });
-    requestAnimationFrame(frame);
-  }
-  frame();
-})();
+document.addEventListener('DOMContentLoaded', loadGalleryTeaser);
+
+// ── Initialize Lucide icons ─────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) lucide.createIcons();
+});

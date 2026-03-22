@@ -16,6 +16,12 @@
 </head>
 <body>
 
+<!-- Paper Texture Overlay -->
+<div class="paper-texture"></div>
+
+<!-- Custom Cursor -->
+<div class="custom-cursor" id="custom-cursor"></div>
+
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ═══ NAVIGATION ═══════════════════════════════════ -->
@@ -44,16 +50,33 @@
   <a class="mobile-cta" onclick="showPage('booking');toggleMenu()">Book a Lesson</a>
 </div>
 
+<!-- ═══ MENU OVERLAY ═══════════════════════════════ -->
+<div class="menu-overlay" id="menu-overlay">
+  <button class="overlay-close" onclick="closeOverlay()">CLOSE</button>
+  <div class="overlay-nav">
+    <a onclick="closeOverlay(); showPage('home')">Home</a>
+    <a onclick="closeOverlay(); showPage('about')">About</a>
+    <a onclick="closeOverlay(); showPage('tracks')">The Tracks</a>
+    <a onclick="closeOverlay(); showPage('gallery')">Gallery</a>
+    <a onclick="closeOverlay(); showPage('sketch')">Sketch Pad</a>
+    <a onclick="closeOverlay(); showPage('booking')">Book a Lesson</a>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════════════════
      PAGE: HOME
 ═══════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
+  <!-- SPLASH LANDING -->
+  <section class="splash" id="splash">
+    <button class="splash-menu" onclick="openOverlay()">MENU</button>
+    <div class="splash-brand"><span class="splash-dot">.</span>Sketch Studios</div>
+    <p class="splash-tagline">Customized art lessons for kids, teens & adults · Brooklyn & Zoom</p>
+  </section>
+
   <!-- HERO -->
   <section class="hero" id="main-content">
-    <!-- Watercolor blobs -->
-    <div class="wc-blob" style="width:500px;height:400px;top:10%;right:38%;opacity:.18;"></div>
-
     <div class="hero-content">
       <div class="hero-eyebrow">Brooklyn · on Zoom</div>
       <p class="hero-headline">Two ways to</p>
@@ -74,23 +97,7 @@
     <div class="hero-visual">
       <div class="hero-split-left">
         <div class="sketch-area">
-          <!-- Pencil sketch side -->
-          <svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.5">
-            <!-- Simple sketch of pencil/hand drawing -->
-            <ellipse cx="100" cy="110" rx="70" ry="80" stroke="#5a3a2a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
-            <line pathLength="1" class="draw-anim" x1="60" y1="80" x2="140" y2="80" stroke="#5a3a2a" stroke-width="1" opacity="0.4" style="animation-delay:0.9s"/>
-            <line pathLength="1" class="draw-anim" x1="55" y1="95" x2="145" y2="95" stroke="#5a3a2a" stroke-width="1" opacity="0.3" style="animation-delay:1.05s"/>
-            <line pathLength="1" class="draw-anim" x1="58" y1="110" x2="142" y2="110" stroke="#5a3a2a" stroke-width="1" opacity="0.4" style="animation-delay:1.2s"/>
-            <line pathLength="1" class="draw-anim" x1="60" y1="125" x2="140" y2="125" stroke="#5a3a2a" stroke-width="1" opacity="0.3" style="animation-delay:1.35s"/>
-            <circle pathLength="1" class="draw-anim" cx="100" cy="60" r="22" stroke="#5a3a2a" stroke-width="1.5" fill="none" style="animation-delay:0.75s"/>
-            <path pathLength="1" class="draw-anim" d="M85 55 Q100 45 115 55" stroke="#5a3a2a" stroke-width="1" fill="none" style="animation-delay:1.5s"/>
-            <path pathLength="1" class="draw-anim" d="M90 65 Q100 70 110 65" stroke="#5a3a2a" stroke-width="1.2" fill="none" style="animation-delay:1.6s"/>
-            <circle cx="93" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
-            <circle cx="107" cy="59" r="2" fill="#5a3a2a" opacity="0.6"/>
-            <!-- Pencil -->
-            <rect x="150" y="30" width="12" height="60" rx="2" fill="#5a3a2a" opacity="0.3" transform="rotate(20 156 60)"/>
-            <polygon points="150,86 162,86 156,100" fill="#5a3a2a" opacity="0.4" transform="rotate(20 156 86)"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Core Technique Sketching" style="width:100%; height:100%; object-fit:cover; opacity: 0.85; filter: grayscale(20%) contrast(1.1);">
         </div>
         <span class="split-label left">Core Technique</span>
       </div>
@@ -146,7 +153,6 @@
 
   <!-- TWO TRACKS INTRO -->
   <section class="tracks-intro">
-    <div class="wc-blob" style="width:600px;height:500px;top:-15%;right:-10%;opacity:.12;"></div>
     <div class="section-header">
       <h2 class="section-title">
         Three tracks.<br>
@@ -261,8 +267,26 @@
       <div class="label">See the Work</div>
       <h2 class="section-title">From first sketch to <span class="script">finished piece.</span></h2>
     </div>
-    <div class="gallery-teaser-grid" id="gallery-teaser-grid">
-      <!-- 4 thumbnails loaded from gallery-data.json -->
+    <div class="before-after-container" id="ba-slider-container">
+      <div class="ba-slider">
+        <div class="ba-image after-image">
+          <img src="gallery/slider-after.png" alt="Finished Portrait">
+          <span class="ba-label right">Week 8</span>
+        </div>
+        <div class="ba-image before-image" id="ba-before">
+          <!-- The 'before' div acts as a clipping mask -->
+          <img src="gallery/slider-before.png" alt="First Sketch">
+          <span class="ba-label left">Week 1</span>
+        </div>
+        <div class="ba-handle" id="ba-handle">
+          <div class="ba-handle-line"></div>
+          <div class="ba-handle-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
+      </div>
+      <p class="ba-caption">Student progress: Core Technique Track</p>
     </div>
     <div style="text-align:center;margin-top:28px;">
       <button class="btn-primary" onclick="showPage('gallery')">View Gallery →</button>
@@ -273,26 +297,23 @@
 
   <!-- TESTIMONIALS -->
   <section class="testimonials">
-    <div class="section-header">
-      <div class="label">What Students Say</div>
-      <h2 class="section-title">Real words from <span class="script">real students.</span></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
+    <div class="testimonials-label">What Students Say</div>
+    <div class="testimonials-carousel">
+      <div class="testimonial-card active">
+        <div class="testimonial-author">Sarah M.:</div>
         <p class="testimonial-quote">"My daughter went from stick figures to actual portraits in two months. She literally runs to the door when Milky arrives."</p>
-        <div class="testimonial-author">- Sarah M., parent of a 9-year-old</div>
       </div>
       <div class="testimonial-card">
+        <div class="testimonial-author">David R.:</div>
         <p class="testimonial-quote">"I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait."</p>
-        <div class="testimonial-author">- David R., adult student</div>
       </div>
       <div class="testimonial-card">
+        <div class="testimonial-author">Ava T.:</div>
         <p class="testimonial-quote">"The Intuitive Flow track is my therapy. No pressure, no grades, just paint and whatever comes out. I look forward to it all week."</p>
-        <div class="testimonial-author">- Ava T., teen student</div>
       </div>
     </div>
     <div class="testimonials-dots">
-      <span></span><span></span><span></span>
+      <span class="active"></span><span></span><span></span>
     </div>
   </section>
 
@@ -739,34 +760,33 @@
 
   <!-- Drawing Canvas -->
   <section class="sketch-canvas-section">
-    <div class="sketch-toolbar">
-      <div class="tool-group">
-        <label class="tool-label">Brush</label>
-        <input type="range" id="brush-size" min="1" max="30" value="4" class="brush-slider">
-        <span id="brush-size-display" class="brush-display">4px</span>
-      </div>
-      <div class="tool-group">
-        <label class="tool-label">Color</label>
-        <div class="color-swatches" id="color-swatches">
-          <button class="swatch active" data-color="#1A0A0A" style="background:#1A0A0A" title="Black"></button>
-          <button class="swatch" data-color="#8B1F1F" style="background:#8B1F1F" title="Studio Red"></button>
-          <button class="swatch" data-color="#3D1206" style="background:#3D1206" title="Deep Studio"></button>
-          <button class="swatch" data-color="#E2AAAA" style="background:#E2AAAA" title="Blush Rose"></button>
-          <button class="swatch" data-color="#C9A055" style="background:#C9A055" title="Gold"></button>
-          <button class="swatch" data-color="#5a3a2a" style="background:#5a3a2a" title="Brown"></button>
-          <button class="swatch" data-color="#2d5a3a" style="background:#2d5a3a" title="Forest"></button>
-          <button class="swatch" data-color="#3a4a7a" style="background:#3a4a7a" title="Navy"></button>
-          <button class="swatch" data-color="#FAF0EC" style="background:#FAF0EC;border:1.5px solid #ddc8c0" title="Eraser"></button>
+    <div class="canvas-wrapper">
+      <div class="sketch-toolbar">
+        <div class="tool-group">
+          <label class="tool-label">Brush</label>
+          <input type="range" id="brush-size" min="1" max="50" value="4" class="brush-slider">
+          <span id="brush-size-display" class="brush-display">4px</span>
+        </div>
+        <div class="tool-group">
+          <div class="color-swatches" id="color-swatches">
+            <button class="swatch active" data-color="#1A0A0A" style="background:#1A0A0A" title="Black"></button>
+            <button class="swatch" data-color="#8B1F1F" style="background:#8B1F1F" title="Studio Red"></button>
+            <button class="swatch" data-color="#3D1206" style="background:#3D1206" title="Deep Studio"></button>
+            <button class="swatch" data-color="#E2AAAA" style="background:#E2AAAA" title="Blush Rose"></button>
+            <button class="swatch" data-color="#C9A055" style="background:#C9A055" title="Gold"></button>
+            <button class="swatch" data-color="#5a3a2a" style="background:#5a3a2a" title="Brown"></button>
+            <button class="swatch" data-color="#2d5a3a" style="background:#2d5a3a" title="Forest"></button>
+            <button class="swatch" data-color="#3a4a7a" style="background:#3a4a7a" title="Navy"></button>
+            <button class="swatch" data-color="#FAF0EC" style="background:#FAF0EC;border:1.5px solid #ddc8c0" title="Eraser"></button>
+          </div>
+        </div>
+        <div class="tool-group tool-actions">
+          <button class="tool-btn" id="btn-undo" title="Undo"><i data-lucide="undo-2" style="width:16px;height:16px;stroke-width:2;"></i></button>
+          <button class="tool-btn" id="btn-clear" title="Clear Canvas"><i data-lucide="trash-2" style="width:16px;height:16px;stroke-width:2;"></i></button>
+          <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery">Save</button>
         </div>
       </div>
-      <div class="tool-group tool-actions">
-        <button class="tool-btn" id="btn-undo" title="Undo"><i data-lucide="undo-2" style="width:16px;height:16px;stroke-width:2;"></i> Undo</button>
-        <button class="tool-btn" id="btn-clear" title="Clear Canvas"><i data-lucide="x" style="width:16px;height:16px;stroke-width:2;"></i> Clear</button>
-        <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery"><i data-lucide="check" style="width:16px;height:16px;stroke-width:2;"></i> Save to Gallery</button>
-      </div>
-    </div>
-
-    <div class="canvas-wrapper">
+      
       <canvas id="sketch-canvas" width="1200" height="600"></canvas>
       <div class="canvas-placeholder" id="canvas-placeholder">
         <i data-lucide="pencil-line" style="width:48px;height:48px;stroke-width:1.75;margin-bottom:12px;color:var(--red);"></i>

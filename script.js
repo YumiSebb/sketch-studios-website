@@ -3,6 +3,16 @@ function showPage(name) {
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
+  
+  const nav = document.querySelector('nav');
+  if (nav) {
+    if (name !== 'home') {
+      nav.classList.remove('nav-hidden');
+    } else {
+      nav.classList.add('nav-hidden');
+    }
+  }
+  
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (name === 'gallery') loadGallery();
 }
@@ -34,7 +44,7 @@ function toggleFaq(btn) {
 // ── Community Sketch Pad ─────────────────────────────
 (function() {
   let canvas, ctx, isDrawing = false;
-  let currentColor = '#1A0A0A';
+  let currentColor = '#3D2623';
   let brushSize = 4;
   let history = [];
   let hasDrawn = false;
@@ -313,6 +323,16 @@ window.addEventListener('resize', () => {
     document.getElementById('mobile-menu').classList.remove('open');
   }
 });
+
+// Close mobile menu automatically when the user scrolls
+window.addEventListener('scroll', () => {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (menu && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+  }
+}, { passive: true });
 
 // ── Scroll-triggered animations ──────────────────────────
 function initAnimations() {

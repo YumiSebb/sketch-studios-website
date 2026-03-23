@@ -15,6 +15,10 @@ function showPage(name) {
   
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (name === 'gallery') loadGallery();
+  if (name === 'sketch') {
+    // Trigger a resize event to ensure canvas initializes with correct width
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 10);
+  }
 }
 
 function toggleMenu() {

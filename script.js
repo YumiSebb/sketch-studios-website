@@ -242,33 +242,21 @@ function toggleFaq(btn) {
     document.getElementById('save-modal').classList.remove('open');
   };
 
-  window.confirmSave = function() {
+  window.confirmSave = async function() {
     const name = document.getElementById('artist-name').value.trim() || 'Anonymous Artist';
     const canvas = document.getElementById('sketch-canvas');
     const imageData = canvas.toDataURL('image/png');
 
-    // Save to localStorage
-    const gallery = JSON.parse(localStorage.getItem('sketchGallery') || '[]');
     const now = new Date();
-    gallery.unshift({
+    const newSketch = {
       image: imageData,
       name: name,
       date: now.toISOString(),
       dateDisplay: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-    });
+    };
 
-    // Keep only last 50 sketches
-    if (gallery.length > 50) gallery.length = 50;
-
-    // Weekly cleanup, remove sketches older than 7 days
-    const weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
-    const filtered = gallery.filter(g => new Date(g.date) > weekAgo);
-    localStorage.setItem('sketchGallery', JSON.stringify(filtered));
-
+    // Fast UX: clear canvas and close modal immediately
     closeSaveModal();
-    loadGallery();
-
-    // Clear canvas after saving
     const ctx = canvas.getContext('2d');
     const dpr = window.devicePixelRatio || 1;
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
@@ -276,39 +264,49 @@ function toggleFaq(btn) {
     hasDrawn = false;
     document.getElementById('canvas-placeholder').classList.remove('hidden');
     document.getElementById('artist-name').value = '';
+
+    try {
+      await fetch('/api/sketches', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newSketch)
+      });
+      loadGallery();
+    } catch (e) {
+      console.error('Failed to save sketch to server', e);
+    }
   };
 
-  function loadGallery() {
+  async function loadGallery() {
     const container = document.getElementById('sketch-gallery');
     const empty = document.getElementById('gallery-empty');
     if (!container) return;
 
-    const gallery = JSON.parse(localStorage.getItem('sketchGallery') || '[]');
+    try {
+      const res = await fetch('/api/sketches');
+      if (!res.ok) throw new Error('Failed to fetch gallery');
+      const filtered = await res.json();
 
-    // Weekly cleanup on load
-    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    const filtered = gallery.filter(g => new Date(g.date) > weekAgo);
-    if (filtered.length !== gallery.length) {
-      localStorage.setItem('sketchGallery', JSON.stringify(filtered));
-    }
+      // Clear existing items (except empty state)
+      container.querySelectorAll('.sketch-gallery-item').forEach(el => el.remove());
 
-    // Clear existing items (except empty state)
-    container.querySelectorAll('.sketch-gallery-item').forEach(el => el.remove());
-
-    if (filtered.length === 0) {
-      empty.classList.remove('hidden');
-    } else {
-      empty.classList.add('hidden');
-      filtered.forEach(item => {
-        const el = document.createElement('div');
-        el.className = 'sketch-gallery-item';
-        el.innerHTML = '<img src="' + item.image + '" alt="Community sketch by ' + item.name + '">' +
-          '<div class="sketch-gallery-meta">' +
-          '<span class="sketch-gallery-name">' + item.name + '</span>' +
-          '<span class="sketch-gallery-date">' + item.dateDisplay + '</span>' +
-          '</div>';
-        container.insertBefore(el, empty);
-      });
+      if (filtered.length === 0) {
+        empty.classList.remove('hidden');
+      } else {
+        empty.classList.add('hidden');
+        filtered.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'sketch-gallery-item anim visible';
+          el.innerHTML = '<img src="' + item.image + '" alt="Community sketch by ' + item.name + '">' +
+            '<div class="sketch-gallery-meta">' +
+            '<span class="sketch-gallery-name">' + item.name + '</span>' +
+            '<span class="sketch-gallery-date">' + item.dateDisplay + '</span>' +
+            '</div>';
+          container.insertBefore(el, empty);
+        });
+      }
+    } catch (e) {
+      console.error('Error loading gallery from server', e);
     }
   }
 

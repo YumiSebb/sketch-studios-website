@@ -1,17 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sketch-studios-website",
-  "main": "src/worker.js",
   "compatibility_date": "2025-09-27",
+  "pages_build_output_dir": ".",
   "compatibility_flags": [
     "nodejs_compat"
   ],
   "observability": {
     "enabled": true
-  },
-  "assets": {
-    "directory": ".",
-    "binding": "ASSETS"
   },
   "kv_namespaces": [
     {

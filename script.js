@@ -350,19 +350,17 @@ function initAnimations() {
   // Elements to animate on scroll
   const animTargets = [
     // Home page — hero children stagger individually
-    { sel: '.hero-eyebrow',  cls: '' },
-    { sel: '.hero-headline', cls: '' },
     { sel: '.hero-script',   cls: '' },
     { sel: '.hero-art',      cls: '' },
     { sel: '.hero-sub',      cls: '' },
     { sel: '.hero-tagline',  cls: '' },
     { sel: '.hero-buttons',  cls: '' },
-    { sel: '.hero-visual',          cls: 'from-right' },
-    { sel: '.stats-bar',            cls: '' },
+    { sel: '.proof-strip',          cls: '' },
+    { sel: '.trust-bar',            cls: '' },
     { sel: '.section-header',       cls: '' },
     { sel: '.track-card',           cls: '' },
+    { sel: '.studio-section',       cls: '' },
     { sel: '.format-card',          cls: '' },
-    { sel: '.philosophy',           cls: '' },
     { sel: '.testimonial-card',     cls: '' },
     { sel: '.cta-banner',           cls: '' },
     // About page
@@ -401,7 +399,7 @@ function initAnimations() {
   });
 
   // Add stagger class to grid parents
-  document.querySelectorAll('.hero-content, .tracks-grid, .formats-grid, .values-grid, .gallery-grid, .location-pills, .contact-options, .testimonials-carousel, .faq-list, .sketch-gallery-grid').forEach(parent => {
+  document.querySelectorAll('.hero-content, .tracks-grid, .values-grid, .gallery-grid, .location-pills, .contact-options, .testimonials-carousel, .faq-list, .sketch-gallery-grid').forEach(parent => {
     parent.classList.add('anim-stagger');
   });
 
@@ -449,37 +447,7 @@ showPage = function(name) {
 // Init on DOM ready
 document.addEventListener('DOMContentLoaded', initAnimations);
 
-// ── Stats counter ─────────────────────────────────────
-function initStatCounters() {
-  const statsBar = document.querySelector('.stats-bar');
-  if (!statsBar) return;
-
-  // Only animate numeric stat numbers
-  const numEls = Array.from(statsBar.querySelectorAll('.stat-number'))
-    .filter(el => /^\d+$/.test(el.textContent.trim()));
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      numEls.forEach(el => {
-        const target = parseInt(el.textContent, 10);
-        const start = performance.now();
-        const duration = 900;
-        const tick = (now) => {
-          const t = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(eased * target);
-          if (t < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.6 });
-
-  observer.observe(statsBar);
-}
-document.addEventListener('DOMContentLoaded', initStatCounters);
+// ── Stats counter (trust bar has no numeric stats now, kept for other pages) ──
 
 
 /* ══════════════════════════════════════
@@ -740,6 +708,32 @@ document.addEventListener('DOMContentLoaded', () => {
       ticking = true;
     }
   }, { passive: true });
+});
+
+// ── Sticky Mobile CTA ─────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const stickyCta = document.getElementById('sticky-cta');
+  const hero = document.getElementById('main-content');
+  if (!stickyCta || !hero) return;
+
+  // Only activate on mobile
+  const mq = window.matchMedia('(max-width: 768px)');
+
+  function setupObserver() {
+    if (!mq.matches) {
+      stickyCta.classList.remove('visible');
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      stickyCta.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    observer.observe(hero);
+  }
+
+  setupObserver();
+  mq.addEventListener('change', setupObserver);
 });
 
 // ── Initialize Lucide icons ─────────────────────────

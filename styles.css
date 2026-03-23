@@ -457,12 +457,14 @@
      PAGE: HOME
   ════════════════════════════════════════════════ */
 
-  /* HERO */
+  /* HERO — centered, typography-focused */
   .hero {
-    min-height: calc(100dvh - 76px);
+    min-height: calc(60dvh - 76px);
     display: flex;
     align-items: center;
-    padding: 120px 100px 80px;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px 56px;
     position: relative;
     background: var(--cream);
   }
@@ -470,30 +472,15 @@
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 580px;
-  }
-
-  .hero-eyebrow {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 18px;
-  }
-
-  .hero-headline {
-    font-family: var(--sans);
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--black);
-    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
   }
 
   .hero-script {
     font-family: var(--script);
-    font-size: 80px;
+    font-size: clamp(48px, 14vw, 56px);
     font-weight: 700;
     color: var(--black);
     line-height: 1;
@@ -502,135 +489,87 @@
 
   .hero-art {
     font-family: var(--serif);
-    font-size: 112px;
+    font-size: clamp(64px, 18vw, 76px);
     color: var(--red);
     line-height: 0.9;
     display: block;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
   }
 
   .hero-sub {
     font-family: var(--serif);
-    font-size: 40px;
+    font-size: clamp(22px, 6vw, 26px);
     color: var(--black);
-    margin: 20px 0 16px;
+    margin: 16px 0 12px;
     line-height: 1.1;
   }
 
   .hero-tagline {
     font-family: var(--sans);
-    font-size: 15px;
-    color: #4a2a20;
+    font-size: 14px;
+    color: #7a5040;
     font-weight: 400;
-    margin-bottom: 44px;
-    line-height: 1.75;
-  }
-
-  .hero-tagline strong {
-    font-weight: 700;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    max-width: 400px;
   }
 
   .hero-buttons {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-  }
-
-  /* Hero visual, right side split */
-  .hero-visual {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 46%;
-    overflow: hidden;
-  }
-
-  .hero-split-left {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background: #f0e8e0;
-    display: flex;
-    align-items: center;
     justify-content: center;
   }
 
-  .hero-split-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background: var(--roselt);
-    overflow: hidden;
+  /* ── PROOF STRIP ──────────────────────────── */
+  .proof-strip {
+    padding: 0;
+    background: var(--cream);
   }
 
-  .split-label {
-    position: absolute;
-    bottom: 40px;
+  .proof-strip .before-after-container {
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .proof-strip .ba-caption {
+    background: var(--cream);
+    border-top: none;
+  }
+
+  /* ── TRUST BAR ──────────────────────────────── */
+  .trust-bar {
+    background: var(--red);
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
+  }
+
+  .trust-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trust-bar span {
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--black);
-    opacity: 0.6;
-  }
-
-  .split-label.left {
-    left: 24px;
-  }
-
-  .split-label.right {
-    right: 18px;
-  }
-
-  /* Pencil sketch SVG area */
-  .sketch-area {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ── STATS BAR ──────────────────────────────── */
-  .stats-bar {
-    background: var(--red);
-    padding: 40px 100px;
-    display: flex;
-    gap: 0;
-  }
-
-  .stat-item {
-    flex: 1;
-    text-align: center;
     color: white;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 24px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
   }
 
-  .stat-item:last-child {
+  .trust-bar span:last-child {
     border-right: none;
-  }
-
-  .stat-number {
-    font-family: var(--serif);
-    font-size: 32px;
-    display: block;
-  }
-
-  .stat-label {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.85;
   }
 
   /* ── TWO TRACKS SECTION ──────────────────────── */
@@ -668,18 +607,62 @@
   }
 
   .tracks-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    max-width: 960px;
-    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 0 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tracks-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tracks-link {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .link-arrow {
+    color: var(--red);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .link-arrow:hover {
+    color: var(--deep);
   }
 
   .track-card {
     border-radius: 20px;
-    padding: 48px 40px;
+    padding: 32px 28px;
     position: relative;
     overflow: hidden;
+    min-width: 260px;
+    max-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .track-card.mastery {
+    background: var(--black);
+    color: white;
+  }
+
+  .track-card.mastery .track-name {
+    color: #E2AAAA;
+  }
+
+  .track-card.mastery .track-headline {
+    color: white;
   }
 
   .track-card.technique {
@@ -737,7 +720,7 @@
   .track-desc {
     font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 28px;
+    margin-bottom: 0;
     opacity: 0.85;
   }
 
@@ -776,55 +759,64 @@
     color: var(--red);
   }
 
-  /* ── FORMATS SECTION ───────────────────────── */
-  .formats {
-    padding: 120px 100px;
-    background: #F3E8E2;
-    position: relative;
+  /* ── STUDIO SECTION (Formats + Philosophy merged) ── */
+  .studio-section {
+    display: flex;
+    flex-direction: column;
   }
 
-  .formats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 960px;
-    margin: 0 auto;
+  .studio-left {
+    background: #F3E8E2;
+    padding: 56px 24px;
+  }
+
+  .studio-right {
+    background: var(--cream);
+    padding: 56px 24px;
+  }
+
+  .studio-heading {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--deep);
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .studio-heading .script {
+    font-family: var(--script);
+    color: var(--red);
+    font-size: 38px;
   }
 
   .format-card {
-    background: white;
-    border-radius: 12px;
-    padding: 40px 32px;
-    text-align: center;
-    border: 1px solid rgba(61, 18, 6, 0.08);
-    transition: transform .2s;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 16px;
+    align-items: start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(61, 18, 6, 0.08);
   }
 
-  .format-card:hover {
-    transform: translateY(-3px);
+  .format-card:last-child {
+    border-bottom: none;
   }
 
   .format-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .format-title {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
   }
 
   .format-name {
     font-family: var(--serif);
-    font-size: 26px;
+    font-size: 22px;
     color: var(--deep);
-    margin-bottom: 14px;
+    margin-bottom: 4px;
     line-height: 1.2;
   }
 
@@ -834,45 +826,26 @@
     line-height: 1.6;
   }
 
-  /* ── PHILOSOPHY SECTION ───────────────────── */
-  .philosophy {
-    padding: 120px 100px;
-    background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
   .philosophy-headline {
     font-family: var(--serif);
-    font-size: 44px;
+    font-size: 30px;
     color: var(--deep);
-    line-height: 1.15;
+    line-height: 1.2;
     margin-bottom: 24px;
-  }
-
-  .philosophy-text {
-    font-size: 15px;
-    color: #5a3a2a;
-    line-height: 1.75;
-    margin-bottom: 32px;
   }
 
   .philosophy-pillars {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
   }
 
   .philosophy-pillars li {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
   }
 
@@ -882,71 +855,10 @@
     background: var(--red);
     border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 5px;
+    margin-top: 6px;
   }
 
-  .philosophy-visual {
-    position: relative;
-  }
-
-  .philo-card {
-    background: var(--cream);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 48px rgba(61, 18, 6, 0.12);
-    padding: 0;
-    position: relative;
-  }
-
-  .philo-card-header {
-    background: var(--red);
-    padding: 32px 36px;
-    color: white;
-  }
-
-  .philo-card-header .track-script {
-    font-family: var(--script);
-    font-size: 42px;
-    line-height: 1;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .philo-card-header p {
-    font-size: 13px;
-    opacity: 0.85;
-    font-weight: 500;
-  }
-
-  .philo-card-body {
-    padding: 28px 36px;
-  }
-
-  .philo-card-body ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .philo-card-body li {
-    font-size: 13px;
-    color: var(--black);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .philo-card-body li::before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    background: var(--red);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
-  }
+  /* philo-card styles removed — section redesigned */
 
   /* ── CTA BANNER ───────────────────────────── */
   .cta-banner {
@@ -955,16 +867,6 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-
-  .cta-banner-eyebrow {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 20px;
   }
 
   .cta-banner h2 {
@@ -1381,21 +1283,15 @@
       padding: 80px 60px 60px;
     }
 
-    .hero-visual {
-      width: 38%;
-    }
-
     .hero-art {
-      font-size: 84px;
+      font-size: 100px;
     }
 
     .hero-script {
-      font-size: 64px;
+      font-size: 72px;
     }
 
     .tracks-intro,
-    .formats,
-    .philosophy,
     .cta-banner,
     .about-hero,
     .about-values,
@@ -1409,17 +1305,12 @@
       padding-right: 60px;
     }
 
-    .stats-bar {
-      padding: 32px 60px;
+    .trust-bar span {
+      padding: 16px 20px;
     }
 
     footer {
       padding: 48px 60px;
-    }
-
-    .philosophy {
-      max-width: 100%;
-      gap: 48px;
     }
 
     .values-grid {
@@ -1466,92 +1357,18 @@
       bottom: 32px;
     }
 
-    /* Hero */
+    /* Hero — mobile is the default (mobile-first CSS above) */
     .hero {
-      padding: 48px 20px 56px;
       min-height: auto;
-      flex-direction: column;
     }
 
-    .hero-visual {
-      display: none;
-    }
-
-    .hero-content {
-      max-width: 100%;
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-    }
-
-    .hero-headline {
-      font-size: 15px;
-    }
-
-    .hero-script {
-      font-size: 52px;
-    }
-
-    .hero-art {
-      font-size: 68px;
-    }
-
-    .hero-sub {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    .hero-tagline {
-      font-size: 14px;
-      margin-bottom: 28px;
-    }
-
-    .hero-buttons {
-      flex-direction: column;
-    }
-
-    .hero-buttons .btn-primary,
-    .hero-buttons .btn-outline {
+    .hero-buttons .btn-primary {
       text-align: center;
-    }
-
-    /* Stats bar */
-    .stats-bar {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .stat-item {
-      padding: 14px 8px;
-      border-right: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .stat-item:nth-child(1),
-    .stat-item:nth-child(2) {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .stat-item:nth-child(1),
-    .stat-item:nth-child(3) {
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .stat-item:nth-child(3),
-    .stat-item:nth-child(4) {
-      border-bottom: none;
-    }
-
-    .stat-number {
-      font-size: 26px;
+      width: 100%;
     }
 
     /* Shared section padding */
     .tracks-intro,
-    .formats,
     .cta-banner,
     .about-values,
     .tracks-hero,
@@ -1562,17 +1379,8 @@
       padding: 64px 24px;
     }
 
-    .philosophy {
-      padding: 64px 24px;
-    }
-
     .about-hero {
       padding: 56px 24px;
-    }
-
-    /* booking-hero padding is set in its own block below */
-    stats-bar {
-      padding: 20px;
     }
 
     /* Section headers */
@@ -1588,50 +1396,18 @@
       font-size: 14px;
     }
 
-    /* Tracks grid → single column */
-    .tracks-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
+    /* Tracks — horizontal scroll is already the default */
     .track-card {
-      padding: 36px 28px;
+      padding: 28px 24px;
     }
 
     .track-headline {
-      font-size: 30px;
+      font-size: 26px;
     }
 
-    /* Formats → single column */
-    .formats-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    /* Philosophy → single column */
-    .philosophy {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      max-width: 100%;
-    }
-
-    .philosophy-headline {
-      font-size: 32px;
-    }
-
-    .philosophy-text {
-      font-size: 14px;
-    }
-
-    /* Testimonials — single card carousel */
+    /* Testimonials */
     .testimonials {
       padding: 56px 20px;
-    }
-
-    .testimonials-label {
-      font-size: 12px;
-      margin-bottom: 32px;
     }
 
     .testimonials-carousel {
@@ -1640,12 +1416,11 @@
 
     .testimonial-card {
       display: none;
-      padding: 32px 24px;
       width: 100%;
     }
 
     .testimonial-card.active {
-      display: block;
+      display: flex;
     }
 
     .testimonials-dots {
@@ -2516,7 +2291,163 @@
     background: rgba(139, 31, 31, 0.08);
   }
 
-  /* Before/After Slider (homepage) */
+  /* ═══ DESKTOP OVERRIDES for redesigned homepage sections ═══ */
+  @media (min-width: 769px) {
+    .hero {
+      min-height: calc(70dvh - 76px);
+      padding: 100px 100px 80px;
+    }
+
+    .hero-script {
+      font-size: 80px;
+    }
+
+    .hero-art {
+      font-size: 120px;
+    }
+
+    .hero-sub {
+      font-size: 40px;
+      margin: 20px 0 16px;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      max-width: 460px;
+    }
+
+    /* Proof strip — contained on desktop */
+    .proof-strip {
+      padding: 40px 100px;
+    }
+
+    .proof-strip .before-after-container {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(61, 18, 6, 0.12);
+    }
+
+    .proof-strip .ba-caption {
+      background: white;
+      border-top: 1px solid rgba(139, 31, 31, 0.08);
+    }
+
+    /* Trust bar — centered on desktop */
+    .trust-bar {
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .trust-bar span {
+      padding: 20px 40px;
+      font-size: 12px;
+    }
+
+    /* Tracks — grid on desktop */
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      overflow: visible;
+      padding: 0;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .track-card {
+      min-width: unset;
+      max-width: unset;
+      padding: 40px 36px;
+    }
+
+    .track-headline {
+      font-size: 32px;
+    }
+
+    /* Studio section — side by side on desktop */
+    .studio-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .studio-left {
+      padding: 80px 64px;
+    }
+
+    .studio-right {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .studio-heading {
+      font-size: 40px;
+    }
+
+    .studio-heading .script {
+      font-size: 46px;
+    }
+
+    .format-name {
+      font-size: 26px;
+    }
+
+    .philosophy-headline {
+      font-size: 38px;
+    }
+
+    /* Testimonials — 3-column grid on desktop */
+    .testimonials {
+      padding: 100px 100px;
+    }
+
+    .testimonials-carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 960px;
+    }
+
+    .testimonial-card {
+      display: flex !important;
+    }
+
+    .testimonial-card:nth-child(2) {
+      margin-top: 40px;
+    }
+
+    .testimonials-dots {
+      display: none !important;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      padding: 120px 100px;
+    }
+
+    .cta-banner h2 {
+      font-size: 54px;
+    }
+
+    .cta-banner h2 .script {
+      font-size: 62px;
+    }
+
+    /* Hide sticky CTA on desktop */
+    .sticky-cta {
+      display: none !important;
+    }
+
+    /* Footer */
+    footer {
+      padding: 64px 100px;
+    }
+  }
+
+  /* Before/After Slider (shared styles) */
   .gallery-teaser {
     padding: 120px 100px;
     background: var(--cream);
@@ -2873,20 +2804,10 @@
 
   /* ── Testimonials ── */
   .testimonials {
-    padding: 100px 100px;
+    padding: 56px 24px;
     background: var(--red);
     position: relative;
     text-align: center;
-  }
-
-  .testimonials-label {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 48px;
   }
 
   .testimonials-carousel {
@@ -2897,42 +2818,62 @@
 
   .testimonial-card {
     display: none;
-    background: var(--cream);
-    border-radius: 16px;
-    padding: 48px 44px;
-    border: 2px solid rgba(61, 18, 6, 0.10);
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 0;
   }
 
   .testimonial-card.active {
-    display: block;
+    display: flex;
   }
 
-  .testimonial-author {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--deep);
-    margin-bottom: 16px;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
+  .testimonial-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
   }
 
   .testimonial-quote {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--black);
-    font-style: italic;
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.5;
+    color: white;
+    margin: 0 0 20px;
+    font-style: normal;
+    border: none;
+    padding: 0;
+  }
+
+  .testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .testimonial-meta strong {
+    color: white;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .testimonial-meta span {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
   }
 
   .testimonials-dots {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 36px;
+    margin-top: 32px;
   }
 
   .testimonials-dots span {
@@ -2948,14 +2889,39 @@
     background: white;
   }
 
-  /* ── Section Divider ── */
-  .section-divider {
-    width: 40px;
-    height: 2px;
-    border-radius: 1px;
-    background: var(--red);
-    opacity: 0.25;
-    margin: 0 auto;
+  /* ── CTA Decor SVG ── */
+  .cta-decor {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  /* ── Sticky Mobile CTA ── */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(250, 240, 236, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(139, 31, 31, 0.08);
+    z-index: 800;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sticky-cta.visible {
+    transform: translateY(0);
+  }
+
+  .sticky-cta .btn-primary {
+    width: 100%;
+    text-align: center;
   }
 
   /* ── FAQ ── */
@@ -3936,78 +3902,13 @@
     .anim-stagger > .anim:nth-child(5) { transition-delay: 0.2s !important; }
     .anim-stagger > .anim:nth-child(6) { transition-delay: 0.25s !important; }
 
-    /* ── Gallery Teaser / Slider ── */
-    .before-after-container {
-      margin: 40px -20px 0;
-      border-radius: 0;
-      max-width: none;
-      width: calc(100% + 40px);
-    }
-    
-    .ba-slider {
-      aspect-ratio: 1/1;
-    }
-
     .faq-grid {
       grid-template-columns: 1fr;
       gap: 24px;
     }
 
-    .formats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .format-card:first-child {
-      grid-column: 1;
-      grid-template-columns: 64px 1fr;
-      gap: 0 20px;
-      padding: 32px 24px;
-    }
-
-    .format-card:first-child .format-icon {
-      width: 64px;
-      height: 64px;
-      font-size: 30px;
-    }
-
-    .format-card:first-child .format-name {
-      font-size: 24px;
-    }
-
-    .format-card {
-      padding: 28px 24px;
-    }
-
-    .format-card .format-icon {
-      width: 56px;
-      height: 56px;
-      font-size: 28px;
-    }
-
     .values-grid {
       grid-template-columns: 1fr;
-    }
-
-    /* ── Testimonials mobile ── */
-    .testimonials {
-      padding: 56px 20px;
-    }
-
-    .testimonials-label {
-      font-size: 12px;
-      margin-bottom: 32px;
-    }
-
-    .testimonials-carousel {
-      max-width: 100%;
-    }
-
-    .testimonial-card {
-      padding: 32px 24px;
-    }
-
-    .testimonials-dots {
-      margin-top: 24px;
     }
 
     /* ── Footer legal bar ── */

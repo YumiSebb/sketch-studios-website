@@ -9,8 +9,8 @@
   "kv_namespaces": [
     {
       "binding": "SKETCH_KV",
-      "id": "sketches_production",
-      "preview_id": "sketches_preview"
+      "id": "d081caeaee9d4aff9a3d22efd9fd4589",
+      "preview_id": "d081caeaee9d4aff9a3d22efd9fd4589"
     }
   ]
 }

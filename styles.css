@@ -10,7 +10,7 @@
   :root {
     --red: #8B1F1F;
     --deep: #3D1206;
-    --black: #1A0A0A;
+    --black: #3D2623;
     --cream: #FAF0EC;
     --rose: #E2AAAA;
     --gold: #C9A055;
@@ -1445,6 +1445,14 @@
       display: flex;
     }
 
+    /* Disable custom cursor on mobile */
+    .custom-cursor {
+      display: none !important;
+    }
+    body, a, button, input[type="range"], .swatch, .tool-btn, .hamburger, .ba-handle {
+      cursor: auto !important;
+    }
+
     /* Splash */
     .splash-brand {
       font-size: 18vw;
@@ -2515,7 +2523,7 @@
   }
 
   .before-after-container {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 40px auto 0;
     position: relative;
     border-radius: 20px;
@@ -3870,6 +3878,48 @@
 
   /* ── Mobile overrides ── */
   @media (max-width: 768px) {
+    /* ── Snappy Mobile Animations ── */
+    .anim {
+      transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    }
+    
+    /* Active states for snappy feedback on tap */
+    button:active, 
+    a:active, 
+    .btn-primary:active, 
+    .btn-outline:active, 
+    .btn-white:active, 
+    .btn-whatsapp:active, 
+    .mobile-cta:active, 
+    .swatch:active, 
+    .gallery-tab:active,
+    .format-card:active,
+    .track-card:active {
+      transform: scale(0.96) !important;
+      transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    }
+    
+    /* Faster scatter for less waiting on mobile */
+    .anim-stagger > .anim:nth-child(1) { transition-delay: 0s !important; }
+    .anim-stagger > .anim:nth-child(2) { transition-delay: 0.05s !important; }
+    .anim-stagger > .anim:nth-child(3) { transition-delay: 0.1s !important; }
+    .anim-stagger > .anim:nth-child(4) { transition-delay: 0.15s !important; }
+    .anim-stagger > .anim:nth-child(5) { transition-delay: 0.2s !important; }
+    .anim-stagger > .anim:nth-child(6) { transition-delay: 0.25s !important; }
+
+    /* ── Gallery Teaser / Slider ── */
+    .before-after-container {
+      margin: 40px -20px 0;
+      border-radius: 0;
+      max-width: none;
+      width: calc(100% + 40px);
+    }
+    
+    .ba-slider {
+      aspect-ratio: 1/1;
+    }
+
     .faq-grid {
       grid-template-columns: 1fr;
       gap: 24px;

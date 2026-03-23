@@ -56,6 +56,15 @@ function toggleFaq(btn) {
   function initSketchPad() {
     canvas = document.getElementById('sketch-canvas');
     if (!canvas) return;
+
+    // Load Weekly Prompt
+    if (typeof SKETCH_PROMPTS !== 'undefined' && SKETCH_PROMPTS.length > 0) {
+      const weekIndex = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+      const currentPromptText = SKETCH_PROMPTS[weekIndex % SKETCH_PROMPTS.length];
+      const promptEl = document.getElementById('weekly-prompt-text');
+      if (promptEl) promptEl.textContent = currentPromptText;
+    }
+
     ctx = canvas.getContext('2d');
 
     // Set canvas resolution properly

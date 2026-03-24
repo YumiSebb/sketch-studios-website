@@ -478,6 +478,13 @@
     max-width: 100%;
   }
 
+  .hero-h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+  }
+
   .hero-script {
     font-family: var(--script);
     font-size: clamp(48px, 14vw, 56px);

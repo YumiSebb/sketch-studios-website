@@ -1,6 +1,34 @@
+const ROBOTS_TXT = `User-agent: *
+Allow: /
+Disallow: /sketch
+Disallow: /api/
+
+Sitemap: https://sketchstudios.art/sitemap.xml
+`;
+
+const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sketchstudios.art/</loc><priority>1.0</priority></url>
+  <url><loc>https://sketchstudios.art/tracks</loc><priority>0.9</priority></url>
+  <url><loc>https://sketchstudios.art/booking</loc><priority>0.9</priority></url>
+  <url><loc>https://sketchstudios.art/about</loc><priority>0.8</priority></url>
+  <url><loc>https://sketchstudios.art/gallery</loc><priority>0.7</priority></url>
+</urlset>
+`;
+
+const SPA_ROUTES = ['/', '/about', '/tracks', '/gallery', '/booking', '/sketch'];
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+
+    // Serve robots.txt and sitemap.xml
+    if (url.pathname === '/robots.txt') {
+      return new Response(ROBOTS_TXT, { headers: { 'Content-Type': 'text/plain' } });
+    }
+    if (url.pathname === '/sitemap.xml') {
+      return new Response(SITEMAP_XML, { headers: { 'Content-Type': 'application/xml' } });
+    }
 
     if (url.pathname === '/api/sketches') {
       const corsHeaders = {
@@ -60,7 +88,17 @@ export default {
       }
     }
 
-    // Serve static assets natively for all other routes
-    return env.ASSETS.fetch(request);
+    // Try static asset first
+    const assetResp = await env.ASSETS.fetch(request);
+    if (assetResp.status !== 404) {
+      return assetResp;
+    }
+
+    // SPA fallback — serve index.html for known routes
+    if (SPA_ROUTES.includes(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL('/', request.url), request));
+    }
+
+    return new Response('Not Found', { status: 404 });
   }
 };

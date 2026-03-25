@@ -193,7 +193,7 @@ function toggleFaq(btn) {
     });
 
     // Load gallery
-    loadGallery();
+    loadSketchGallery();
 
     // Custom brush cursor logic
     const globalCursor = document.getElementById('custom-cursor');
@@ -261,13 +261,13 @@ function toggleFaq(btn) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newSketch)
       });
-      loadGallery();
+      loadSketchGallery();
     } catch (e) {
       console.error('Failed to save sketch to server', e);
     }
   };
 
-  async function loadGallery() {
+  async function loadSketchGallery() {
     const container = document.getElementById('sketch-gallery');
     const empty = document.getElementById('gallery-empty');
     if (!container) return;
@@ -287,11 +287,26 @@ function toggleFaq(btn) {
         filtered.forEach(item => {
           const el = document.createElement('div');
           el.className = 'sketch-gallery-item anim visible';
-          el.innerHTML = '<img src="' + item.image + '" alt="Community sketch by ' + item.name + '">' +
-            '<div class="sketch-gallery-meta">' +
-            '<span class="sketch-gallery-name">' + item.name + '</span>' +
-            '<span class="sketch-gallery-date">' + item.dateDisplay + '</span>' +
-            '</div>';
+
+          const img = document.createElement('img');
+          img.src = item.image;
+          img.alt = 'Community sketch by ' + item.name;
+          el.appendChild(img);
+
+          const meta = document.createElement('div');
+          meta.className = 'sketch-gallery-meta';
+
+          const nameSpan = document.createElement('span');
+          nameSpan.className = 'sketch-gallery-name';
+          nameSpan.textContent = item.name;
+          meta.appendChild(nameSpan);
+
+          const dateSpan = document.createElement('span');
+          dateSpan.className = 'sketch-gallery-date';
+          dateSpan.textContent = item.dateDisplay;
+          meta.appendChild(dateSpan);
+
+          el.appendChild(meta);
           container.insertBefore(el, empty);
         });
       }
@@ -342,7 +357,7 @@ function initAnimations() {
     { sel: '.cta-banner',           cls: '' },
     // About page
     { sel: '.about-hero > div:first-child', cls: 'from-left' },
-    { sel: '.about-photo-placeholder',      cls: 'from-right' },
+    { sel: '.about-photo-real',              cls: 'from-right' },
     { sel: '.value-card',           cls: '' },
     // Tracks page
     { sel: '.tracks-hero',          cls: '' },
@@ -353,7 +368,7 @@ function initAnimations() {
     { sel: '.gallery-item',         cls: 'from-scale' },
     // Booking page
     { sel: '.booking-hero > div:first-child', cls: 'from-left' },
-    { sel: '.booking-form',         cls: 'from-right' },
+    { sel: '.booking-hero > div:nth-child(2)', cls: 'from-right' },
     { sel: '.booking-locations .section-header', cls: '' },
     { sel: '.location-pill',        cls: '' },
     { sel: '.booking-faq .section-header', cls: '' },

@@ -1,102 +1,3 @@
-// ── SEO: Per-page metadata for History API routing ──────
-const PAGE_META = {
-  home:    { path: '/',        title: '.Sketch Studios \u2014 Art Lessons for Kids, Teens & Adults in Brooklyn', desc: 'Private & group drawing and painting lessons for kids, teens, and adults in Brooklyn and on Zoom. Personalized art instruction across three tracks. Book a trial lesson.' },
-  about:   { path: '/about',   title: 'About Milky \u2014 Art Teacher & Founder | .Sketch Studios', desc: 'Meet Milky, Brooklyn-based art teacher and founder of .Sketch Studios. Personalized drawing and painting lessons for every age and level.' },
-  tracks:  { path: '/tracks',  title: 'Art Lesson Tracks \u2014 Drawing & Painting Programs | .Sketch Studios', desc: 'Three art tracks: Core Technique for structured skill-building, Intuitive Flow for creative expression, and Advanced Mastery for oil painting, watercolor & portraits.' },
-  gallery: { path: '/gallery', title: 'Student & Teacher Art Gallery | .Sketch Studios', desc: 'Browse artwork from .Sketch Studios students and teacher Milky. Portraits, charcoal, watercolor, mixed media and more from Brooklyn art lessons.' },
-  booking: { path: '/booking', title: 'Book Art Lessons in Brooklyn or on Zoom | .Sketch Studios', desc: 'Book a trial art lesson with Milky. Private or group, in Brooklyn or on Zoom. Drawing and painting for kids, teens, and adults. Call 929.884.9382.' },
-  sketch:  { path: '/sketch',  title: 'Community Sketch Pad | .Sketch Studios', desc: 'Draw and share on the .Sketch Studios community canvas. Weekly prompts and a live sketch gallery.' }
-};
-
-function showPage(name, opts) {
-  const doPush = opts && opts.pushState === false ? false : true;
-
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  const navEl = document.getElementById('nav-' + name);
-  if (navEl) navEl.classList.add('active');
-
-  const nav = document.querySelector('nav');
-  if (nav) {
-    if (name !== 'home') {
-      nav.classList.remove('nav-hidden');
-    } else {
-      nav.classList.add('nav-hidden');
-    }
-  }
-
-  // Update document title and meta tags for SEO
-  const meta = PAGE_META[name];
-  if (meta) {
-    document.title = meta.title;
-    const descTag = document.querySelector('meta[name="description"]');
-    if (descTag) descTag.setAttribute('content', meta.desc);
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', 'https://sketchstudios.art' + meta.path);
-    const ogUrl = document.querySelector('meta[property="og\\:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', 'https://sketchstudios.art' + meta.path);
-    const ogTitle = document.querySelector('meta[property="og\\:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', meta.title);
-    const ogDesc = document.querySelector('meta[property="og\\:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', meta.desc);
-    const twTitle = document.querySelector('meta[name="twitter\\:title"]');
-    if (twTitle) twTitle.setAttribute('content', meta.title);
-    const twDesc = document.querySelector('meta[name="twitter\\:description"]');
-    if (twDesc) twDesc.setAttribute('content', meta.desc);
-
-    if (doPush) {
-      history.pushState({ page: name }, '', meta.path);
-    }
-  }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (name === 'gallery') loadGallery();
-  if (name === 'sketch') {
-    // Trigger a resize event to ensure canvas initializes with correct width
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 10);
-  }
-}
-
-// Handle browser back/forward
-window.addEventListener('popstate', (e) => {
-  const page = e.state?.page || 'home';
-  showPage(page, { pushState: false });
-});
-
-// Resolve initial route from URL on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const path = window.location.pathname;
-  const entry = Object.entries(PAGE_META).find(([, v]) => v.path === path);
-  const initialPage = entry ? entry[0] : 'home';
-  showPage(initialPage, { pushState: false });
-  history.replaceState({ page: initialPage }, '', PAGE_META[initialPage].path);
-});
-
-// ── Delegated SPA link handler ──────────────────────────
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[href]');
-  if (!link) return;
-  const href = link.getAttribute('href');
-  const pageEntry = Object.entries(PAGE_META).find(([, v]) => v.path === href);
-  if (pageEntry) {
-    e.preventDefault();
-    showPage(pageEntry[0]);
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
-    const hamburger = document.getElementById('hamburger');
-    if (mobileMenu && mobileMenu.classList.contains('open')) {
-      mobileMenu.classList.remove('open');
-      if (hamburger) hamburger.classList.remove('open');
-    }
-    // Close overlay if open
-    const overlay = document.getElementById('menu-overlay');
-    if (overlay && overlay.classList.contains('open')) {
-      overlay.classList.remove('open');
-    }
-  }
-});
-
 function toggleMenu() {
   const btn  = document.getElementById('hamburger');
   const menu = document.getElementById('mobile-menu');
@@ -495,31 +396,6 @@ function initAnimations() {
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 }
 
-// Re-trigger animations when switching pages
-const origShowPage = showPage;
-showPage = function(name) {
-  origShowPage(name);
-  // Small delay so new page is visible before observing
-  setTimeout(() => {
-    const page = document.getElementById('page-' + name);
-    page.querySelectorAll('.anim').forEach(el => {
-      el.classList.remove('visible');
-    });
-    // Re-observe after brief reset
-    setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      page.querySelectorAll('.anim').forEach(el => observer.observe(el));
-    }, 50);
-  }, 100);
-};
-
 // Init on DOM ready
 document.addEventListener('DOMContentLoaded', initAnimations);
 
@@ -534,7 +410,7 @@ let activeGalleryTab = 'students';
 
 async function fetchGalleryData() {
   if (!galleryData) {
-    const res = await fetch('gallery-data.json');
+    const res = await fetch('/gallery-data.json');
     galleryData = await res.json();
   }
   return galleryData;
@@ -595,6 +471,11 @@ async function loadGalleryTeaser() {
 }
 
 document.addEventListener('DOMContentLoaded', loadGalleryTeaser);
+
+// Auto-load gallery on gallery page
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('gallery-grid')) loadGallery();
+});
 
 // ── Testimonials carousel ───────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -746,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const splashObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       // Only toggle nav when home page is active
-      if (!document.getElementById('page-home').classList.contains('active')) return;
+      if (!document.getElementById('page-home')) return;
       if (entry.isIntersecting) {
         nav.classList.add('nav-hidden');
       } else {
@@ -765,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ticking = false;
         // Only run when home page is active and entrance is done
         if (!entranceDone) return;
-        if (!document.getElementById('page-home').classList.contains('active')) return;
+        if (!document.getElementById('page-home')) return;
 
         const scrollY = window.scrollY;
         const splashH = splash.offsetHeight;

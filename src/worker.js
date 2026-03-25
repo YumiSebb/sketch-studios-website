@@ -16,8 +16,6 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>
 `;
 
-const SPA_ROUTES = ['/', '/about', '/tracks', '/gallery', '/booking', '/sketch'];
-
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -88,17 +86,7 @@ export default {
       }
     }
 
-    // Try static asset first
-    const assetResp = await env.ASSETS.fetch(request);
-    if (assetResp.status !== 404) {
-      return assetResp;
-    }
-
-    // SPA fallback — serve index.html for known routes
-    if (SPA_ROUTES.includes(url.pathname)) {
-      return env.ASSETS.fetch(new Request(new URL('/', request.url), request));
-    }
-
-    return new Response('Not Found', { status: 404 });
+    // Serve static assets
+    return env.ASSETS.fetch(request);
   }
 };

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Sketch Pad | .Sketch Studios</title>
+<meta name="description" content="Draw and share on the .Sketch Studios community canvas. Weekly prompts and a live sketch gallery.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://sketchstudios.art/sketch">
+<meta property="og:title" content="Community Sketch Pad | .Sketch Studios">
+<meta property="og:description" content="Draw and share on the .Sketch Studios community canvas. Weekly prompts and a live sketch gallery.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sketchstudios.art/sketch">
+<meta property="og:image" content="https://sketchstudios.art/gallery/slider-after.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community Sketch Pad | .Sketch Studios">
+<meta name="twitter:description" content="Draw and share on the .Sketch Studios community canvas.">
+<meta name="twitter:image" content="https://sketchstudios.art/gallery/slider-after.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>.</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/lucide.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://sketchstudios.art/#business",
+  "name": ".Sketch Studios",
+  "description": "Customized drawing and painting lessons for kids, teens, and adults. Private and group art instruction in Brooklyn, NY and live on Zoom.",
+  "url": "https://sketchstudios.art",
+  "telephone": "+19298849382",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brooklyn",
+    "addressRegion": "NY",
+    "addressCountry": "US"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": ".Sketch Studios",
+  "url": "https://sketchstudios.art"
+}
+</script>
+</head>
+<body>
+
+<div class="paper-texture"></div>
+<div class="custom-cursor" id="custom-cursor"></div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav>
+  <a class="logo" href="/">· Sketch Studios</a>
+  <ul class="nav-links">
+    <li><a href="/" id="nav-home">Home</a></li>
+    <li><a href="/about" id="nav-about">About</a></li>
+    <li><a href="/tracks" id="nav-tracks">The Tracks</a></li>
+    <li><a href="/gallery" id="nav-gallery">Gallery</a></li>
+    <li><a href="/sketch" class="active" id="nav-sketch">Sketch Pad</a></li>
+    <li><a href="/booking" class="nav-cta" id="nav-booking">Book a Lesson</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/tracks">The Tracks</a>
+  <a href="/gallery">Gallery</a>
+  <a href="/sketch">Sketch Pad</a>
+  <a class="mobile-cta" href="/booking">Book a Lesson</a>
+</div>
+
+<div class="menu-overlay" id="menu-overlay">
+  <button class="overlay-close" onclick="closeOverlay()">CLOSE</button>
+  <div class="overlay-nav">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/tracks">The Tracks</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/sketch">Sketch Pad</a>
+    <a href="/booking">Book a Lesson</a>
+  </div>
+</div>
+
+<div class="page" id="page-sketch">
+  <section class="sketch-hero" id="main-content">
+    <div class="section-header">
+      <div class="label">Community Canvas</div>
+      <h1 class="section-title">The <span class="script">Sketch Pad.</span></h1>
+      <div class="weekly-prompt-box">
+        <div class="weekly-prompt-label">This Week's Theme</div>
+        <div class="weekly-prompt-text" id="weekly-prompt-text">Loading prompt...</div>
+      </div>
+      <p class="section-body">Draw something. Save it. See what everyone else is making this week.</p>
+    </div>
+  </section>
+
+  <!-- Drawing Canvas -->
+  <section class="sketch-canvas-section">
+    <div class="canvas-wrapper">
+      <div class="sketch-toolbar">
+        <div class="tool-group">
+          <label class="tool-label">Brush</label>
+          <input type="range" id="brush-size" min="1" max="50" value="4" class="brush-slider">
+          <span id="brush-size-display" class="brush-display">4px</span>
+        </div>
+        <div class="tool-group">
+          <div class="color-swatches" id="color-swatches">
+            <button class="swatch active" data-color="#3D2623" style="background:#3D2623" title="Charcoal"></button>
+            <button class="swatch" data-color="#8B1F1F" style="background:#8B1F1F" title="Studio Red"></button>
+            <button class="swatch" data-color="#3D1206" style="background:#3D1206" title="Deep Studio"></button>
+            <button class="swatch" data-color="#E2AAAA" style="background:#E2AAAA" title="Blush Rose"></button>
+            <button class="swatch" data-color="#C9A055" style="background:#C9A055" title="Gold"></button>
+            <button class="swatch" data-color="#5a3a2a" style="background:#5a3a2a" title="Brown"></button>
+            <button class="swatch" data-color="#2d5a3a" style="background:#2d5a3a" title="Forest"></button>
+            <button class="swatch" data-color="#3a4a7a" style="background:#3a4a7a" title="Navy"></button>
+            <button class="swatch" data-color="#FAF0EC" style="background:#FAF0EC;border:1.5px solid #ddc8c0" title="Eraser"></button>
+          </div>
+        </div>
+        <div class="tool-group tool-actions">
+          <button class="tool-btn" id="btn-undo" title="Undo"><i data-lucide="undo-2" style="width:16px;height:16px;stroke-width:2;"></i></button>
+          <button class="tool-btn" id="btn-clear" title="Clear Canvas"><i data-lucide="trash-2" style="width:16px;height:16px;stroke-width:2;"></i></button>
+          <button class="tool-btn tool-btn-primary" id="btn-save" title="Save to Gallery">Save</button>
+        </div>
+      </div>
+
+      <canvas id="sketch-canvas" width="1200" height="600"></canvas>
+      <div class="canvas-placeholder" id="canvas-placeholder">
+        <i data-lucide="pencil-line" style="width:48px;height:48px;stroke-width:1.75;margin-bottom:12px;color:var(--red);"></i>
+        <span style="font-size:16px;color:#7a5040;font-weight:500;">Start drawing here</span>
+        <span style="font-size:13px;color:#a08070;">Use your mouse, trackpad, or finger on mobile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Gallery -->
+  <section class="community-gallery">
+    <div class="section-header">
+      <div class="label">This Week's Creations</div>
+      <h2 class="section-title">What everyone's <span class="script">making.</span></h2>
+      <p class="section-body">Every sketch saved to the gallery lives here. New week, new canvas, new art.</p>
+    </div>
+
+    <div class="sketch-gallery-grid" id="sketch-gallery">
+      <!-- Drawings are inserted here by JS -->
+      <div class="gallery-empty" id="gallery-empty">
+        <i data-lucide="image" style="width:36px;height:36px;stroke-width:1.75;margin-bottom:8px;color:var(--red);"></i>
+        <p>No sketches saved yet this week.</p>
+        <p style="font-size:13px;color:#a08070;">Be the first to draw something!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">· Sketch Studios</div>
+      <div class="footer-tagline">Two ways to create art. One place to start.</div>
+    </div>
+    <div class="footer-contact">
+      <div><i data-lucide="phone" style="width:14px;height:14px;stroke-width:2;vertical-align:-2px;margin-right:4px;"></i> <a href="tel:9298849382">929.884.9382</a></div>
+      <div>Brooklyn, New York · Zoom Lessons</div>
+      <div>Kids · Teens · Adults · All levels welcome</div>
+    </div>
+  </footer>
+  <div class="footer-legal-bar">
+    <p class="footer-legal">© 2026 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
+</div>
+
+<!-- Save Sketch Modal -->
+<div class="save-modal-overlay" id="save-modal">
+  <div class="save-modal">
+    <h3>Save Your Sketch</h3>
+    <p>Add your name and it'll appear in the community gallery.</p>
+    <input type="text" id="artist-name" placeholder="Your name (or stay anonymous)">
+    <div class="save-modal-buttons">
+      <button class="save-modal-cancel" onclick="closeSaveModal()">Cancel</button>
+      <button class="save-modal-confirm" onclick="confirmSave()">Save to Gallery</button>
+    </div>
+  </div>
+</div>
+
+<script src="/prompts.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>

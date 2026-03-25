@@ -353,12 +353,8 @@
 
   /* ── PAGES ────────────────────────────────────── */
   .page {
-    display: none;
-    padding-top: 76px;
-  }
-
-  .page.active {
     display: block;
+    padding-top: 76px;
   }
 
   /* Nav hidden when splash is in view */
@@ -3589,10 +3585,6 @@
     transform: scale(1.1);
   }
 
-  /* ── Smooth page show with slide ── */
-  .page.active {
-    animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
 
   /* ── Respect reduced motion ── */
   @media (prefers-reduced-motion: reduce) {

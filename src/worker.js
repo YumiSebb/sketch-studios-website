@@ -11,6 +11,7 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <url><loc>https://sketchstudios.art/</loc><priority>1.0</priority></url>
   <url><loc>https://sketchstudios.art/tracks</loc><priority>0.9</priority></url>
   <url><loc>https://sketchstudios.art/booking</loc><priority>0.9</priority></url>
+  <url><loc>https://sketchstudios.art/store</loc><priority>0.9</priority></url>
   <url><loc>https://sketchstudios.art/about</loc><priority>0.8</priority></url>
   <url><loc>https://sketchstudios.art/gallery</loc><priority>0.7</priority></url>
 </urlset>

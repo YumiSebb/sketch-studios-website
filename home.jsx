@@ -31,9 +31,9 @@ function BeforeAfterSlider() {
   return (
     <section className="ba-section anim">
       <div className="ba-slider" ref={sliderRef}>
-        <img src="../assets/slider-after.png" alt="Student work after 8 weeks" />
+        <img src="/gallery/slider-after.png" alt="Student work after 8 weeks" />
         <div className="ba-before" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-          <img src="../assets/slider-before.png" alt="Student work at week 1" />
+          <img src="/gallery/slider-before.png" alt="Student work at week 1" />
         </div>
         <span className="ba-label left">Week 1</span>
         <span className="ba-label right">Week 8</span>
@@ -56,9 +56,9 @@ function BeforeAfterSlider() {
 
 function Testimonials() {
   const testimonials = [
-    { quote: "My daughter went from stick figures to actual portraits in two months. She literally runs to the door when Milky arrives.", name: "Sarah M.", role: "Parent of a 9-year-old student", img: "../assets/test-sarah.png" },
-    { quote: "I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait.", name: "David R.", role: "Adult beginner, age 47", img: "../assets/test-david.png" },
-    { quote: "The Intuitive Flow track is my therapy. No pressure, no grades, just paint and whatever comes out. I look forward to it all week.", name: "Ava T.", role: "Intuitive Flow student", img: "../assets/test-ava.png" },
+    { quote: "My daughter went from stick figures to actual portraits in two months. She literally runs to the door when Milky arrives.", name: "Sarah M.", role: "Parent of a 9-year-old student", img: "/gallery/test-sarah.png" },
+    { quote: "I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait.", name: "David R.", role: "Adult beginner, age 47", img: "/gallery/test-david.png" },
+    { quote: "The Intuitive Flow track is my therapy. No pressure, no grades, just paint and whatever comes out. I look forward to it all week.", name: "Ava T.", role: "Intuitive Flow student", img: "/gallery/test-ava.png" },
   ];
   const [current, setCurrent] = React.useState(0);
 

@@ -10,7 +10,7 @@ function AboutPage() {
             <h1 className="about-headline anim">Hi, I'm</h1>
             <span className="about-script anim">Milky.</span>
             <div className="about-body">
-              <p className="anim">I'm a Brooklyn-based art teacher and the founder of .Sketch Studios. I teach drawing and painting to kids, teens, and adults — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.</p>
+              <p className="anim">I'm a Brooklyn-based art teacher and the founder of .Milky Studio Co. I teach drawing and painting to kids, teens, and adults — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.</p>
               <p className="anim">My approach is simple: every student is different, so every lesson should be too. I build personalized curricula, I give homework (yes, homework, because that's how you actually improve), and I make sure every session is something you actually look forward to.</p>
               <p className="anim">I teach in your home, at my studio, or on Zoom — wherever works best for you.</p>
             </div>
@@ -18,7 +18,7 @@ function AboutPage() {
           </div>
           <div className="anim">
             <div className="about-photo">
-              <img src="https://picsum.photos/seed/milkyart/600/750" alt="Milky, founder of .Sketch Studios" />
+              <img src="https://picsum.photos/seed/milkyart/600/750" alt="Milky, founder of .Milky Studio Co" />
             </div>
           </div>
         </div>

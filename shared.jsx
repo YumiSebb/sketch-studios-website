@@ -34,7 +34,7 @@ function SiteNav({ activePage }) {
     <>
       <nav className={navClass}>
         <div className="nav-inner">
-          <a className="nav-logo" href="/">· Sketch Studios</a>
+          <a className="nav-logo" href="/">· Milky Studio Co</a>
           <ul className="nav-links">
             {pages.map(p => (
               <li key={p.id}><a href={p.href} className={activePage === p.id ? 'active' : ''}>{p.label}</a></li>
@@ -106,7 +106,7 @@ function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-top">
         <div>
-          <div className="footer-logo">· Sketch Studios</div>
+          <div className="footer-logo">· Milky Studio Co</div>
           <div className="footer-tagline">Three tracks. One place to start.</div>
         </div>
         <div className="footer-contact">
@@ -116,7 +116,7 @@ function SiteFooter() {
         </div>
       </div>
       <div className="footer-legal">
-        © 2026 .Sketch Studios &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a>
+        © 2026 .Milky Studio Co &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a>
       </div>
     </footer>
   );

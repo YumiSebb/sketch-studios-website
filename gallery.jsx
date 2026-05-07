@@ -80,9 +80,9 @@ function GalleryPage() {
       {/* Header */}
       <section className="ig-header">
         <div className="ig-profile">
-          <div className="ig-avatar">·S</div>
+          <div className="ig-avatar">·M</div>
           <div>
-            <h1 className="ig-username">sketch.studios</h1>
+            <h1 className="ig-username">milky.art.studio</h1>
             <p className="ig-bio">Art lessons for kids, teens & adults · Brooklyn & Zoom</p>
           </div>
         </div>

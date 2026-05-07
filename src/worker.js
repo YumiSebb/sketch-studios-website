@@ -3,23 +3,29 @@ Allow: /
 Disallow: /sketch
 Disallow: /api/
 
-Sitemap: https://sketchstudios.art/sitemap.xml
+Sitemap: https://milkyartstudio.com/sitemap.xml
 `;
 
 const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sketchstudios.art/</loc><priority>1.0</priority></url>
-  <url><loc>https://sketchstudios.art/tracks</loc><priority>0.9</priority></url>
-  <url><loc>https://sketchstudios.art/booking</loc><priority>0.9</priority></url>
-  <url><loc>https://sketchstudios.art/store</loc><priority>0.9</priority></url>
-  <url><loc>https://sketchstudios.art/about</loc><priority>0.8</priority></url>
-  <url><loc>https://sketchstudios.art/gallery</loc><priority>0.7</priority></url>
+  <url><loc>https://milkyartstudio.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://milkyartstudio.com/tracks</loc><priority>0.9</priority></url>
+  <url><loc>https://milkyartstudio.com/booking</loc><priority>0.9</priority></url>
+  <url><loc>https://milkyartstudio.com/store</loc><priority>0.9</priority></url>
+  <url><loc>https://milkyartstudio.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://milkyartstudio.com/gallery</loc><priority>0.7</priority></url>
 </urlset>
 `;
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+
+    // 301 redirect old domain -> new primary domain (preserves SEO)
+    if (url.hostname === 'sketchstudios.art' || url.hostname === 'www.sketchstudios.art') {
+      const target = 'https://milkyartstudio.com' + url.pathname + url.search;
+      return Response.redirect(target, 301);
+    }
 
     // Serve robots.txt and sitemap.xml
     if (url.pathname === '/robots.txt') {

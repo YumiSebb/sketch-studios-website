@@ -72,12 +72,15 @@ for (const { path, comp, activePage } of PAGES) {
     continue;
   }
 
-  // Embed the rendered HTML into the index.html
+  // Embed the rendered HTML into the index.html.
+  // Match from <div id="root"> through the closing </div> that sits immediately
+  // before the shared.jsx <script> tag — the lazy quantifier resolves correctly
+  // because only the outermost </div> is followed by the shared.jsx script tag.
   const fullPath = join(ROOT, path);
   let pageHtml = readFileSync(fullPath, 'utf-8');
   pageHtml = pageHtml.replace(
-    /<div id="root"><\/div>/,
-    `<div id="root">${html}</div>`
+    /<div id="root">[\s\S]*?<\/div>(\s*<script type="text\/babel" src="\/shared\.jsx">)/,
+    `<div id="root">${html}</div>$1`
   );
   // Switch createRoot().render() to hydrateRoot() so React doesn't blow away the SSR output
   pageHtml = pageHtml.replace(

@@ -93,12 +93,12 @@ function HomePage() {
     <div className="page">
       {/* Hero */}
       <section className="hero">
-        <div className="hero-overline">Art lessons · Brooklyn & Zoom</div>
-        <h1 className="anim">Personalized<br/>drawing &<br/>painting.</h1>
-        <p className="hero-desc anim">Private and group lessons for kids, teens, and adults. Three tracks. One teacher who actually cares.</p>
+        <div className="hero-overline">Art lessons · Paint nights · Commissions</div>
+        <h1 className="anim">Learn. <span className="script">Paint.</span> Commission.</h1>
+        <p className="hero-desc anim">Private lessons that build real skills. Group events that bring people together. Custom commissions, exactly as you want them.</p>
         <div className="hero-btns anim">
-          <a href="/booking/" className="btn btn-solid">Book a lesson</a>
-          <a href="/tracks/" className="btn btn-ghost">See the tracks</a>
+          <a href="/booking/" className="btn btn-solid">Book a lesson or event</a>
+          <a href="/store/" className="btn btn-ghost">Start a commission</a>
         </div>
       </section>
 

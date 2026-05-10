@@ -1,72 +1,142 @@
-/* Tracks page */
+/* Tracks page — Tab Switcher direction (B) */
+
+const TRACKS = [
+  {
+    id: 'core',
+    n: '01',
+    label: 'Track One',
+    short: 'Core',
+    title: 'Core Technique',
+    pitch: 'For students who want to actually learn to draw and paint — not just dabble.',
+    long: 'Structured, personalized instruction that builds real, measurable skills. Homework between sessions. Results in weeks, not years.',
+    bestFor: 'Skill builders',
+    structure: 'Structured, progressive',
+    materials: 'Pencil, charcoal, paint',
+    homework: 'Yes',
+    tone: 'dark',
+    img: 'https://picsum.photos/seed/track-core-prod/800/500',
+  },
+  {
+    id: 'flow',
+    n: '02',
+    label: 'Track Two',
+    short: 'Flow',
+    title: 'Intuitive Flow',
+    pitch: 'For students who want art as a creative outlet — a mindful, pressure-free practice.',
+    long: "Mixed media exploration with no grades, no pressure. Express what words can't. Art as practice, not performance.",
+    bestFor: 'Creative expression',
+    structure: 'Open, exploratory',
+    materials: 'Mixed media, collage',
+    homework: 'Optional',
+    tone: 'light',
+    img: 'https://picsum.photos/seed/track-flow-prod/800/500',
+  },
+  {
+    id: 'master',
+    n: '03',
+    label: 'Track Three',
+    short: 'Mastery',
+    title: 'Advanced Mastery',
+    pitch: 'Go deeper with oil painting, watercolor, and hyper-realistic portrait drawing.',
+    long: 'For students who have built a foundation and are ready to push further into advanced techniques and longer-form projects.',
+    bestFor: 'Pushing further',
+    structure: 'Advanced projects',
+    materials: 'Oil, watercolor, charcoal',
+    homework: 'Yes',
+    tone: 'red',
+    img: 'https://picsum.photos/seed/track-master-prod/800/500',
+  },
+];
+
 function TracksPage() {
   useScrollAnim();
+  const [active, setActive] = React.useState(0);
+  const t = TRACKS[active];
+
+  // Read ?track=core|flow|master from URL on mount
+  React.useEffect(() => {
+    const url = new URL(window.location.href);
+    const q = url.searchParams.get('track');
+    if (!q) return;
+    const idx = TRACKS.findIndex(tt => tt.id === q);
+    if (idx >= 0) setActive(idx);
+  }, []);
+
   return (
-    <div className="page">
-      <section className="tracks-hero-page anim">
+    <div className="page tracks-page-b">
+      <section className="tracks-hero-b anim">
         <div className="label" style={{justifyContent:'center'}}>Three tracks</div>
-        <h1 className="section-title" style={{fontSize:'clamp(32px,6vw,52px)'}}>Choose your path.</h1>
-        <p className="body-text" style={{maxWidth:480,margin:'0 auto'}}>Not sure which track is right for you? Start with one and switch, or try a bit of both. Milky will help you figure it out.</p>
+        <h1 className="tracks-h1-b">Choose your <span className="script">path.</span></h1>
+        <p className="tracks-sub-b">Tap a track below to learn more — or scroll to the bottom and let Milky help you choose.</p>
       </section>
 
-      <div className="track-detail">
-        <div className="track-panel dark anim">
-          <div className="track-panel-number" style={{color:'white'}}>1</div>
-          <div className="track-panel-label">Track One</div>
-          <h2 className="track-panel-title">Core Technique</h2>
-          <p className="track-panel-body">For students who want to actually learn to draw and paint — not just dabble. This track builds real, measurable skills through structured, personalized instruction.</p>
-          <ul className="track-bullet-list">
-            {['Real skills, real progress','Strong fundamentals','Personalized curriculum','Homework between sessions','Results in weeks, not years'].map((b,i) => (
-              <li key={i}><div className="bullet-marker" style={{background:'#E2AAAA'}}></div>{b}</li>
+      <div className="tracks-tabs-wrap">
+        <div className="tracks-tabs-inner">
+          <div className="tracks-tabs">
+            {TRACKS.map((tt, i) => (
+              <button
+                key={tt.id}
+                onClick={() => setActive(i)}
+                className={`tracks-tab${active === i ? ' active' : ''}`}
+              >
+                {tt.n}
+              </button>
             ))}
-          </ul>
-          <a href="/booking/" className="btn btn-ghost" style={{borderColor:'rgba(255,255,255,0.2)',color:'white'}}>Start the Core Track →</a>
-        </div>
-        <div className="track-panel light anim">
-          <div className="track-panel-number" style={{color:'var(--red)'}}>2</div>
-          <div className="track-panel-label">Track Two</div>
-          <h2 className="track-panel-title">Intuitive Flow</h2>
-          <p className="track-panel-body">For students who want art as a creative outlet, a mindful practice, or a way to express what words can't. No pressure. No grades.</p>
-          <ul className="track-bullet-list">
-            {['Mixed media exploration','Express your emotions','Mindful, pressure-free','Art as practice, not performance','Exploration and joy'].map((b,i) => (
-              <li key={i}><div className="bullet-marker" style={{background:'var(--red)'}}></div>{b}</li>
+          </div>
+          <div className="tracks-tab-labels">
+            {TRACKS.map((tt, i) => (
+              <div key={tt.id} className={`tracks-tab-label${active === i ? ' active' : ''}`}>
+                {tt.short}
+              </div>
             ))}
-          </ul>
-          <a href="/booking/" className="btn btn-red">Start the Flow Track →</a>
+          </div>
         </div>
       </div>
 
-      <div className="track-detail" style={{gridTemplateColumns:'1fr'}}>
-        <div className="track-panel anim" style={{textAlign:'center',maxWidth:'100%',background:'#8B1F1F',color:'white'}}>
-          <div className="track-panel-number" style={{color:'rgba(255,255,255,0.08)',right:'50%',transform:'translateX(50%)'}}>3</div>
-          <div className="track-panel-label">Track Three</div>
-          <h2 className="track-panel-title">Advanced Mastery</h2>
-          <p className="track-panel-body" style={{margin:'0 auto 24px',maxWidth:480}}>Go deeper with oil painting, watercolor, and hyper-realistic portrait drawing. For students who have built a foundation and are ready to push further.</p>
-          <a href="/booking/" className="btn btn-ghost" style={{borderColor:'rgba(255,255,255,0.2)',color:'white'}}>Start Advanced Track →</a>
-        </div>
-      </div>
+      <section key={t.id} className={`track-detail-b tone-${t.tone}`}>
+        <div className="track-detail-inner">
+          <div className="track-detail-eyebrow">{t.label}</div>
+          <h2 className="track-detail-title">{t.title}</h2>
+          <p className="track-detail-pitch">{t.pitch}</p>
 
-      <section className="compare-section anim">
-        <div className="label">Side by side</div>
-        <h2 className="section-title">Which track is <span className="script">right for you?</span></h2>
-        <div style={{overflowX:'auto'}}>
-          <table className="compare-table">
-            <thead><tr><th></th><th>Core Technique</th><th>Intuitive Flow</th><th>Advanced Mastery</th></tr></thead>
-            <tbody>
-              <tr><td>Best for</td><td>Building real skills</td><td>Creative expression</td><td>Pushing further</td></tr>
-              <tr><td>Structure</td><td>Structured, progressive</td><td>Open, exploratory</td><td>Advanced projects</td></tr>
-              <tr><td>Materials</td><td>Pencil, charcoal, paint</td><td>Mixed media, collage</td><td>Oil, watercolor, charcoal</td></tr>
-              <tr><td>Homework</td><td>Yes</td><td>Optional</td><td>Yes</td></tr>
-            </tbody>
-          </table>
+          <div className="track-detail-img">
+            <img src={t.img} alt={t.title} />
+          </div>
+
+          <p className="track-detail-long">{t.long}</p>
+
+          <div className="track-spec-grid">
+            <div className="track-spec">
+              <div className="track-spec-k">Best for</div>
+              <div className="track-spec-v">{t.bestFor}</div>
+            </div>
+            <div className="track-spec">
+              <div className="track-spec-k">Structure</div>
+              <div className="track-spec-v">{t.structure}</div>
+            </div>
+            <div className="track-spec">
+              <div className="track-spec-k">Materials</div>
+              <div className="track-spec-v">{t.materials}</div>
+            </div>
+            <div className="track-spec">
+              <div className="track-spec-k">Homework</div>
+              <div className="track-spec-v">{t.homework}</div>
+            </div>
+          </div>
+
+          <a href="/booking/" className="track-detail-cta">Start {t.title} →</a>
         </div>
       </section>
 
-      <CtaBanner
-        eyebrow="Not sure which track?"
-        title='Book a lesson and<br/><span class="script">Milky will help you decide.</span>'
-        subtitle="One lesson is all it takes."
-      />
+      <section className="tracks-help-b">
+        <div className="label" style={{justifyContent:'center'}}>Still deciding?</div>
+        <h2 className="tracks-help-title">
+          Book a lesson and<br/><span className="script">Milky will help you choose.</span>
+        </h2>
+        <p className="tracks-help-sub">One lesson is all it takes.</p>
+        <a href="/booking/" className="btn btn-red">Book a lesson →</a>
+      </section>
+
       <SiteFooter />
     </div>
   );

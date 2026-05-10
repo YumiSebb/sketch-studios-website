@@ -1,57 +1,40 @@
-/* About page */
+/* About page — Letter direction (B) */
 function AboutPage() {
   useScrollAnim();
   return (
-    <div className="page">
-      <section className="about-hero">
-        <div className="about-grid">
+    <div className="page about-letter">
+      <section className="about-letter-inner">
+        <div className="about-letter-from anim">
+          <img src="https://picsum.photos/seed/milky-letter/300/300" alt="Milky" className="about-letter-avatar" />
           <div>
-            <div className="label anim">Meet the teacher</div>
-            <h1 className="about-headline anim">Hi, I'm</h1>
-            <span className="about-script anim">Milky.</span>
-            <div className="about-body">
-              <p className="anim">I'm a Brooklyn-based art teacher and the founder of .Milky Studio Co. I teach drawing and painting to kids, teens, and adults — and the thing that never gets old is watching someone realize they actually <em>can</em> do this.</p>
-              <p className="anim">My approach is simple: every student is different, so every lesson should be too. I build personalized curricula, I give homework (yes, homework, because that's how you actually improve), and I make sure every session is something you actually look forward to.</p>
-              <p className="anim">I teach in your home, at my studio, or on Zoom — wherever works best for you.</p>
-            </div>
-            <a href="/booking/" className="btn btn-solid anim">Book a lesson with Milky</a>
+            <div className="about-letter-from-label">From</div>
+            <div className="about-letter-from-name">Milky</div>
           </div>
-          <div className="anim">
-            <div className="about-photo">
-              <img src="https://picsum.photos/seed/milkyart/600/750" alt="Milky, founder of .Milky Studio Co" />
-            </div>
-          </div>
+        </div>
+
+        <h1 className="about-letter-title anim">
+          A note about <span className="script">how I teach.</span>
+        </h1>
+
+        <div className="about-letter-body">
+          <p className="anim">I'm a Brooklyn-based art teacher. I've spent the last ten years figuring out what actually helps a student improve — and what just gets in the way.</p>
+          <p className="anim">The answer, mostly, is structure. Every student gets a curriculum built around their level and goals. Not pulled off a shelf. Not the same thing I taught the kid before them.</p>
+          <p className="anim">I give homework. Yes, homework. Because the lesson is when I teach — the rest of the week is when you get better.</p>
+          <blockquote className="about-letter-quote anim">And the thing that never gets old? Watching someone realize they actually <em>can</em> do this.</blockquote>
+          <p className="anim">I teach kids, teens, adults. In your home, at my studio, or on Zoom. Whatever works.</p>
+          <p className="anim">If you've been thinking about it — let's do it.</p>
+        </div>
+
+        <div className="about-letter-sign anim">
+          <div className="about-letter-signature">— Milky</div>
+          <div className="about-letter-meta">Brooklyn · 2026</div>
         </div>
       </section>
 
-      <section className="values-section">
-        <div style={{maxWidth:1200,margin:'0 auto'}}>
-          <div className="label anim">Teaching philosophy</div>
-          <h2 className="section-title anim">What makes a <span className="script">great lesson?</span></h2>
-          <div className="values-grid">
-            {[
-              {title:'Personalized, always',text:"No generic curriculum. Every student gets a lesson plan built around their level, goals, and learning style — and it evolves as they grow."},
-              {title:'Real progress',text:"Students leave with something tangible — a skill they didn't have before, a drawing that surprised them. And homework to keep that momentum going."},
-              {title:'Fun is the point',text:"If you dread your lesson, something's wrong. Art should feel like something you get to do, not something you have to."},
-              {title:'Drawing first',text:"The foundation of all visual art is drawing. Students build strong fundamentals before moving to painting, so when they pick up a brush, they're ready."},
-              {title:'For everyone',text:"Kids picking up a pencil for the first time. Adults who always wanted to learn. Teens who want to get serious. All welcome."},
-              {title:'Adaptable',text:"Lessons evolve with the student. As skills develop, the curriculum shifts — so there's always a new challenge, always a next level."},
-            ].map((v,i) => (
-              <div key={i} className="value-card anim">
-                <div className="value-title">{v.title}</div>
-                <p className="value-text">{v.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="about-letter-cta-wrap">
+        <a href="/booking/" className="btn btn-red about-letter-cta">Book a lesson →</a>
       </section>
 
-      <CtaBanner
-        eyebrow="Ready?"
-        title={"Let's find your <span class=\"script\">track.</span>"}
-        subtitle="Start with a trial lesson — in home, at Milky's studio, or on Zoom."
-        primaryLabel="Book a lesson"
-      />
       <SiteFooter />
     </div>
   );

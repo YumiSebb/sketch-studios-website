@@ -196,9 +196,10 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.nav-links .nav-cta:hover,
-.nav-links .nav-cta.active {
+.nav-links .nav-cta:hover {
   background: var(--deep);
+}
+.nav-links .nav-cta.active {
   color: white;
 }
 

@@ -56,9 +56,9 @@ function BeforeAfterSlider() {
 
 function Testimonials() {
   const testimonials = [
-    { quote: "My daughter went from stick figures to actual portraits in two months. She literally runs to the door when Milky arrives.", name: "Sarah M.", role: "Parent of a 9-year-old student", img: "/gallery/test-sarah.png" },
-    { quote: "I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait.", name: "David R.", role: "Adult beginner, age 47", img: "/gallery/test-david.png" },
-    { quote: "The Intuitive Flow track is my therapy. No pressure, no grades, just paint and whatever comes out. I look forward to it all week.", name: "Ava T.", role: "Intuitive Flow student", img: "/gallery/test-ava.png" },
+    { quote: "I always wanted to learn to draw but felt too old to start. Milky made me realize that's nonsense. I'm 47 and I just finished my first charcoal portrait.", name: "D.R.", role: "Core Technique student, age 47", img: "/gallery/test-david.png" },
+    { quote: "The Intuitive Flow track is my therapy. I've learned to express myself in an entirely new way and how to use all different kinds of materials without judging myself.", name: "A.T.", role: "Intuitive Flow student, age 20", img: "/gallery/test-ava.png" },
+    { quote: "My son went from scratchy doodles to feeling comfortable drawing objects from real life in a few short months. He looks forward to his lesson all week.", name: "S.M.", role: "Parent of Core Technique student", img: "/gallery/test-sarah.png" },
   ];
   const [current, setCurrent] = React.useState(0);
 

@@ -93,9 +93,9 @@ function HomePage() {
     <div className="page">
       {/* Hero */}
       <section className="hero">
-        <div className="hero-overline">Art lessons · Paint nights · Commissions</div>
-        <h1 className="anim">Learn. <span className="script">Paint.</span> Commission.</h1>
-        <p className="hero-desc anim">Private lessons that build real skills. Group events that bring people together. Custom commissions, exactly as you want them.</p>
+        <div className="hero-overline">Art lessons · Events · Commissions</div>
+        <h1 className="anim">Learn to <span className="script">gather,</span> create.</h1>
+        <p className="hero-desc anim">Build independence through customized skill-based art lessons. Find inspiration in collaborative events centered on expression. Transform your space with a custom commission tailored to your vision.</p>
         <div className="hero-btns anim">
           <a href="/booking/" className="btn btn-solid">Book a lesson or event</a>
           <a href="/store/" className="btn btn-ghost">Start a commission</a>

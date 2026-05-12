@@ -1,6 +1,7 @@
-/* Booking page */
+/* Booking page — Direction C: "A Letter from Milky" + Chat-thread Q&A */
 function BookingPage() {
   useScrollAnim();
+
   const faqs = [
     { q: 'How much do lessons cost?', a: "Pricing depends on format (in home, studio, or Zoom), session length, and whether it's private or a small group. Send Milky a WhatsApp message or give her a call — she'll talk through options with you directly." },
     { q: 'What materials do I need?', a: "Just yourself for the first lesson — Milky provides materials for trial sessions. After that she'll give you a simple, affordable supply list based on your track and level." },
@@ -12,64 +13,95 @@ function BookingPage() {
 
   return (
     <div className="page">
-      <section className="booking-hero">
-        <div className="label anim" style={{justifyContent:'center'}}>Get started</div>
-        <h1 className="booking-headline anim">
-          <span className="script">Let's make art.</span>
-          Reach out to Milky.
-        </h1>
-        <p className="booking-desc anim">Ready to start? Send Milky a message on WhatsApp or give her a call. She'll chat with you about what you're looking for and set up your first session.</p>
-        <a href="https://wa.me/19298849382" className="btn btn-whatsapp anim" target="_blank" style={{margin:'0 auto 28px',display:'inline-flex'}}>
-          <WhatsAppIcon />
-          Message Milky on WhatsApp
-        </a>
-        <div className="contact-options anim">
-          <div className="contact-option">
-            <div className="co-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            </div>
-            <div>
-              <div className="co-label">Call or Text</div>
-              <div className="co-value"><a href="tel:9298849382" style={{color:'var(--text)'}}>929.884.9382</a></div>
-            </div>
+      <section className="bookingC-hero">
+        <div className="bookingC-blob"></div>
+        <div className="bookingC-inner">
+          <div className="bookingC-photo anim" aria-hidden="true">
+            <img src="https://picsum.photos/seed/milky-studio-portrait/520/640" alt="" />
           </div>
-          <div className="contact-option">
-            <div className="co-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            </div>
-            <div>
-              <div className="co-label">Location</div>
-              <div className="co-value">Brooklyn, NY · Live on Zoom</div>
+          <div className="bookingC-eyebrow anim">A note from your teacher</div>
+          <div className="bookingC-from anim">Dear future student,</div>
+          <h1 className="bookingC-headline anim">I'm so glad<br/>you're <span className="script">here.</span></h1>
+
+          <div className="bookingC-letter">
+            <p className="anim">If you've made it this far, you're probably nervous, curious, or both. That's normal. Most of my students arrive convinced they "can't draw a stick figure."</p>
+            <p className="anim">The honest truth is — you don't need talent. You need someone who'll meet you exactly where you are, and the patience to show up once a week. That's it. I'll handle the rest.</p>
+            <p className="anim">Whether you want structured drawing skills, the quiet of mindful painting, or something for your kid on a Saturday morning — send me a message. I read every one.</p>
+            <div className="bookingC-sig anim">
+              <div className="bookingC-signature">— Milky</div>
+              <div className="bookingC-sig-meta">Founder · Milky Studio Co</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="locations-section">
-        <div className="label anim" style={{justifyContent:'center'}}>Where we meet</div>
-        <h2 className="section-title anim" style={{textAlign:'center'}}>Three formats.<br/><span className="script">Zero excuses.</span></h2>
-        <div className="location-pills anim">
-          {[
-            {icon:'🏠',title:'In Home',name:'Milky comes to you'},
-            {icon:'🎨',title:'At the Studio',name:'Come to Milky'},
-            {icon:'💻',title:'Zoom',name:'Anywhere in the world'},
-          ].map((l,i) => (
-            <div key={i} className="location-pill">
-              <div className="lp-icon" style={{fontSize:18}}>{l.icon}</div>
-              <div><div className="lp-title">{l.title}</div><div className="lp-name">{l.name}</div></div>
+      <section className="bookingC-cta-section">
+        <div className="bookingC-cta-card anim">
+          <div className="bookingC-cta-eyebrow">Reach out</div>
+          <h2 className="bookingC-cta-title">Two ways to <span className="script">say hi.</span></h2>
+          <p className="bookingC-cta-sub">WhatsApp is fastest — usually a same-day reply. Old-school calls work too.</p>
+          <a href="https://wa.me/19298849382" target="_blank" rel="noopener" className="btn btn-whatsapp bookingC-primary">
+            <WhatsAppIcon />
+            Message Milky on WhatsApp
+          </a>
+          <a href="tel:9298849382" className="bookingC-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call 929.884.9382
+          </a>
+          <div className="bookingC-meet">
+            <div className="bookingC-meet-row">
+              <div className="bookingC-meet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <div className="bookingC-meet-label">In your home</div>
+                <div className="bookingC-meet-value">Brooklyn, NY · Milky comes to you</div>
+              </div>
             </div>
-          ))}
+            <div className="bookingC-meet-row">
+              <div className="bookingC-meet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              </div>
+              <div>
+                <div className="bookingC-meet-label">At the studio</div>
+                <div className="bookingC-meet-value">Brooklyn · come to Milky</div>
+              </div>
+            </div>
+            <div className="bookingC-meet-row">
+              <div className="bookingC-meet-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+              </div>
+              <div>
+                <div className="bookingC-meet-label">Live on Zoom</div>
+                <div className="bookingC-meet-value">Anywhere in the world</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="faq-section">
-        <div className="label anim">Common questions</div>
-        <h2 className="section-title anim">Before you <span className="script">book.</span></h2>
-        <div className="faq-grid">
+      <section className="faq-chat-section">
+        <div className="faq-chat-head">
+          <div className="label anim" style={{justifyContent:'center'}}>Q &amp; A</div>
+          <h2 className="section-title anim" style={{textAlign:'center'}}>Before you <span className="script">book.</span></h2>
+          <p className="faq-chat-sub anim">The things students ask before their first lesson.</p>
+        </div>
+        <div className="faq-chat-grid">
           {faqs.map((f,i) => (
-            <div key={i} className="faq-cell anim">
-              <div className="faq-q">{f.q}</div>
-              <div className="faq-a">{f.a}</div>
+            <div key={i} className="faq-chat-thread anim">
+              <div className="faq-chat-you-row">
+                <div>
+                  <div className="faq-chat-you-bubble">{f.q}</div>
+                  <div className="faq-chat-you-name">You</div>
+                </div>
+              </div>
+              <div className="faq-chat-milky-row">
+                <div className="faq-chat-avatar">M</div>
+                <div className="faq-chat-milky-col">
+                  <div className="faq-chat-milky-name">Milky</div>
+                  <div className="faq-chat-milky-bubble">{f.a}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

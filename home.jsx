@@ -1,16 +1,53 @@
 /* Homepage components */
 
-function StudentVideo() {
+function BeforeAfterSlider() {
+  const sliderRef = React.useRef(null);
+  const [pos, setPos] = React.useState(50);
+  const dragging = React.useRef(false);
+
+  const updatePos = React.useCallback((e) => {
+    if (!sliderRef.current) return;
+    const rect = sliderRef.current.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    setPos(pct);
+  }, []);
+
+  React.useEffect(() => {
+    const onMove = (e) => { if (dragging.current) { updatePos(e); e.preventDefault(); } };
+    const onUp = () => { dragging.current = false; };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, [updatePos]);
+
   return (
     <section className="ba-section anim">
-      <div className="ba-video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/PyVhXxFSMBI?rel=0&modestbranding=1&playsinline=1"
-          title="Student progress"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+      <div className="ba-slider" ref={sliderRef}>
+        <img src="/gallery/slider-after.png" alt="Student work after 8 weeks" />
+        <div className="ba-before" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+          <img src="/gallery/slider-before.png" alt="Student work at week 1" />
+        </div>
+        <span className="ba-label left">Week 1</span>
+        <span className="ba-label right">Week 8</span>
+        <div
+          className="ba-handle"
+          style={{ left: pos + '%' }}
+          onMouseDown={() => { dragging.current = true; }}
+          onTouchStart={() => { dragging.current = true; }}
+        >
+          <div className="ba-handle-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2c2220" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2c2220" strokeWidth="2.5" strokeLinecap="round" style={{marginLeft:-4}}><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+        </div>
       </div>
       <div className="ba-caption">Student progress · 8 weeks</div>
     </section>
@@ -66,7 +103,7 @@ function HomePage() {
       </section>
 
       {/* Before/After + Quote */}
-      <StudentVideo />
+      <BeforeAfterSlider />
       <div className="ba-quote anim">
         <div className="ba-quote-text">"I couldn't draw a straight line 8 weeks ago."</div>
         <div className="ba-quote-attr">Core Technique student</div>
@@ -201,4 +238,4 @@ function StickyMobileCta() {
   );
 }
 
-Object.assign(window, { HomePage, StudentVideo, Testimonials, StickyMobileCta });
+Object.assign(window, { HomePage, BeforeAfterSlider, Testimonials, StickyMobileCta });

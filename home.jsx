@@ -5,7 +5,7 @@ function StudentVideo() {
     <section className="ba-section anim">
       <div className="ba-video-wrap">
         <iframe
-          src="https://www.youtube.com/embed/PyVhXxFSMBI?autoplay=1&mute=1&loop=1&playlist=PyVhXxFSMBI&controls=0&rel=0&modestbranding=1&playsinline=1"
+          src="https://www.youtube.com/embed/PyVhXxFSMBI?rel=0&modestbranding=1&playsinline=1"
           title="Student progress"
           frameBorder="0"
           allow="autoplay; encrypted-media"

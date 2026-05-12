@@ -8,11 +8,11 @@ function StorePage() {
   const [showCart, setShowCart] = React.useState(false);
 
   const originals = [
-    { id:'p1', title:'Portrait Commission', priceLabel:'From $350', desc:'Custom portrait in pencil, charcoal, or oil. From a photo or live sitting.', img:'https://picsum.photos/seed/portrait-store/500/625', tag:'Most popular', details:'Work with Milky to create a one-of-a-kind portrait. Choose your medium — graphite, charcoal, or oil on canvas. Commissions typically take 2–4 weeks. Includes one round of revisions.', sizes:['8×10','11×14','16×20'], sizePrices:[350,450,600] },
-    { id:'p2', title:'Custom Oil Painting', priceLabel:'From $500', desc:"Oil on canvas — landscapes, portraits, or abstract. Your vision, Milky's hand.", img:'https://picsum.photos/seed/oil-store/500/625', details:'A fully custom oil painting on stretched canvas. Share your vision and Milky will bring it to life. Allow 4–6 weeks.', sizes:['12×16','18×24','24×36'], sizePrices:[500,750,1100] },
+    { id:'p1', title:'Portrait Commission', priceLabel:'From $350', desc:'Custom portrait in pencil, charcoal, or oil. From a photo or live sitting.', img:'https://picsum.photos/seed/portrait-store/500/625', tag:'Most popular', details:'Work with Milky to create a one-of-a-kind portrait. Choose your medium: graphite, charcoal, or oil on canvas. Commissions typically take 2–4 weeks. Includes one round of revisions.', sizes:['8×10','11×14','16×20'], sizePrices:[350,450,600] },
+    { id:'p2', title:'Custom Oil Painting', priceLabel:'From $500', desc:"Oil on canvas: landscapes, portraits, or abstract. Your vision, Milky's hand.", img:'https://picsum.photos/seed/oil-store/500/625', details:'A fully custom oil painting on stretched canvas. Share your vision and Milky will bring it to life. Allow 4–6 weeks.', sizes:['12×16','18×24','24×36'], sizePrices:[500,750,1100] },
     { id:'p3', title:'Pet Portrait', priceLabel:'From $200', desc:'Your pet in charcoal or colored pencil. From your favorite photo.', img:'https://picsum.photos/seed/pet-store/500/625', details:'Send your favorite photo and Milky creates a detailed portrait. A perfect gift for any animal lover. 1–2 weeks.', sizes:['8×10','11×14'], sizePrices:[200,300] },
     { id:'p4', title:'Watercolor Piece', priceLabel:'From $250', desc:'Florals, cityscapes, or portraits in watercolor.', img:'https://picsum.photos/seed/watercolor-store/500/625', details:'Delicate, expressive watercolor paintings on archival paper. Choose a subject or let Milky surprise you.', sizes:['9×12','11×14'], sizePrices:[250,350] },
-    { id:'p5', title:'Gift Package', priceLabel:'From $150', desc:'A custom sketch or painting, wrapped and ready.', img:'https://picsum.photos/seed/gift-store/500/625', tag:'Great gift', details:'Milky creates a small custom piece — beautifully wrapped and ready to give.', sizes:['Small sketch','Mini painting'], sizePrices:[150,250] },
+    { id:'p5', title:'Gift Package', priceLabel:'From $150', desc:'A custom sketch or painting, wrapped and ready.', img:'https://picsum.photos/seed/gift-store/500/625', tag:'Great gift', details:'Milky creates a small custom piece, beautifully wrapped and ready to give.', sizes:['Small sketch','Mini painting'], sizePrices:[150,250] },
     { id:'p6', title:'Original Charcoal', priceLabel:'$280', desc:'One-of-a-kind charcoal drawing.', img:'https://picsum.photos/seed/charcoal-store/500/625', details:'Rich, dramatic tonal work on textured paper. Each piece is unique and signed by Milky.', sizes:['11×14','16×20'], sizePrices:[280,400] },
   ];
 
@@ -37,7 +37,7 @@ function StorePage() {
 
   function buildWhatsAppMsg() {
     let msg = "Hi Milky! I'd like to order:\n\n";
-    cart.forEach(item => { msg += `• ${item.title} (${item.selectedSize}) — $${item.selectedPrice}\n`; });
+    cart.forEach(item => { msg += `• ${item.title} (${item.selectedSize}), $${item.selectedPrice}\n`; });
     msg += `\nTotal: $${cartTotal}\n\nPlease let me know how to proceed!`;
     return `https://wa.me/19298849382?text=${encodeURIComponent(msg)}`;
   }
@@ -116,7 +116,7 @@ function StorePage() {
             </div>
           </div>
           <div className="store-pv-footer">
-            <button className="btn btn-red store-pv-add" onClick={addToCart}>Add to cart — ${selected.sizePrices[sizeIdx]}</button>
+            <button className="btn btn-red store-pv-add" onClick={addToCart}>Add to cart · ${selected.sizePrices[sizeIdx]}</button>
             <a href="https://wa.me/19298849382" className="btn btn-ghost store-pv-msg">Message Milky first</a>
           </div>
         </div>

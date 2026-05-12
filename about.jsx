@@ -17,16 +17,16 @@ function AboutPage() {
         </h1>
 
         <div className="about-letter-body">
-          <p className="anim">I'm a Brooklyn-based art teacher. I've spent the last ten years figuring out what actually helps a student improve — and what just gets in the way.</p>
+          <p className="anim">I'm a Brooklyn-based art teacher. I've spent the last ten years figuring out what actually helps a student improve, and what just gets in the way.</p>
           <p className="anim">The answer, mostly, is structure. Every student gets a curriculum built around their level and goals. Not pulled off a shelf. Not the same thing I taught the kid before them.</p>
-          <p className="anim">I give homework. Yes, homework. Because the lesson is when I teach — the rest of the week is when you get better.</p>
+          <p className="anim">I give homework. Yes, homework. Because the lesson is when I teach. The rest of the week is when you get better.</p>
           <blockquote className="about-letter-quote anim">And the thing that never gets old? Watching someone realize they actually <em>can</em> do this.</blockquote>
           <p className="anim">I teach kids, teens, adults. In your home, at my studio, or on Zoom. Whatever works.</p>
-          <p className="anim">If you've been thinking about it — let's do it.</p>
+          <p className="anim">If you've been thinking about it, let's do it.</p>
         </div>
 
         <div className="about-letter-sign anim">
-          <div className="about-letter-signature">— Milky</div>
+          <div className="about-letter-signature">Milky</div>
           <div className="about-letter-meta">Brooklyn · 2026</div>
         </div>
       </section>

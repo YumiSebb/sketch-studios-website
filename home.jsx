@@ -106,7 +106,7 @@ function HomePage() {
       <BeforeAfterSlider />
       <div className="ba-quote anim">
         <div className="ba-quote-text">"I couldn't draw a straight line 8 weeks ago."</div>
-        <div className="ba-quote-attr">— Core Technique student</div>
+        <div className="ba-quote-attr">Core Technique student</div>
       </div>
 
       {/* Trust Bar */}
@@ -142,7 +142,7 @@ function HomePage() {
         <div className="store-inner">
           <div className="label anim">Student work</div>
           <h2 className="section-title anim">See what students<br/><span className="script">are creating.</span></h2>
-          <p className="body-text anim" style={{marginBottom:24,maxWidth:380}}>Real progress from real students — across all three tracks.</p>
+          <p className="body-text anim" style={{marginBottom:24,maxWidth:380}}>Real progress from students across all tracks.</p>
           <div className="store-grid anim">
             {[
               { title: 'Portrait Study', meta: 'Core Technique', img: 'https://picsum.photos/seed/studentportrait/400/400' },

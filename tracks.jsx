@@ -7,7 +7,7 @@ const TRACKS = [
     label: 'Track One',
     short: 'Core',
     title: 'Core Technique',
-    pitch: 'For students who want to actually learn to draw and paint — not just dabble.',
+    pitch: 'For students who want to actually learn to draw and paint, not just dabble.',
     long: 'Structured, personalized instruction that builds real, measurable skills. Homework between sessions. Results in weeks, not years.',
     bestFor: 'Skill builders',
     structure: 'Structured, progressive',
@@ -22,7 +22,7 @@ const TRACKS = [
     label: 'Track Two',
     short: 'Flow',
     title: 'Intuitive Flow',
-    pitch: 'For students who want art as a creative outlet — a mindful, pressure-free practice.',
+    pitch: 'For students who want art as a creative outlet: a mindful, pressure-free practice.',
     long: "Mixed media exploration with no grades, no pressure. Express what words can't. Art as practice, not performance.",
     bestFor: 'Creative expression',
     structure: 'Open, exploratory',
@@ -67,7 +67,7 @@ function TracksPage() {
       <section className="tracks-hero-b anim">
         <div className="label" style={{justifyContent:'center'}}>Three tracks</div>
         <h1 className="tracks-h1-b">Choose your <span className="script">path.</span></h1>
-        <p className="tracks-sub-b">Tap a track below to learn more — or scroll to the bottom and let Milky help you choose.</p>
+        <p className="tracks-sub-b">Tap a track below to learn more, or scroll to the bottom and let Milky help you choose.</p>
       </section>
 
       <div className="tracks-tabs-wrap">

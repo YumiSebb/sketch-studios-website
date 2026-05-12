@@ -3,11 +3,11 @@ function BookingPage() {
   useScrollAnim();
 
   const faqs = [
-    { q: 'How much do lessons cost?', a: "Pricing depends on format (in home, studio, or Zoom), session length, and whether it's private or a small group. Send Milky a WhatsApp message or give her a call — she'll talk through options with you directly." },
-    { q: 'What materials do I need?', a: "Just yourself for the first lesson — Milky provides materials for trial sessions. After that she'll give you a simple, affordable supply list based on your track and level." },
+    { q: 'How much do lessons cost?', a: "Pricing depends on format (in home, studio, or Zoom), session length, and whether it's private or a small group. Send Milky a WhatsApp message or give her a call. She'll talk through options with you directly." },
+    { q: 'What materials do I need?', a: "Just yourself for the first lesson. Milky provides materials for trial sessions. After that she'll give you a simple, affordable supply list based on your track and level." },
     { q: 'Can I switch tracks later?', a: "Absolutely. Many students start with one track and try the other, or mix both. There's no lock-in. Milky will help you figure out what feels right." },
-    { q: 'Do you teach complete beginners?', a: "Yes — most students start with zero experience. That's the whole point of personalized lessons. Milky meets you exactly where you are." },
-    { q: 'How does the Zoom format work?', a: "Set up a camera so Milky can see your work in real time. She guides you step by step, gives feedback, and demonstrates techniques — all live." },
+    { q: 'Do you teach complete beginners?', a: "Yes, most students start with zero experience. That's the whole point of personalized lessons. Milky meets you exactly where you are." },
+    { q: 'How does the Zoom format work?', a: "Set up a camera so Milky can see your work in real time. She guides you step by step, gives feedback, and demonstrates techniques, all live." },
     { q: 'How long are sessions?', a: "Sessions are typically 60 minutes, with 90-minute options available. Milky can discuss what works best for your schedule and goals when you book." },
   ];
 
@@ -25,10 +25,10 @@ function BookingPage() {
 
           <div className="bookingC-letter">
             <p className="anim">If you've made it this far, you're probably nervous, curious, or both. That's normal. Most of my students arrive convinced they "can't draw a stick figure."</p>
-            <p className="anim">The honest truth is — you don't need talent. You need someone who'll meet you exactly where you are, and the patience to show up once a week. That's it. I'll handle the rest.</p>
-            <p className="anim">Whether you want structured drawing skills, the quiet of mindful painting, or something for your kid on a Saturday morning — send me a message. I read every one.</p>
+            <p className="anim">The honest truth is: you don't need talent. You need someone who'll meet you exactly where you are, and the patience to show up once a week. That's it. I'll handle the rest.</p>
+            <p className="anim">Whether you want structured drawing skills, the quiet of mindful painting, or something for your kid on a Saturday morning, send me a message. I read every one.</p>
             <div className="bookingC-sig anim">
-              <div className="bookingC-signature">— Milky</div>
+              <div className="bookingC-signature">Milky</div>
               <div className="bookingC-sig-meta">Founder · Milky Studio Co</div>
             </div>
           </div>
@@ -39,7 +39,7 @@ function BookingPage() {
         <div className="bookingC-cta-card anim">
           <div className="bookingC-cta-eyebrow">Reach out</div>
           <h2 className="bookingC-cta-title">Two ways to <span className="script">say hi.</span></h2>
-          <p className="bookingC-cta-sub">WhatsApp is fastest — usually a same-day reply. Old-school calls work too.</p>
+          <p className="bookingC-cta-sub">WhatsApp is fastest, usually a same-day reply. Old-school calls work too.</p>
           <a href="https://wa.me/19298849382" target="_blank" rel="noopener" className="btn btn-whatsapp bookingC-primary">
             <WhatsAppIcon />
             Message Milky on WhatsApp

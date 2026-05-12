@@ -13,16 +13,25 @@ function AboutPage() {
         </div>
 
         <h1 className="about-letter-title anim">
-          A note about <span className="script">how I teach.</span>
+          A note from <span className="script">Milky.</span>
         </h1>
 
         <div className="about-letter-body">
-          <p className="anim">I'm a Brooklyn-based art teacher. I've spent the last ten years figuring out what actually helps a student improve, and what just gets in the way.</p>
-          <p className="anim">The answer, mostly, is structure. Every student gets a curriculum built around their level and goals. Not pulled off a shelf. Not the same thing I taught the kid before them.</p>
-          <p className="anim">I give homework. Yes, homework. Because the lesson is when I teach. The rest of the week is when you get better.</p>
-          <blockquote className="about-letter-quote anim">And the thing that never gets old? Watching someone realize they actually <em>can</em> do this.</blockquote>
-          <p className="anim">I teach kids, teens, adults. In your home, at my studio, or on Zoom. Whatever works.</p>
-          <p className="anim">If you've been thinking about it, let's do it.</p>
+          <p className="anim">I am a Brooklyn-based artist and instructor. I've spent the last decade identifying the difference between teachers who simply show you how to copy an image and those who actually teach you how to see and create.</p>
+          <p className="anim">That experience led me to develop a curriculum focused on true independence, confidence, and skill mastery. My ultimate goal is for my students to eventually not need me anymore, because they've gained the tools to create anything they can imagine.</p>
+
+          <div className="about-letter-section-head anim">Two Paths to Creativity</div>
+          <p className="anim">I've developed two distinct tracks to meet students where they are:</p>
+          <p className="anim"><strong>The Technical Track:</strong> For those hungry for foundational skills and technical mastery.</p>
+          <p className="anim"><strong>The Intuitive Track:</strong> For those looking to embrace creativity, move past self-judgment, and use art as a powerful tool for self-expression.</p>
+
+          <div className="about-letter-section-head anim">The Studio Milky Approach</div>
+          <p className="anim">Every student receives a curriculum tailored specifically to their goals and current level. I believe in the power of practice, so I do provide and encourage homework. True progress happens in those few minutes of daily practice between our sessions.</p>
+          <blockquote className="about-letter-quote anim">The thing that never gets old? Watching a student realize they actually <em>can</em> do this. All that is required is interest and perseverance. Everyone can learn; everyone can create.</blockquote>
+
+          <div className="about-letter-section-head anim">Let's Begin</div>
+          <p className="anim">I teach kids, teens, and adults in your home, at my Brooklyn studio, or via Zoom.</p>
+          <p className="anim">If you've been thinking about starting your art journey, let's do it.</p>
         </div>
 
         <div className="about-letter-sign anim">

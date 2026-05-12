@@ -121,9 +121,9 @@ function HomePage() {
         <div className="label anim">Three tracks</div>
         <h2 className="section-title anim">Choose your path.</h2>
         {[
-          { num: '1', label: 'Core Technique', title: 'Build real skills', desc: 'Structured, personalized drawing and painting instruction. Measurable progress week to week.' },
-          { num: '2', label: 'Intuitive Flow', title: 'Art as practice', desc: 'Mixed media exploration. No pressure, no grades. Express yourself through color and texture.' },
-          { num: '3', label: 'Advanced Mastery', title: 'Go deeper', desc: 'Oil painting, watercolor, hyper-realistic portraits. For students ready to push further.' },
+          { num: '1', label: 'Core Technique', title: 'Build a strong foundation', desc: 'Personalized lessons designed to help you master the essentials of drawing and color theory.' },
+          { num: '2', label: 'Intuitive Flow', title: 'Discover the joy of creating', desc: 'A gentle, playful approach focused on authentic self-expression across a variety of art mediums.' },
+          { num: '3', label: 'Advanced Mastery', title: 'Take your art to the next level', desc: 'Specialized guidance in advanced techniques such as oil and watercolor painting skills, accurate portraiture, and more.' },
         ].map((t, i) => (
           <div key={i} className="track-row anim">
             <div className="track-number">{t.num}</div>

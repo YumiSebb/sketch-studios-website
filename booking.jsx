@@ -25,8 +25,8 @@ function BookingPage() {
 
           <div className="bookingC-letter">
             <p className="anim">If you've made it this far, you're probably nervous, curious, or both. That's normal. Most of my students arrive convinced they "can't draw a stick figure."</p>
-            <p className="anim">The honest truth is: you don't need talent. You need someone who'll meet you exactly where you are, and the patience to show up once a week. That's it. I'll handle the rest.</p>
-            <p className="anim">Whether you want structured drawing skills, the quiet of mindful painting, or something for your kid on a Saturday morning, send me a message. I read every one.</p>
+            <p className="anim">The truth is, talent is a myth. It's built from hours of practice. You need someone who meets you exactly where you are, and you need the patience to show up every week and put in the work.</p>
+            <p className="anim">Whether you want to level up your portrait skills, explore the quiet of mindful painting, or a place for your kid to really level up their drawings, send me a message. Let's talk.</p>
             <div className="bookingC-sig anim">
               <div className="bookingC-signature">Milky</div>
               <div className="bookingC-sig-meta">Founder · Milky Studio Co</div>

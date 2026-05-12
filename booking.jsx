@@ -37,9 +37,7 @@ function BookingPage() {
 
       <section className="bookingC-cta-section">
         <div className="bookingC-cta-card anim">
-          <div className="bookingC-cta-eyebrow">Art your way.</div>
-          <h2 className="bookingC-cta-title">Two ways to <span className="script">say hi.</span></h2>
-          <p className="bookingC-cta-sub">WhatsApp is fastest, usually a same-day reply. Old-school calls work too.</p>
+          <h2 className="bookingC-cta-title">Art your <span className="script">way.</span></h2>
           <a href="https://wa.me/19298849382" target="_blank" rel="noopener" className="btn btn-whatsapp bookingC-primary">
             <WhatsAppIcon />
             Message Milky on WhatsApp

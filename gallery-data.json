@@ -8,11 +8,15 @@
     { "src": "https://picsum.photos/seed/studentmixed/600/600", "title": "Mixed Media Collage", "track": "Intuitive Flow" }
   ],
   "teacher": [
-    { "src": "https://picsum.photos/seed/milkyoil/600/600", "title": "Evening Light", "medium": "Oil on canvas" },
-    { "src": "https://picsum.photos/seed/milkywatercolor/600/600", "title": "Brooklyn Botanicals", "medium": "Watercolor" },
-    { "src": "https://picsum.photos/seed/milkyportrait/600/600", "title": "Portrait Commission", "medium": "Charcoal on paper" },
-    { "src": "https://picsum.photos/seed/milkyabstract/600/600", "title": "Flow Series No. 3", "medium": "Acrylic & ink" },
-    { "src": "https://picsum.photos/seed/milkypencil/600/600", "title": "Gesture Studies", "medium": "Graphite" },
-    { "src": "https://picsum.photos/seed/milkylandscape/600/600", "title": "Prospect Park", "medium": "Oil on canvas" }
+    { "src": "/gallery/teacher/bonfire-dance.jpg",       "title": "Bonfire Dance",       "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/the-violinist.jpg",       "title": "The Violinist",       "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/rainbow-purim.jpg",       "title": "Rainbow Purim",       "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/red-haired-portrait.jpg", "title": "Red-Haired Portrait", "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/sepia-self-portrait.jpg", "title": "Sepia Self Portrait", "medium": "Oil on panel" },
+    { "src": "/gallery/teacher/portrait-in-red.jpg",     "title": "Portrait in Red",     "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/winter-figures.jpg",      "title": "Winter Figures",      "medium": "Mixed media" },
+    { "src": "/gallery/teacher/birds-of-mind.jpg",       "title": "Birds of the Mind",   "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/purim-girl.jpg",          "title": "Purim Girl",          "medium": "Oil on canvas" },
+    { "src": "/gallery/teacher/yellow-boat.jpg",         "title": "Yellow Boat",         "medium": "Oil on canvas" }
   ]
 }

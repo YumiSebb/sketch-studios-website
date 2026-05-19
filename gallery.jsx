@@ -32,7 +32,6 @@ function GalleryPage() {
       { src: '/gallery/teacher/rainbow-purim.jpg', title: 'Identity', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
       { src: '/gallery/teacher/red-haired-portrait.jpg', title: 'Red Boy', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
       { src: '/gallery/teacher/sepia-self-portrait.jpg', title: 'Old Soul', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
-      { src: '/gallery/teacher/portrait-in-red.jpg', title: 'Alla Prima Portrait', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
       { src: '/gallery/teacher/winter-figures.jpg', title: 'Brave', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
       { src: '/gallery/teacher/birds-of-mind.jpg', title: 'Being', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
       { src: '/gallery/teacher/purim-girl.jpg', title: 'Na Nach Child', meta: 'Oil on canvas', artist: 'Milky', date: '', desc: '' },
